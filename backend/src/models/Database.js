@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let db = null;
 function getDb() {
     if (!db) {
-        db = new sqlite3.Database(path.join(__dirname, '../db.sqlite'), (err) => {
+        db = new sqlite3.Database(path.join(__dirname, '../../db.sqlite'), (err) => {
             if (err) {
                 console.error('Could not connect to database: ', err);
                 db = null;
