@@ -1,21 +1,19 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
-import LoginPage from './pages/Logn';
+import LoginPage from "./pages/Login";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<LoginPage />} />
 
-                <Route index element={<LoginPage />} />
-
-                <Route path="*" element={<NotFoundPage />} />
-
-            </Routes>
-        </BrowserRouter>
-    );
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
