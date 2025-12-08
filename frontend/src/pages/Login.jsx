@@ -8,22 +8,25 @@ function LoginPage(){
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onUsernameChanged = e => setUsername(e.target.value);
     const onPasswordChanged = e => setPassword(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await api.post('/auth/login', {
-                username,
-                password
-            });
-            console.log('Login successful:', response.data);
+        api.post('/auth/login', {
+            username,
+            password
+        })
+        .then((response) => {
+            console.log(response.data);
             //navigate('/dashboard');
-        } catch (error) {
-            console.error('Login failed:', error.message);
-        }
+        })
+        .catch((error) => {
+            console.error(error.response.data.error);
+            setErrorMessage(error.response.data.error);
+        });
     }
 
     return <div>
@@ -62,6 +65,7 @@ function LoginPage(){
                         </input>
                         <br />
                         <Link to="register">Don't have an account? Register here.</Link>
+                        {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
                         <button type ="submit">LOGIN</button>
                     </form>

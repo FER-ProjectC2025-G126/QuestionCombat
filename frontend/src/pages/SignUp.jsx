@@ -9,24 +9,35 @@ function SignUpPage() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onUsernameChanged = e => setUsername(e.target.value);
     const onPasswordChanged = e => setPassword(e.target.value);
+    const onConfirmPasswordChanged = e => setConfirmPassword(e.target.value);
     const onEmailChanged = e => setEmail(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await api.post('/auth/register', {
+        if(password !== confirmPassword){
+            console.error("Passwords do not match");
+            setErrorMessage("Passwords do not match");
+            return;
+        }
+        api.post('/auth/register', {
                 username,
                 password,
                 email
+            })
+            .then((response) => {
+                console.log(response.data);
+                setErrorMessage('');
+                //navigate('/dashboard');
+            })
+            .catch((error) => {
+                console.error(error.response.data.error);
+                setErrorMessage(error.response.data.error);
             });
-            console.log('Signup successful:', response.data);
-            //navigate('/dashboard');
-        } catch (error) {
-            console.error('Signup failed:', error);
-        }
     }
 
     return <div>
@@ -75,7 +86,18 @@ function SignUpPage() {
                             onChange={onPasswordChanged}>
                         </input>
                         <br />
+                        <input 
+                            type="password"
+                            id="confirmPpassword"
+                            name="confirmPassword"
+                            placeholder="Confirm password"
+                            value={confirmPassword}
+                            required
+                            onChange={onConfirmPasswordChanged}>
+                        </input>
+                        <br />
                         <Link to="/">Have an account? Login here.</Link>
+                        {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
                         <button type ="submit">SIGNUP</button>
                     </form>

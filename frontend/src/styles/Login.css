@@ -112,7 +112,9 @@ a {
   font-family: "SuperBubbly", sans-serif;
   text-decoration: none;
   justify-self: left;
+  width: 20vw;
   margin-left: 10px;
+  text-align: left;
 }
 
 a:active {
@@ -201,4 +203,14 @@ button:active {
     top: 90vh;
     transform: rotate(360deg);
   }
+}
+
+.error {
+  font-family: "SuperBubbly", sans-serif;
+  color: crimson;
+  text-shadow: none;
+  font-size: medium;
+  text-align: center;
+  width: 20vw;
+  margin-left: 10px;
 }
