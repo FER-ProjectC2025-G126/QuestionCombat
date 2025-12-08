@@ -115,6 +115,10 @@ a {
   margin-left: 10px;
 }
 
+a:active {
+  color: orange;
+}
+
 input {
   background-color: rgb(215, 205, 219);
   border: 0px solid black;

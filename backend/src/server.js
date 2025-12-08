@@ -2,8 +2,6 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import minimist from "minimist";
 import path from "path";
-import cors from "cors";
-import corsOptions from "./config/corsOptions.js";
 import { fileURLToPath } from "url";
 
 const argv = minimist(process.argv.slice(2));
@@ -17,7 +15,6 @@ import { router as loginRouter, sessionLength } from "./routes/auth.router.js";
 const app = express();
 
 // middleware
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
