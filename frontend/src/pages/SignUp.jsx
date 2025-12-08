@@ -4,25 +4,28 @@ import {Link, useNavigate} from 'react-router-dom';
 import api from '../app/api';
 import '../styles/Login.css'
 
-function LoginPage(){
+function SignUpPage() {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const onUsernameChanged = e => setUsername(e.target.value);
     const onPasswordChanged = e => setPassword(e.target.value);
+    const onEmailChanged = e => setEmail(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/auth/login', {
+            const response = await api.post('/auth/register', {
                 username,
-                password
+                password,
+                email
             });
-            console.log('Login successful:', response.data);
+            console.log('Signup successful:', response.data);
             //navigate('/dashboard');
         } catch (error) {
-            console.error('Login failed:', error.message);
+            console.error('Signup failed:', error);
         }
     }
 
@@ -38,7 +41,7 @@ function LoginPage(){
                     <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
                 </div>
                  <div className="LoginCard">
-                    <p>Please login</p>
+                    <p>Please signup</p>
                     <form onSubmit={handleSubmit} className="loginForm">
                         <input 
                             type="text"
@@ -48,6 +51,17 @@ function LoginPage(){
                             value={username}
                             required
                             onChange={onUsernameChanged}
+                            autoComplete='true'>
+                        </input>
+                        <br />
+                        <input 
+                            type="email"
+                            id="Email"
+                            name="Email"
+                            placeholder="Email"
+                            value={email}
+                            required
+                            onChange={onEmailChanged}
                             autoComplete='true'>
                         </input>
                         <br />
@@ -61,9 +75,9 @@ function LoginPage(){
                             onChange={onPasswordChanged}>
                         </input>
                         <br />
-                        <Link to="register">Don't have an account? Register here.</Link>
+                        <Link to="/">Have an account? Login here.</Link>
                         <br />
-                        <button type ="submit">LOGIN</button>
+                        <button type ="submit">SIGNUP</button>
                     </form>
                  </div>
             </div>
@@ -71,4 +85,4 @@ function LoginPage(){
     </div>;
 }
 
-export default LoginPage;
+export default SignUpPage;

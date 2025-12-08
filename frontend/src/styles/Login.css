@@ -107,6 +107,14 @@ p {
   text-shadow: 2px 2px 5px black;
 }
 
+a {
+  display: block;
+  font-family: "SuperBubbly", sans-serif;
+  text-decoration: none;
+  justify-self: left;
+  margin-left: 10px;
+}
+
 input {
   background-color: rgb(215, 205, 219);
   border: 0px solid black;
