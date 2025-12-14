@@ -4,6 +4,7 @@ import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
 import LoginPage from "./features/auth/Login";
 import SignUpPage from "./features/auth/SignUp";
+import CreateNewGame from "./pages/createNewGame";
 import { AuthProvider } from "./features/auth/AuthProvider";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
           <Route path="home" element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="createNewGame" element={<CreateNewGame />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

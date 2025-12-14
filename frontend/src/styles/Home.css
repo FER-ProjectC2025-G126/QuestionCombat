@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "SuperBubbly";
+  src: url("../fonts/Super\ Bubbly.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 236, 251);
+    height: 100vh;
+    width: 100%;
+    background: rgba(104, 107, 179, 0.829);
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(112, 29, 190);
+    height: 90vh;
+    width: 60vw;
+    gap: 30px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    animation: sizeUp 0.8s;
+}
+
+.gameName{
+  font-family: "SuperBubbly", sans-serif;
+  color: yellow;
+  text-align: center;
+  font-size: 4rem;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 115, 0);
+    height: 13vh;
+    width: 40vw;
+    font-size: 30px;
+    color: yellow;
+    text-shadow: 2px 2px 3px black;
+    border-radius: 10px;
+    border: 0px solid orangered;
+    font-family: "SuperBubbly", sans-serif;
+    box-shadow: 1px 2px 3px rgb(98, 3, 3);
+}
+
+.btn:hover{
+    background-color: orangered;
+    animation: bounce 0.6s;
+
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sizeUp {
+  0% {
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  } 
+}

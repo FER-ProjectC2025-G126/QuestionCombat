@@ -19,7 +19,7 @@
 }
 
 .LoginBlock {
-  background-color: blueviolet;
+  background-color: rgb(109, 29, 184);
   height: 90vh;
   width: 40vw;
   min-width: 400px;
@@ -98,7 +98,7 @@
   }
 }
 
-p {
+.text {
   font-family: "SuperBubbly", sans-serif;
   color: rgb(217, 184, 238);
   text-align: center;
@@ -135,7 +135,7 @@ input:focus {
   outline: none;
 }
 
-button {
+.submitBtn {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   border: 3px solid orange;
   border-radius: 15px;
@@ -148,14 +148,14 @@ button {
   font-size: 17px;
 }
 
-button:hover {
+.submitBtn:hover {
   transform: translateY(-5px) rotate(-2deg);
   box-shadow: 3px 3px 0 #4b4b4b;
   background-color: rgb(248, 248, 116);
   cursor: pointer;
 }
 
-button:active {
+.submitBtn:active {
   transform: translateY(2px) rotate(0deg);
   box-shadow: 3px 3px 0 #000;
   background-color: #ffcc00;

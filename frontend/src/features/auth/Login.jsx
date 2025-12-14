@@ -46,7 +46,7 @@ function LoginPage(){
                     <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
                 </div>
                  <div className="LoginCard">
-                    <p>Please login</p>
+                    <p className="text">Please login</p>
                     <form onSubmit={handleSubmit} className="loginForm">
                         <input 
                             type="text"
@@ -72,7 +72,7 @@ function LoginPage(){
                         <Link to="register">Don't have an account? Register here.</Link>
                         {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
-                        <button type ="submit">LOGIN</button>
+                        <button type ="submit" className='submitBtn'>LOGIN</button>
                     </form>
                  </div>
             </div>

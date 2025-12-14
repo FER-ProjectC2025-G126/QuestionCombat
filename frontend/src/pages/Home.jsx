@@ -1,7 +1,9 @@
 import React from "react";
-import Button1 from "../components/Button1";
+import "../styles/Home.css"
 import { useAuth } from "../features/auth/AuthProvider";
 import { useNavigate } from "react-router";
+import Button1 from "../components/Button1";
+
 
 function HomePage() {
     const {user} = useAuth();
@@ -11,9 +13,15 @@ function HomePage() {
     }
 
     return <div>
-        <h1>Welcome to the Home Page</h1>
-        <Button1 to="/about" text="Go to About Page" className="about-button" />
-    </div>;
+        <div className="container">
+            <div className="block">
+                <div className="gameName">QUESTION COMBAT</div>
+                <Button1 to="/createNewGame" text="Create a new game" className="btn"/>
+                <Button1 text="Join a game with a code" className="btn"/>
+                <Button1 text="List of courses" className="btn" />
+            </div>
+        </div>
+        </div>;
 }
 
 export default HomePage;
