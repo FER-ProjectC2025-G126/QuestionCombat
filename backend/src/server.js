@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { Database } from "./models/Database.js";
 const database = new Database();
 
-import { router as loginRouter, sessionLength } from "./routes/auth.router.js";
+import { router as authRouter, sessionLength } from "./routes/auth.router.js";
 
 const app = express();
 
@@ -48,7 +48,7 @@ app.use("/api", async function (req, res, next) {
 });
 
 // api routes
-app.use("/api/auth", loginRouter);
+app.use("/api/auth", authRouter);
 
 // api 404 handler
 app.use("/api", function (req, res) {

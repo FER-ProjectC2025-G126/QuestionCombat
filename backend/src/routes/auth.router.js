@@ -8,7 +8,7 @@ export const router = express.Router();
 export const sessionLength = 7; // days
 
 router.post("/login", async function (req, res) {
-  if (req.user) {
+  if (req.username) {
     return res.status(403).json({ error: "User already logged in!" });
   }
   if (!req.body) {
@@ -57,7 +57,7 @@ router.post("/logout", async function (req, res) {
 });
 
 router.post("/register", async function (req, res) {
-  if (req.user) {
+  if (req.username) {
     return res.status(403).json({ error: "User already logged in!" });
   }
 
