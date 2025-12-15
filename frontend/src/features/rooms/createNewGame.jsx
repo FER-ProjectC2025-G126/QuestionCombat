@@ -40,7 +40,7 @@ function CreateNewGame() {
                 <Button1 to="/home" text="BACK" className="backBtn"/>
                 <div className ="gameName">NEW GAME</div>
                 <div className ="block3">
-                    <div className="elementOfBlock2">
+                    <div className="elementOfBlock3">
                         <h2 className="elmHeader">CHOOSE NUMBER OF PLAYERS</h2>
                             <div className="Forms">
                                <label className="Labels">
@@ -59,10 +59,24 @@ function CreateNewGame() {
                                 </label>
                             </div>
                     </div>
-                    <div className="elementOfBlock2">
+                    <div className="elementOfBlock3">
                         <h2 className="elmHeader">CHOOSE UP TO 5 COURSES</h2>
+                        
+                        {/* This qSetList should be changed so that it reads info from the database and when clicked on it shoud indicate that it is chosen :) */ }
+                        <div className="qSetList">
+                                <div className="qsCard">QS #1</div>
+                                <div className="qsCard">QS #1</div>
+                                <div className="qsCard">QS #1</div>
+                                <div className="qsCard">QS #4</div>
+                                <div className="qsCard">QS #5</div>
+                                <div className="qsCard">QS #1</div>
+                                <div className="qsCard">QS #2</div>
+                                <div className="qsCard">QS #3</div>
+                                <div className="qsCard">QS #4</div>
+                                <div className="qsCard">QS #5</div>
+                            </div>
                     </div>
-                    <div className="elementOfBlock2">
+                    <div className="elementOfBlock3">
                         <h2 className="elmHeader">PRIVATE OR PUBLIC?</h2>
                         <div className="Forms">
                                <label className="Labels">
@@ -76,7 +90,7 @@ function CreateNewGame() {
                                 </label>
                         </div>
                     </div>
-                    <div className="elementOfBlock2">
+                    <div className="elementOfBlock3">
                         <h2 className="elmHeader">READY?</h2>
                         <button type="submit" className="startBtn">START!</button>
                         {error && (
