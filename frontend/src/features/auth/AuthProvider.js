@@ -16,6 +16,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const isAuthenticated = !!user;
 
   const fetchUser = useCallback(async () => {
     try {
@@ -32,9 +33,19 @@ export function AuthProvider({ children }) {
     fetchUser();
   }, [fetchUser]);
 
+  const login = async () => {
+    await fetchUser();
+  };
+
+  const logout = () => {
+    setUser(null);
+  };
+
   const value = {
     user,
-    refreshUser: fetchUser,
+    isAuthenticated,
+    login,
+    logout,
   };
 
   return (

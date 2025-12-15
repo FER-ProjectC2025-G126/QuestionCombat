@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import React from 'react';
-import {Link, useNavigate} from "react-router";
+import {Link} from "react-router";
 import api from '../../api/api';
 import "../../styles/Login.css";
 import { useAuth } from './AuthProvider';
 
+
 function LoginPage(){
-    const navigate = useNavigate();
-    const {user, login, refreshUser} = useAuth();
-    if (user) {
-        navigate('/home');
-    }
+    const { login } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -24,9 +21,9 @@ function LoginPage(){
             username,
             password
         })
-        .then((response) => {
-            console.log(response.data);
-            navigate('/home');
+        .then(() => {
+            console.log("Login successful");
+            return login();
         })
         .catch((error) => {
             console.error(error.response.data.error);

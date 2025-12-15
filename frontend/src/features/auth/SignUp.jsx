@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import React from 'react';
-import {Link, useNavigate} from 'react-router';
+import {Link} from 'react-router';
 import api from '../../api/api';
 import "../../styles/Login.css";
 
 function SignUpPage() {
-    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [success, setSuccess] = useState(false); 
 
     const onUsernameChanged = e => setUsername(e.target.value);
     const onPasswordChanged = e => setPassword(e.target.value);
@@ -31,8 +31,7 @@ function SignUpPage() {
             })
             .then((response) => {
                 console.log(response.data);
-                setErrorMessage('');
-                navigate('/home');
+                setSuccess(true);
             })
             .catch((error) => {
                 console.error(error.response.data.error);
@@ -48,11 +47,15 @@ function SignUpPage() {
             <div id ="q4"className="falling-question" style={{ left: '90vw' }}>?</div>
 
             <div className="LoginBlock">
+                {success && <div className="popup">
+                    <p className='popupTitle'>Registration Successful!</p>
+                    <Link to="/">Login here!</Link>
+                    </div>}
                 <div className="gameName">
                     <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
                 </div>
                  <div className="LoginCard">
-                    <p>Please signup</p>
+                    <p className='text'>Please signup</p>
                     <form onSubmit={handleSubmit} className="loginForm">
                         <input 
                             type="text"
@@ -99,7 +102,7 @@ function SignUpPage() {
                         <Link to="/">Have an account? Login here.</Link>
                         {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
-                        <button type ="submit">SIGNUP</button>
+                        <button type ="submit" className='submitBtn'>SIGNUP</button>
                     </form>
                  </div>
             </div>
