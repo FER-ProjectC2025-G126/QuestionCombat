@@ -1,0 +1,106 @@
+.block2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(112, 29, 190);
+    height: 90vh;
+    width: 60vw;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    animation: sizeUp 0.8s;
+}
+
+.block3{
+    background-color: white;
+    gap: 10px;
+    height: 70%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.elementOfBlock2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.elmHeader{
+    text-align: center;
+    font-family: "SuperBubbly", sans-serif;
+    color: rgb(217, 184, 238);
+    -webkit-text-stroke: 2px rgba(83, 14, 118, 0.889);
+    text-shadow: 2px 2px 5px black;
+    font-size: 1.8rem;
+}
+
+.Forms{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 10px;
+}
+
+.Labels {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%;
+  cursor: pointer;
+  background-color: rgb(255, 115, 0);
+  border-radius: 10px;
+  width: 10vw;
+  height: 6vh;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  font-family: "SuperBubbly", sans-serif;
+  text-shadow: 2px 2px 3px black;
+  color: yellow;
+  font-size: 20px;
+}
+
+.Labels input {
+    width: 10px; 
+    accent-color: rgb(255, 68, 0);
+}
+
+.startBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 115, 0);
+    height: 7vh;
+    width: 10vw;
+    font-size: 30px;
+    color: yellow;
+    text-shadow: 2px 2px 3px black;
+    border-radius: 10px;
+    border: 0px solid orangered;
+    font-family: "SuperBubbly", sans-serif;
+    box-shadow: 1px 2px 3px rgb(98, 3, 3);
+    margin-top: 30px;
+}
+
+.startBtn:hover{
+    background-color: orangered;
+    animation: bounce 0.6s;
+
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
