@@ -24,10 +24,10 @@
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 
-.elementOfBlock3{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.elementOfBlock3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .elmHeader {
@@ -126,36 +126,18 @@
   }
 }
 
-.newHeader{
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 2fr 1fr;
-}
-
-.Arrow{
-  font-size: 7rem;
-  justify-self: start;
-  color: orange;
-  cursor: pointer;
-}
-
-.Arrow:hover{
-  animation: bounce 0.6s linear infinite;
-
-}
-
-.gameName{
+.gameName {
   justify-self: center;
 }
 
 .qSetList {
-    margin-top: 20px;
-    max-height: 200px;      
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 6px;     
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
 }
 
 .qsCard {
@@ -169,7 +151,6 @@
 .qsCard:hover {
   background: rgb(255, 115, 0);
 }
-
 
 .error {
   font-family: "SuperBubbly", sans-serif;

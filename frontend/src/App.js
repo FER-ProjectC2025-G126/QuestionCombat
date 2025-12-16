@@ -5,9 +5,11 @@ import NotFoundPage from "./pages/NotFound";
 import LoginPage from "./features/auth/Login";
 import SignUpPage from "./features/auth/SignUp";
 import CreateNewGame from "./features/rooms/createNewGame";
+import JoinGame from "./features/rooms/joinGame";
 import { AuthProvider } from "./features/auth/AuthProvider";
 import RequireAuth from "./features/auth/RequireAuth";
 import PublicOnly from "./features/auth/PublicOnly";
+import SocketProvider from "./features/socket/SocketProvider";
 
 function App() {
   return (
@@ -22,8 +24,11 @@ function App() {
           {/* Public routes end */}
           {/* Protected routes start */}
           <Route element={<RequireAuth />}>
-            <Route path="home" element={<HomePage />} />
-            <Route path="createNewGame" element={<CreateNewGame />} />
+            <Route element={<SocketProvider />}>
+              <Route path="home" element={<HomePage />} />
+              <Route path="createNewGame" element={<CreateNewGame />} />
+              <Route path="joinGame" element={<JoinGame />} />
+            </Route>
           </Route>
           {/* Protected routes end */}
           <Route path="*" element={<NotFoundPage />} />
