@@ -31,6 +31,10 @@ function SignUpPage() {
             })
             .then((response) => {
                 console.log(response.data);
+                setUsername(""),
+                setEmail(""),
+                setPassword(""),
+                setConfirmPassword(""),
                 setSuccess(true);
             })
             .catch((error) => {
