@@ -4,10 +4,8 @@ import { io } from "socket.io-client";
 import { Outlet } from "react-router";
 import React from "react";
 
-const ioServerUrl = "http://localhost:3000/";
-
 function createSocketConnection() {
-  return io(ioServerUrl, {
+  return io({
     autoConnect: false,
   });
 }
@@ -49,7 +47,7 @@ const SocketProvider = () => {
     newSocket.on("connect_error", handleConnectError);
 
     // Connects to the server
-    //newSocket.connect(); this will work once the backend is finished
+    newSocket.connect();
 
     // Cleans up the event listeners and disconnects from the server
     return () => {
