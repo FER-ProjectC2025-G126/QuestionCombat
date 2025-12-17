@@ -1,20 +1,35 @@
+// library imports
 import cookieParser from "cookie-parser";
 import express from "express";
+import http from "http";
 import minimist from "minimist";
 import path from "path";
+import { Server } from "socket.io";
 import { fileURLToPath } from "url";
 
+// cli arguments
 const argv = minimist(process.argv.slice(2));
+
+// __dirname replacement for ES modules
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// database
 import { Database } from "./models/Database.js";
 const database = new Database();
 
+// route imports
 import { router as authRouter, sessionLength } from "./routes/auth.router.js";
 
+// server setup
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
-// middleware
+
+
+// EXPRESS
+
+// express middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -38,7 +53,7 @@ app.use("/api", async function (req, res, next) {
         secure: process.env.NODE_ENV === "production", // HTTPS only in prod (so we can test locally over HTTP)
         sameSite: "strict",
         maxAge: sessionLengthMs,
-        path: "/api",
+        path: "/",
       });
       req.username = session.username;
       req.session_id = session_id;
@@ -65,8 +80,47 @@ if (argv.mode === "prod") {
   });
 }
 
-// start server
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}!`);
+
+
+// SOCKET.IO
+
+// middleware to parse cookies and authenticate
+io.engine.use(cookieParser());
+io.engine.use(async (req, res, next) => {
+  req.username = null;
+  // only run for handshake requests without sid (new connections)
+  if (req._query.sid === undefined) {
+    const session_id = req.cookies["session_id"];
+    if (session_id) {
+      let session = await database.sessions.getSession(session_id);
+      if (session && session.expiresAt > new Date().toISOString()) {
+        req.username = session.username;
+      }
+    }
+  }
+  next();
+})
+
+// Socket.io connection handler
+io.on('connection', (socket) => {
+  if (!socket.request.username) {
+    console.log('Unauthenticated user attempted to connect via Socket.io');
+    return socket.disconnect(true);
+  }
+
+  console.log(`User connected: ${socket.id}`);
+
+  // Handle disconnections
+  socket.on('disconnect', () => {
+    console.log(`User disconnected: ${socket.id}`);
+    // Clean up: Remove from rooms if needed
+  });
+});
+
+
+
+// START SERVER
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}!`);
 });

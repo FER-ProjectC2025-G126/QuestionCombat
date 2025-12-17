@@ -40,7 +40,7 @@ router.post("/login", async function (req, res) {
       secure: process.env.NODE_ENV === "production", // HTTPS only in prod (so we can test locally over HTTP)
       sameSite: "strict",
       maxAge: sessionLengthMs,
-      path: "/api",
+      path: "/",
     });
     return res.sendStatus(200);
   } else {
@@ -51,7 +51,7 @@ router.post("/login", async function (req, res) {
 router.post("/logout", async function (req, res) {
   if (req.session_id) {
     await database.sessions.removeSession(req.session_id);
-    res.clearCookie("session_id", { path: "/api" });
+    res.clearCookie("session_id", { path: "/" });
   }
   return res.sendStatus(200);
 });
