@@ -35,6 +35,7 @@ function SignUpPage() {
                 setEmail(""),
                 setPassword(""),
                 setConfirmPassword(""),
+                setErrorMessage(""),
                 setSuccess(true);
             })
             .catch((error) => {

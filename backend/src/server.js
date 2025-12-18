@@ -14,8 +14,11 @@ const argv = minimist(process.argv.slice(2));
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // database
-import { Database } from "./models/Database.js";
+import Database from "./models/db/Database.js";
 const database = new Database();
+
+// socketio connection manager
+import UserManager from "./sockets/UserManager.js";
 
 // route imports
 import { router as authRouter, sessionLength } from "./routes/auth.router.js";
@@ -84,6 +87,9 @@ if (argv.mode === "prod") {
 
 // SOCKET.IO
 
+// initialize user manager (handles users connected via socket.io)
+const userManager = new UserManager(io);
+
 // middleware to parse cookies and authenticate
 io.engine.use(cookieParser());
 io.engine.use(async (req, res, next) => {
@@ -107,14 +113,7 @@ io.on('connection', (socket) => {
     console.log('Unauthenticated user attempted to connect via Socket.io');
     return socket.disconnect(true);
   }
-
-  console.log(`User connected: ${socket.id}`);
-
-  // Handle disconnections
-  socket.on('disconnect', () => {
-    console.log(`User disconnected: ${socket.id}`);
-    // Clean up: Remove from rooms if needed
-  });
+  userManager.connectUser(socket.request.username, socket);
 });
 
 

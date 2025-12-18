@@ -1,5 +1,5 @@
 import argon2 from "argon2";
-import { Database } from "../models/Database.js";
+import Database from "../models/db/Database.js";
 const database = new Database();
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
