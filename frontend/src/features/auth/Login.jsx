@@ -2,8 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import {Link} from "react-router";
 import api from '../../api/api';
-import "../../styles/Login.css";
 import { useAuth } from './AuthProvider';
+import Button1 from '../../components/Button1';
 
 
 function LoginPage(){
@@ -43,6 +43,7 @@ function LoginPage(){
                     <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
                 </div>
                  <div className="LoginCard">
+                    <Button1 to="/home" text="HOME" className="backBtn"/>
                     <p className="text">Please login</p>
                     <form onSubmit={handleSubmit} className="loginForm">
                         <input 
@@ -66,7 +67,7 @@ function LoginPage(){
                             onChange={onPasswordChanged}>
                         </input>
                         <br />
-                        <Link to="register">Don't have an account? Register here.</Link>
+                        <Link to="/register">Don't have an account? Register here.</Link>
                         {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
                         <button type ="submit" className='submitBtn'>LOGIN</button>

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "SuperBubbly";
+  src: url("../fonts/Super\ Bubbly.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.publicBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(112, 29, 190);
+  height: 90vh;
+  width: 60vw;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  animation: sizeUp 0.8s;
+}
+
+.publicTitle {
+  font-family: "SuperBubbly", sans-serif;
+  color: yellow;
+  text-align: center;
+  font-size: 3.5rem;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+}
+
+.coursesTitle {
+  font-family: "SuperBubbly", sans-serif;
+  color: yellow;
+  text-align: center;
+  font-size: 2rem;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+}
+
+.coursesBlock {
+  background-color: white;
+  height: 60%;
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  overflow: visible;
+}
+
+@keyframes sizeUp {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

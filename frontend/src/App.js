@@ -10,6 +10,7 @@ import { AuthProvider } from "./features/auth/AuthProvider";
 import RequireAuth from "./features/auth/RequireAuth";
 import PublicOnly from "./features/auth/PublicOnly";
 import SocketProvider from "./features/socket/SocketProvider";
+import Public from "./pages/Public";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Routes>
           {/* Public routes start */}
           <Route element={<PublicOnly />}>
-            <Route index element={<LoginPage />} />
+            <Route index element={<Public />} />
+            <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<SignUpPage />} />
           </Route>
           {/* Public routes end */}

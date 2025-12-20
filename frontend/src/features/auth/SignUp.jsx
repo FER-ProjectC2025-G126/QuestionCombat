@@ -2,7 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import {Link} from 'react-router';
 import api from '../../api/api';
-import "../../styles/Login.css";
+import Button1 from '../../components/Button1';
+
 
 function SignUpPage() {
     const [username, setUsername] = useState('');
@@ -54,12 +55,13 @@ function SignUpPage() {
             <div className="LoginBlock">
                 {success && <div className="popup">
                     <p className='popupTitle'>Registration Successful!</p>
-                    <Link to="/">Login here!</Link>
+                    <Link to="/login">Login here!</Link>
                     </div>}
                 <div className="gameName">
                     <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
                 </div>
                  <div className="LoginCard">
+                    <Button1 to="/home" text="HOME" className="backBtn"/>
                     <p className='text'>Please signup</p>
                     <form onSubmit={handleSubmit} className="loginForm">
                         <input 
@@ -104,7 +106,7 @@ function SignUpPage() {
                             onChange={onConfirmPasswordChanged}>
                         </input>
                         <br />
-                        <Link to="/">Have an account? Login here.</Link>
+                        <Link to="/login">Have an account? Login here.</Link>
                         {errorMessage && <div className="error">{errorMessage}</div>}
                         <br />
                         <button type ="submit" className='submitBtn'>SIGNUP</button>

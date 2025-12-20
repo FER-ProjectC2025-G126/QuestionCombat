@@ -4,3 +4,40 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
+
+@font-face {
+  font-family: "SuperBubbly";
+  src: url("../fonts/Super\ Bubbly.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(245, 236, 251);
+  background: rgba(104, 107, 179, 0.829);
+}
+
+.notFoundContainer {
+  font-family: "SuperBubbly", sans-serif;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vw;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: rgb(112, 29, 190);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  color: yellow;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+  font-size: 2rem;
+}

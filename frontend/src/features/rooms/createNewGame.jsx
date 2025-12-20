@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/createNewGame.css";
 import Button1 from "../../components/Button1";
 import { useState } from "react";
 import api from "../../api/api";
