@@ -51,4 +51,22 @@ export default class QuestionSets {
             });
         });
     }
+
+    listQuestionSets() {
+        return new Promise((resolve, reject) => {
+            this.db.all("SELECT question_sets.set_id, question_sets.title, question_sets.description, COUNT(*) as questionCount FROM question_sets, questions WHERE question_sets.set_id = questions.set_id GROUP BY question_sets.set_id, question_sets.title, question_sets.description", [], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    const questionSets = rows.map(row => ({
+                        id: row["set_id"],
+                        title: row["title"],
+                        description: row["description"],
+                        questionCount: row["questionCount"]
+                    }));
+                    resolve(questionSets);
+                }
+            });
+        });
+    }
 }

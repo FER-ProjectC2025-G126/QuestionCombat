@@ -15,6 +15,7 @@
     "minimist": "^1.2.8",
     "socket.io": "^4.8.1",
     "sqlite3": "^5.1.7",
+    "unique-names-generator": "^4.7.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

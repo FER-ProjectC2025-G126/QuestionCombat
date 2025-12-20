@@ -22,6 +22,7 @@ import UserManager from "./sockets/UserManager.js";
 
 // route imports
 import { router as authRouter, sessionLength } from "./routes/auth.router.js";
+import { router as publicRouter } from "./routes/public.router.js";
 
 // server setup
 const app = express();
@@ -67,6 +68,7 @@ app.use("/api", async function (req, res, next) {
 
 // api routes
 app.use("/api/auth", authRouter);
+app.use("/api/public", publicRouter);
 
 // api 404 handler
 app.use("/api", function (req, res) {
