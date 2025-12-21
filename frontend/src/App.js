@@ -11,6 +11,7 @@ import RequireAuth from "./features/auth/RequireAuth";
 import PublicOnly from "./features/auth/PublicOnly";
 import SocketProvider from "./features/socket/SocketProvider";
 import Public from "./pages/Public";
+import Lobby from "./features/rooms/Lobby";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="home" element={<HomePage />} />
               <Route path="createNewGame" element={<CreateNewGame />} />
               <Route path="joinGame" element={<JoinGame />} />
+              <Route path="lobby" element={<Lobby />} />
             </Route>
           </Route>
           {/* Protected routes end */}

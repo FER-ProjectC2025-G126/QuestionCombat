@@ -14,12 +14,12 @@ const SocketProvider = () => {
   const socketRef = useRef();
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [appState, setAppState] = useState(null);
 
   useEffect(() => {
     const newSocket = createSocketConnection();
     socketRef.current = newSocket;
 
-    // Handles the socket connection event
     const handleConnect = () => {
       console.log("Socket connected", newSocket.id);
 
@@ -27,7 +27,6 @@ const SocketProvider = () => {
       setIsLoading(false);
     };
 
-    // Handles the socket disconnection event, i.e. if the connection is lost
     const handleDisconnect = () => {
       console.log("Socket disconnected");
 
@@ -35,30 +34,53 @@ const SocketProvider = () => {
       setIsLoading(false);
     };
 
-    // Handles the socket connection error event, e.g. the server is down
     const handleConnectError = (error) => {
       console.error("Socket connection error", error);
 
       setIsLoading(false);
     };
 
+    const handleStateUpdate = (state) => {
+      setAppState(state);
+    };
+
     newSocket.on("connect", handleConnect);
     newSocket.on("disconnect", handleDisconnect);
     newSocket.on("connect_error", handleConnectError);
+    newSocket.on("stateUpdate", handleStateUpdate);
 
-    // Connects to the server
     newSocket.connect();
 
-    // Cleans up the event listeners and disconnects from the server
     return () => {
-      newSocket.off("connect", handleConnect);
-      newSocket.off("disconnect", handleDisconnect);
-      newSocket.off("connect_error", handleConnectError);
+      newSocket.off("stateUpdate", handleStateUpdate);
       newSocket.disconnect();
     };
   }, []);
 
-  const value = { socket: socketRef.current, isConnected, isLoading };
+  const joinRoom = (roomName) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("joinRoom", roomName);
+  };
+
+  const createRoom = (roomName) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("createRoom", roomName);
+  };
+
+  const leaveRoom = () => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("leaveRoom");
+  };
+
+  const value = {
+    socket: socketRef.current,
+    isConnected,
+    isLoading,
+    appState,
+    joinRoom,
+    createRoom,
+    leaveRoom,
+  };
 
   return (
     <SocketContext.Provider value={value}>
