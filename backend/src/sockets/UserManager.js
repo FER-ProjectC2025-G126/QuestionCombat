@@ -32,27 +32,28 @@ export default class UserManager {
             separator: "-",
             length: 2,
         });
-        this.usedRoomNames = new Set();
 
-        this.lobbyRoomId = 1;     // ID of the lobby room
-        this.lastGameRoomId = 1;  // last assigned game room ID (1 is reserved for lobby)
+        this.lobbyRoomId = 1;              // ID of the lobby room
+        this.lastGameRoomId = 1;           // last assigned game room ID (1 is reserved for lobby)
 
-        this.userToSocketIDs = new Map();  // Map of username to socket IDs
-        this.userToRoomID = new Map();     // Map of username to room ID
-        this.roomIdToRoom = new Map();     // Map of room ID to Room instance
+        this.userToSocketIDs = new Map();  // map of username to socket IDs
+        this.userToRoomID = new Map();     // map of username to room ID
+        this.roomIDToRoom = new Map();     // map of room ID to Room instance
+        this.roomNameToRoomID = new Map(); // map of room name to room ID
 
+        // start lobby update loop
         this.lobbyUpdateInterval = setInterval(() => this.sendLobbyUpdate(), 1000 / TICK_RATE);
     }
 
     sendLobbyUpdate() {
         let availableRooms = [];
-        for (const room of this.roomIdToRoom.values()) {
+        for (const room of this.roomIDToRoom.values()) {
             if (room.isPrivate === false && room.playerCount < room.capacity) {
                 availableRooms.push({
                     name: room.name,
-                    id: room.id,
                     playerCount: room.playerCount,
-                    capacity: room.capacity
+                    capacity: room.capacity,
+                    questionSets: room.questionSets
                 });
             }
         }
@@ -62,9 +63,8 @@ export default class UserManager {
         });
     }
 
+    // connect a user's socket
     connectUser(username, socket) {
-        console.log(`User ${username} connected with socket ID ${socket.id}`);
-
         // Add socket ID to the user's set of socket IDs
         const userSockets = this.userToSocketIDs.get(username) || new Set();
         userSockets.add(socket.id);
@@ -78,20 +78,24 @@ export default class UserManager {
             socket.join(this.lobbyRoomId);
         }
 
+        // register socket event handlers
+
+        // disconnect event
         socket.on('disconnect', () => this.disconnectUser(username, socket.id));
 
-        socket.on("createRoom", () => this.createRoom(username, socket));
-        socket.on("joinRoom", (roomId) => this.joinRoom(username, roomId));
-        socket.on("leaveRoom", () => this.leaveRoom(username, socket));
+        // room management events
+        socket.on("joinRoom", (roomName) => this.joinRoom(username, roomName));
+        socket.on("createRoom", (roomCapacity, roomIsPrivate, roomQuestionSetsIDs) => this.createRoom(username, roomCapacity, roomIsPrivate, roomQuestionSetsIDs));
+        socket.on("leaveRoom", () => this.leaveRoom(username));
 
-        socket.on("submitAnswer", (answerIndex) => {});
-        socket.on("chooseQuestion", (questionIndex) => {});
+        // game action events
+        socket.on("submitAnswer", (answerIndex) => this.submitAnswer(username, answerIndex));
+        socket.on("chooseQuestion", (questionIndex) => this.chooseQuestion(username, questionIndex));
+        socket.on("startGame", () => this.startGame(username));
     }
 
-    // Disconnect a user's socket
+    // disconnect a user's socket
     disconnectUser(username, socketId) {
-        console.log(`UserManager: User ${username} disconnected from socket ID ${socketId}`);
-
         const userSockets = this.userToSocketIDs.get(username);
         if (userSockets) {
             userSockets.delete(socketId);
@@ -101,21 +105,83 @@ export default class UserManager {
         }
     }
 
-    createRoom() {
+    // create a new room and join the user to it
+    createRoom(username, roomCapacity, roomIsPrivate, roomQuestionSetsIDs) {
+        if (this.userToRoomID.has(username)) {
+            return;
+        }
 
+        const roomId = ++this.lastGameRoomId;
+        let roomName = this.roomNameGen();
+        while (this.roomNameToRoomID.has(roomName)) {
+            roomName = this.roomNameGen();
+        }
+        this.roomNameToRoomID.set(roomName, roomId);
+        const room = new Room(this.io, roomId, roomName, roomCapacity, roomIsPrivate, roomQuestionSetsIDs);
+        this.roomIDToRoom.set(roomId, room);
+
+        this.joinRoom(username, roomName);
     }
 
-    joinRoom(username, roomId) {
-        this.userToRoomID.set(username, roomId);
-        for (const socketId of this.userToSocketIDs.get(username) || []) {
-            const socket = this.io.sockets.sockets.get(socketId);
-            if (socket) {
-                socket.join(roomId);
+    // join the user to an existing room
+    joinRoom(username, roomName) {
+        const roomId = this.roomNameToRoomID.get(roomName);
+        if (!roomId) { return; }
+        const room = this.roomIDToRoom.get(roomId);
+        if (!this.userToRoomID.get(username) && room.addPlayer(username)) {
+            this.userToRoomID.set(username, roomId);
+            for (const socketId of this.userToSocketIDs.get(username) || []) {
+                const socket = this.io.sockets.sockets.get(socketId);
+                if (socket) {
+                    socket.join(roomId);
+                }
             }
         }
     }
 
-    leaveRoom() {
+    // remove the user from their current room
+    leaveRoom(username) {
+        const roomId = this.userToRoomID.get(username);
+        if (roomId && roomId !== this.lobbyRoomId) {
+            const room = this.roomIDToRoom.get(roomId);
+            room.removePlayer(username);
+            this.userToRoomID.delete(username);
+            for (const socketId of this.userToSocketIDs.get(username) || []) {
+                const socket = this.io.sockets.sockets.get(socketId);
+                if (socket) {
+                    socket.leave(roomId);
+                    socket.join(this.lobbyRoomId);
+                }
+            }
+            // delete empty rooms
+            if (room.playerCount === 0) {
+                this.roomIDToRoom.delete(roomId);
+                this.roomNameToRoomID.delete(room.name);
+            }
+        }
+    }
 
+    // handle game action - answer submission
+    submitAnswer(username, answerIndex) {
+        const roomId = this.userToRoomID.get(username);
+        if (!roomId) { return; }
+        const room = this.roomIDToRoom.get(roomId);
+        room.submitAnswer(username, answerIndex);
+    }
+
+    // handle game action - choose question
+    chooseQuestion(username, questionIndex) {
+        const roomId = this.userToRoomID.get(username);
+        if (!roomId) { return; }
+        const room = this.userToRoomID.get(roomId);
+        room.chooseQuestion(username, questionIndex);
+    }
+
+    // handle game action - start game
+    startGame(username) {
+        const roomId = this.userToRoomID.get(username);
+        if (!roomId) { return; }
+        const room = this.userToRoomID.get(roomId);
+        room.startGame();
     }
 }
