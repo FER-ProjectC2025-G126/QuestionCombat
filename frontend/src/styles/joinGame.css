@@ -1,29 +1,28 @@
-.gameJoin{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.gameJoin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.block4{
-    background-color: white;
-    gap: 10px;
-    height: 70%;
-    width: 80%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px;
-    border-radius: 20px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-
+.block4 {
+  background-color: white;
+  gap: 10px;
+  height: 70%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .gamesList {
-    margin-top: 20px;
-    max-height: 370px;      
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 6px;     
+  margin-top: 20px;
+  max-height: 370px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
 }
 
 .gameCard {
@@ -38,16 +37,16 @@
   background: orangered;
 }
 
-.elmCode{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
+.elmCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
 }
 
-.joinPrivateForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.joinPrivateForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
