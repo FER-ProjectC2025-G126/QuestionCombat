@@ -68,29 +68,216 @@ export class Room {
         // game started flag (waiting for players to join or playing)
         this._started = false;
 
+        // statistics of the last finished game (players and their scores), for displaying end of game stats
+        this._lastGameStats = null;
+
+        // whose turn it is (username)
+        this._turn = null;
+
+        // timer variable (used for time-limited actions)
+        this._timer = { endTime: 0, originalDuration: 0, active: false };
+
+        // current game state ("choice" - waiting for question choice, "answer" - waiting for answer, "review" - reviewing the answer)
+        this._state = null;
+
         // start room update loop
         this.roomUpdateInterval = setInterval(() => this.update(), 1000 / TICK_RATE);
     }
 
     update() {
         const updateJSON = {
-            type: "room",
-            loading: this._loading,
-            started: this._started,
-            questionSets: this._questionSets,
+            type: "room",                         // user is in a game room
+            name: this._name,                     // name of the game room
+            capacity: this._capacity,             // size of the game room (how many players must join to start)
+            isPrivate: this._isPrivate,           // whether the room is private (not shown in public room list)
+            loading: this._loading,               // whether the game room is still loading (show loading screen)
+            started: this._started,               // whether the game has started in the room
+            questionSets: this._questionSets,     // metadata of question sets used in this room
+            lastGameStats: this._lastGameStats,   // stats for the last finished game in this room (array of { username, score, correctAns, incorrectAns, isWinner } objects where correctAns is the number of correct answers, and incorrectAns the number of incorrect answers, and isWinner is a boolean indicating whether the user was the last one alive), if no games finished yet, null
+            players: [],                          // array of players in this room with their stats (objects described below)
+            turn: this._turn,                     // whose turn it is (username)
+            timer: { active: this._timer.active, percentage: 0 },
+            state: this._state,
         };
 
-        if (!this._loading) {
-            if (this._started) {
-                // include game state
+        // populate players array
+        for (const [player, playerData] of this._players) {
+            updateJSON.players.push({
+                username: player,                           // player's username
+                present: playerData.present,                // whether the player is still present in the game (players who left during the game are marked as not present)
+                correctAns: playerData.correctAns,          // number of correct answers given by the player
+                incorrectAns: playerData.incorrectAns,      // number of incorrect answers given by the player
+                hp: playerData.hp,                          // player's health points (for multiplayer mode)
+                score: playerData.score,                    // player's score
+                viewingStats: playerData.viewingStats,      // whether the player is viewing end of game stats
+            });
+        }
+
+        // update timer percentage
+        let timerPercentage = (this._timer.endTime - Date.now()) / this._timer.originalDuration;
+        if (timerPercentage < 0) {
+            timerPercentage = 0;
+        } else if (timerPercentage > 1) {
+            timerPercentage = 1;
+        }
+        updateJSON.timer.percentage = timerPercentage;
+
+        // game logic updates
+        if (!this._loading && this._started) {
+            if (this._capacity === 1) {
+                // singleplayer mode updates
+                if (this._state === "answer") {
+                    if (this._timer.endTime < Date.now()) {
+                        // time's up, question unanswered (count as incorrect)
+                        const player = this._players.values().next().value;
+                        player.incorrectAns += 1;
+
+                        // proceed to review state
+                        this._state = "review";
+                        this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
+                        this._timer.originalDuration = Q_REVIEW_TIME * 1000;
+                        this._timer.active = true;
+
+                        // retrigger update
+                        this.update();
+                        return;
+                    }
+                    updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
+                    updateJSON.question.correctOption = null; // hide correct answer during answering phase
+                } else if (this._state === "review") {
+                    if (this._timer.endTime < Date.now()) {
+                        // review time over, proceed to next question
+                        this._currentQuestionIndex += 1;
+                        if (this._currentQuestionIndex >= this._questionOrder.length) {
+                            // game over
+                            this._started = false;
+
+                            // prepare end of game stats
+                            const player = this._players.values().next().value;
+                            player.viewingStats = true;
+                            this._lastGameStats = [{
+                                username: this._players.keys().next().value,
+                                score: player.score,
+                                correctAns: player.correctAns,
+                                incorrectAns: player.incorrectAns,
+                                isWinner: true
+                            }];
+                        } else {
+                            // next question
+                            this._state = "answer";
+                            this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
+                            this._timer.originalDuration = Q_ANSWER_TIME * 1000;
+                            this._timer.active = true;
+                        }
+                        this.update();
+                        return;
+                    }
+                    updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
+                    updateJSON.chosenAnswer = this._chosenAnswer;
+                } else {
+                    throw new Error(`Invalid game state: ${this._state}`);
+                }
             } else {
-                // include lobby state
-                // updateJSON.players = this._players.map(player => ({
-                //     username: player.username
-                // }));
+                // multiplayer mode updates
+
+                if (this._state === "answer") {
+                    if (this._timer.endTime < Date.now()) {
+                        // time's up, question unanswered (count as incorrect)
+                        const player = this._players.get(this._turn);
+                        player.incorrectAns += 1;
+                        player.hp -= PLAYER_HP_DECREASE;
+                        if (player.hp < 0) {
+                            player.hp = 0;
+                        }
+
+                        // proceed to review state
+                        this._state = "review";
+                        this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
+                        this._timer.originalDuration = Q_REVIEW_TIME * 1000;
+                        this._timer.active = true;
+
+                        // retrigger update
+                        this.update();
+                        return;
+                    }
+                    updateJSON.question = this._questions[this._currentQuestionIndex];
+                    updateJSON.question.correctOption = null; // hide correct answer during answering phase
+                } else if (this._state === "review") {
+                    if (this._timer.endTime < Date.now()) {
+                        // review time over, proceed to next turn
+                        // check for game over condition (only one player with hp > 0)
+                        let playersAlive = 0;
+                        for (const [_, player] of this._players) {
+                            if (player.hp > 0 && player.present) {
+                                playersAlive += 1;
+                            }
+                        }
+                        if (playersAlive <= 1) {
+                            // game over
+                            this._started = false;
+
+                            // prepare end of game stats
+                            this._lastGameStats = [];
+                            for (const [username, player] of this._players) {
+                                player.viewingStats = true;
+                                this._lastGameStats.push({
+                                    username: username,
+                                    score: player.score,
+                                    correctAns: player.correctAns,
+                                    incorrectAns: player.incorrectAns,
+                                    isWinner: player.hp > 0 && player.present
+                                });
+                            }
+                        } else {
+                            // this._turn unchanged (the player who answered will choose the next question and player who answers next)
+
+                            // go to choice state
+                            this._state = "choice";
+                            this._timer.endTime = Date.now() + Q_CHOOSE_TIME * 1000;
+                            this._timer.originalDuration = Q_CHOOSE_TIME * 1000;
+                            this._timer.active = true;
+                        }
+                        this.update();
+                        return;
+                    }
+                    updateJSON.question = this._questions[this._currentQuestionIndex];
+                    updateJSON.chosenAnswer = this._chosenAnswer;
+                } else if (this._state === "choice") {
+                    if (this._timer.endTime < Date.now()) {
+                        // time's up, choose random question and random player to answer
+                        const randQuestionIndex = Math.floor(Math.random() * this._questionChoices.length);
+                        this._currentQuestionIndex = this._questionChoices[randQuestionIndex];
+
+                        const playersArray = Array.from(this._players.keys()).filter(username => this._players.get(username).hp > 0 && username !== this._turn);
+                        const randPlayerIndex = Math.floor(Math.random() * playersArray.length);
+                        this._turn = playersArray[randPlayerIndex];
+
+                        // go to answer state
+                        this._state = "answer";
+                        this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
+                        this._timer.originalDuration = Q_ANSWER_TIME * 1000;
+                        this._timer.active = true;
+
+                        // update question selector
+                        this._questionSelector.markQuestionChosen(this._currentQuestionIndex);
+                        // get next question choices
+                        this._questionChoices = this._questionSelector.getNext3();
+
+                        // retrigger update
+                        this.update();
+                        return;
+                    }
+                    updateJSON.questionChoices = this._questionChoices.map(index => { return { index: index, ...this._questions[index] }; });
+                    for (const question of this._players.values()) {
+                        question.correctOption = null; // hide correct answers during question choosing phase
+                    }
+                } else {
+                    throw new Error(`Invalid game state: ${this._state}`);
+                }
             }
         }
 
+        // send state update to all players in the room
         this.io.to(this.id).emit("stateUpdate", updateJSON);
     }
 
@@ -99,7 +286,14 @@ export class Room {
             return false;
         }
 
-        this._players.set(username, {});
+        this._players.set(username, {
+            present: true,
+            correctAns: 0,
+            incorrectAns: 0,
+            hp: 100,
+            score: 0,
+            viewingStats: false
+        });
 
         return true;
     }
@@ -121,8 +315,16 @@ export class Room {
     }
 
     startGame() {
-        // if game is already started, or room is still loading, or room is not full, cannot start
-        if (this._started || this._loading || this._players.size < this._capacity) {
+        // if game is already started, or room is still loading, or room is not full,
+        // or someone is viewing end of game stats, cannot start
+        let someoneLooksAtEndStats = false;
+        for (const [_, player] of this._players) {
+            if (player.viewingStats) {
+                someoneLooksAtEndStats = true;
+                break;
+            }
+        }
+        if (this._started || this._loading || this._players.size < this._capacity || someoneLooksAtEndStats) {
             return false;
         }
 
@@ -138,29 +340,25 @@ export class Room {
                 this._questionOrder[i] = i;
             }
             shuffle(this._questionOrder);
-            this._currentQuestionIndex = 0;
         } else {
             this._questionSelector = new MultiplayerQuestionSelector(this._questions);
         }
+        this._currentQuestionIndex = 0;
 
         // reset player stats
         for (const [_, player] of this._players) {
-            player.correctAnswers = 0;      // the number of correct answers given
-            player.incorrectAnswers = 0;    // the number of incorrect answers given
+            player.present = true;          // whether player is still present in the game
+            player.correctAns = 0;          // the number of correct answers given
+            player.incorrectAns = 0;        // the number of incorrect answers given
             player.hp = 100;                // health points (for multiplayer mode)
             player.score = 0;               // player's score
-            player.endOfGameStats = false;  // whether player is viewing end of game stats
-            player.present = true;          // whether player is still present in the game
+            player.viewingStats = false;  // whether player is viewing end of game stats
         }
 
         // player turn tracking
         const players = Array.from(this._players.keys());
         const randPlayerIndex = Math.floor(Math.random() * players.length);
-        const randPlayer = this._players.get(players[randPlayerIndex]).username;
-        this._turn = {
-            username: randPlayer,  // username of player whose turn it is
-            type: "choose"         // or "answer" (alternates each turn in multiplayer, ignored in singleplayer)
-        };
+        this._turn = this._players.get(players[randPlayerIndex]).username;   // whose turn it is (username)
 
         // timer variable (used for time-limited actions)
         this._timer = {
@@ -169,6 +367,18 @@ export class Room {
             active: false             // whether the timer is active
         };
 
+        // current game state ("choice" - waiting for question choice, "answer" - waiting for answer, "review" - reviewing the answer)
+        this._state = this._capacity > 1 ? "choice" : "answer";  // (choice, answer, review)
+
+        // chosen answer for the current question (used for reviewing phase)
+        this._chosenAnswer = null;
+
+        // question choices for multiplayer mode
+        if (this._capacity > 1) {
+            this._questionChoices = this._questionSelector.getNext3();
+        }
+
+        // start the game
         this._started = true;
 
         // game started successfully
@@ -176,15 +386,74 @@ export class Room {
     }
 
     submitAnswer(username, answer) {
-        if (username === this._turn.username) {
+        if (username === this._turn && this._state === "answer" && Date.now() < this._timer.endTime) {
+            const player = this._players.get(username);
+            const currentQuestion = this._questions[this._questionOrder[this._currentQuestionIndex]];
 
+            if (answer === currentQuestion.correctOption) {
+                // correct answer
+                player.correctAns += 1;
+
+                // calculate score increase based on time left
+                let timerPercentage = (this._timer.endTime - Date.now()) / this._timer.originalDuration;
+                if (timerPercentage < 0) {
+                    timerPercentage = 0;
+                } else if (timerPercentage > 1) {
+                    timerPercentage = 1;
+                }
+                player.score += Math.floor(PLAYER_MAX_SCORE_INCREASE * ((1 + timerPercentage) / 2));
+            } else {
+                // incorrect answer
+                player.incorrectAns += 1;
+
+                if (this._capacity > 1) {
+                    // multiplayer mode - decrease HP
+                    player.hp -= PLAYER_HP_DECREASE;
+                    if (player.hp < 0) {
+                        player.hp = 0;
+                    }
+                }
+            }
+
+            // proceed to review state
+            this._state = "review";
+            this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
+            this._timer.originalDuration = Q_REVIEW_TIME * 1000;
+            this._timer.active = true;
         }
     }
 
-    chooseQuestion(username, questionIndex) {
+    chooseQuestion(username, questionIndex, attackedUsername) {
         // only for multiplayer mode
-        if (this._capacity > 1) {
+        const attackedUser = this._players.get(attackedUsername);
+        if (this._capacity > 1 &&
+            this._turn === username &&
+            this._state === "choice" &&
+            Date.now() < this._timer.endTime &&
+            this._questionChoices.includes(username) &&
+            attackedUser &&
+            attackedUser.hp > 0 &&
+            attackedUsername !== username)
+        {
+            const user = this._players.get(username);
             this._questionSelector.markQuestionChosen(questionIndex);
+            this._currentQuestionIndex = questionIndex;
+
+            this._turn = attackedUsername;
+            this._state = "answer";
+            this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
+            this._timer.originalDuration = Q_ANSWER_TIME * 1000;
+            this._timer.active = true;
+
+            // get next question choices
+            this._questionChoices = this._questionSelector.getNext3();
+        }
+    }
+
+    closeEndOfGameStats(username) {
+        const player = this._players.get(username);
+        if (player) {
+            player.viewingStats = false;
         }
     }
 

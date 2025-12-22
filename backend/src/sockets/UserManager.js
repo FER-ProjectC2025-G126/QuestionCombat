@@ -90,8 +90,9 @@ export default class UserManager {
 
         // game action events
         socket.on("submitAnswer", (answerIndex) => this.submitAnswer(username, answerIndex));
-        socket.on("chooseQuestion", (questionIndex) => this.chooseQuestion(username, questionIndex));
+        socket.on("chooseQuestion", (questionIndex, attackedUsername) => this.chooseQuestion(username, questionIndex, attackedUsername));
         socket.on("startGame", () => this.startGame(username));
+        socket.on("closeEndOfGameStats", () => this.closeEndOfGameStats(username));
     }
 
     // disconnect a user's socket
@@ -170,18 +171,26 @@ export default class UserManager {
     }
 
     // handle game action - choose question
-    chooseQuestion(username, questionIndex) {
+    chooseQuestion(username, questionIndex, attackedUsername) {
         const roomId = this.userToRoomID.get(username);
         if (!roomId) { return; }
-        const room = this.userToRoomID.get(roomId);
-        room.chooseQuestion(username, questionIndex);
+        const room = this.roomIDToRoom.get(roomId);
+        room.chooseQuestion(username, questionIndex, attackedUsername);
     }
 
     // handle game action - start game
     startGame(username) {
         const roomId = this.userToRoomID.get(username);
         if (!roomId) { return; }
-        const room = this.userToRoomID.get(roomId);
+        const room = this.roomIDToRoom.get(roomId);
         room.startGame();
+    }
+
+    // handle game action - close end-of-game stats
+    closeEndOfGameStats(username) {
+        const roomId = this.userToRoomID.get(username);
+        if (!roomId) { return; }
+        const room = this.roomIDToRoom.get(roomId);
+        room.closeEndOfGameStats(username);
     }
 }
