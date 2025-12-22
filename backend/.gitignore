@@ -18,7 +18,6 @@ pnpm-lock.yaml
 # Build output
 dist
 build
-.next
 
 # Logs
 npm-debug.log*
@@ -43,4 +42,3 @@ Thumbs.db
 
 # Cache
 .eslintcache
-.turbo
