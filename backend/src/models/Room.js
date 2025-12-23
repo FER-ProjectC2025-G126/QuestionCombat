@@ -487,7 +487,7 @@ export class Room {
   }
 
   get playerCount() {
-    return this._players.length;
+    return this._players.size;
   }
 
   get questionSets() {

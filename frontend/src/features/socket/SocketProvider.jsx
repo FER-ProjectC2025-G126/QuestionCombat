@@ -28,6 +28,7 @@ const SocketProvider = () => {
     };
 
     const handleConnect = () => {
+      console.log("Connected successfully!");
       setIsConnected(true);
       setIsLoading(false);
     };

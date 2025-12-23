@@ -48,6 +48,17 @@
   gap: 10px;
 }
 
+.Forms-qSets {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  gap: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
 .Labels {
   display: flex;
   align-items: center;
@@ -160,4 +171,54 @@
   text-align: center;
   width: 20vw;
   margin-top: 20px;
+}
+
+.courseCard {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: rgb(255, 115, 0);
+  cursor: pointer;
+  width: 20vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  transition:
+    background-color,
+    transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: yellow;
+}
+
+.courseCard:hover {
+  background-color: rgb(255, 115, 0);
+  transform: translateY(-2px);
+}
+
+.courseCard.selected {
+  background-color: rgb(255, 115, 0);
+  color: yellow;
+  border: 2px solid yellow;
+}
+
+.courseTitle {
+  font-family: 'SuperBubbly', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 3px black;
+}
+
+.courseDescription {
+  font-family: 'SuperBubbly', sans-serif;
+  font-size: 0.9rem;
+  text-shadow: 2px 2px 3px black;
+}
+
+.qSetList {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
 }

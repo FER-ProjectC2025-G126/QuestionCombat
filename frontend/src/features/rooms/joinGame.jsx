@@ -50,13 +50,13 @@ function JoinGame() {
           <div className="elementOfBlock3">
             <div className="elmHeader">JOIN PUBLIC GAME</div>
             <div className="gamesList">
-              {appState.rooms.map((roomName) => (
+              {appState.rooms.map((room) => (
                 <div
-                  key={roomName}
+                  key={room.name}
                   className="gameCard"
-                  onClick={() => handleJoinPublicGame(roomName)}
+                  onClick={() => handleJoinPublicGame(room.name)}
                 >
-                  {roomName}
+                  {room.name}
                 </div>
               ))}
             </div>

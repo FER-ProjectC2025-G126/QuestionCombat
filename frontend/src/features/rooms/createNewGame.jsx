@@ -1,17 +1,28 @@
 import React from 'react';
 import Button1 from '../../components/Button1';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import useSocket from '../socket/useSocket';
+import api from '../../api/api';
 
 function CreateNewGame() {
   const { isConnected, isLoading, appState, createRoom } = useSocket();
   const [numOfPlayers, setNumOfPlayers] = useState('');
   const [gameType, setGameType] = useState('');
   const [error, setError] = useState('');
+  const [courses, setCourses] = useState([]);
+  const [selectedCourses, setSelectedCourses] = useState([]);
+
 
   const onNumOfPlayersChange = (e) => setNumOfPlayers(e.target.value);
   const onGameTypeChange = (e) => setGameType(e.target.value);
+  const onCourseSelectClicked = (courseId) => {
+    setSelectedCourses((prevSelected) =>
+    prevSelected.includes(courseId)
+      ? prevSelected.filter((id) => id !== courseId) 
+      : [...prevSelected, courseId]                
+  );
+  }
 
   const onSubmitClicked = (e) => {
     e.preventDefault();
@@ -36,8 +47,20 @@ function CreateNewGame() {
     createRoom({
       maxPlayers: Number(numOfPlayers),
       visibility: gameType,
+      questionSetIds: selectedCourses,
     });
   };
+
+  useEffect(() => {
+    api
+      .get('/public/question_sets')
+      .then((response) => {
+        setCourses(response.data);
+      })
+      .catch((error) => {
+       console.log(error.message);
+      });
+  }, []);
 
   if (isLoading || !appState) {
     return <div className="loader">Connecting to server...</div>;
@@ -73,20 +96,21 @@ function CreateNewGame() {
             </div>
           </div>
           <div className="elementOfBlock3">
-            <h2 className="elmHeader">CHOOSE UP TO 5 COURSES</h2>
-
-            {/* This qSetList should be changed so that it reads info from the database and when clicked on it shoud indicate that it is chosen :) */}
-            <div className="qSetList">
-              <div className="qsCard">QS #1</div>
-              <div className="qsCard">QS #1</div>
-              <div className="qsCard">QS #1</div>
-              <div className="qsCard">QS #4</div>
-              <div className="qsCard">QS #5</div>
-              <div className="qsCard">QS #1</div>
-              <div className="qsCard">QS #2</div>
-              <div className="qsCard">QS #3</div>
-              <div className="qsCard">QS #4</div>
-              <div className="qsCard">QS #5</div>
+            <h2 className="elmHeader">CHOOSE COURSES</h2>
+            <div className='Forms-qSets'>
+              {courses.map((course) => {
+                const isSelected = selectedCourses.includes(course.id);
+                 return (
+                  <div
+                    key={course.id}
+                    className={`courseCard ${isSelected ? 'selected' : ''}`}
+                    onClick={() => onCourseSelectClicked(course.id)}
+                  >
+                  <div className="courseTitle">{course.title}</div>
+                  <div className="courseDescription">{course.description}</div>
+                  </div>
+                 );
+            })}
             </div>
           </div>
           <div className="elementOfBlock3">
