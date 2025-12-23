@@ -1,11 +1,5 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useCallback,
-} from "react";
-import api from "../../api/api";
+import React, { useState, useEffect, useContext, createContext, useCallback } from 'react';
+import api from '../../api/api';
 
 const AuthContext = createContext();
 
@@ -20,7 +14,7 @@ export function AuthProvider({ children }) {
 
   const fetchUser = useCallback(async () => {
     try {
-      const response = await api.get("/auth/me");
+      const response = await api.get('/auth/me');
       setUser(response.data);
     } catch (error) {
       setUser(null);
@@ -48,9 +42,5 @@ export function AuthProvider({ children }) {
     logout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 }

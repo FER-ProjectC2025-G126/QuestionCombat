@@ -1,34 +1,33 @@
-import React from "react";
-import Button1 from "../components/Button1";
-import { useState, useEffect } from "react";
-import api from "../api/api";
+import React from 'react';
+import Button1 from '../components/Button1';
+import { useState, useEffect } from 'react';
+import api from '../api/api';
 
 const Public = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     api
-      .get("/public/question_sets")
+      .get('/public/question_sets')
       .then((response) => {
         setCourses(response.data);
-        console.log("Fetch successful!");
       })
       .catch(() => {
-        console.log("Fetch failed!");
+        // Handle error silently or show user message
       });
   }, []);
   return (
     <div className="container">
-      <div id="q1" className="falling-question" style={{ left: "5vw" }}>
+      <div id="q1" className="falling-question" style={{ left: '5vw' }}>
         ?
       </div>
-      <div id="q2" className="falling-question" style={{ left: "15vw" }}>
+      <div id="q2" className="falling-question" style={{ left: '15vw' }}>
         ?
       </div>
-      <div id="q3" className="falling-question" style={{ left: "85vw" }}>
+      <div id="q3" className="falling-question" style={{ left: '85vw' }}>
         ?
       </div>
-      <div id="q4" className="falling-question" style={{ left: "95vw" }}>
+      <div id="q4" className="falling-question" style={{ left: '95vw' }}>
         ?
       </div>
       <div className="publicBlock">
@@ -43,11 +42,7 @@ const Public = () => {
             </div>
           ))}
         </div>
-        <Button1
-          to="/login"
-          text="To start playing please Log In!"
-          className="btn"
-        />
+        <Button1 to="/login" text="To start playing please Log In!" className="btn" />
       </div>
     </div>
   );

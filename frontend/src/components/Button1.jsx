@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Button1({ to, text, className }) {
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import Button1 from "../components/Button1";
+import React from 'react';
+import Button1 from '../components/Button1';
 
 function NotFoundPage() {
   return (

@@ -1,11 +1,11 @@
 // library imports
-import cookieParser from "cookie-parser";
-import express from "express";
-import http from "http";
-import minimist from "minimist";
-import path from "path";
-import { Server } from "socket.io";
-import { fileURLToPath } from "url";
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import http from 'http';
+import minimist from 'minimist';
+import path from 'path';
+import { Server } from 'socket.io';
+import { fileURLToPath } from 'url';
 
 // cli arguments
 const argv = minimist(process.argv.slice(2));
@@ -14,22 +14,27 @@ const argv = minimist(process.argv.slice(2));
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // database
-import Database from "./models/db/Database.js";
+import Database from './models/db/Database.js';
 const database = new Database();
 
 // socketio connection manager
-import UserManager from "./sockets/UserManager.js";
+import UserManager from './sockets/UserManager.js';
 
 // route imports
-import { router as authRouter, sessionLength } from "./routes/auth.router.js";
-import { router as publicRouter } from "./routes/public.router.js";
+import { router as authRouter, sessionLength } from './routes/auth.router.js';
+import { router as publicRouter } from './routes/public.router.js';
 
 // server setup
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
-
-
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
+const io = new Server(server, {
+  cors: {
+    origin: CLIENT_ORIGIN,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
 
 // EXPRESS
 
@@ -39,25 +44,25 @@ app.use(express.json());
 app.use(cookieParser());
 
 // parse authentication cookie
-app.use("/api", async function (req, res, next) {
+app.use('/api', async function (req, res, next) {
   req.session_id = null;
   req.username = null;
-  const session_id = req.cookies["session_id"];
+  const session_id = req.cookies['session_id'];
   if (session_id) {
-    let session = await database.sessions.getSession(session_id);
+    const session = await database.sessions.getSession(session_id);
     if (session && session.expiresAt > new Date().toISOString()) {
       // extend session
-      let sessionLengthMs = sessionLength * 24 * 60 * 60 * 1000; // sessionLength in ms
+      const sessionLengthMs = sessionLength * 24 * 60 * 60 * 1000; // sessionLength in ms
       await database.sessions.updateSession(
         session_id,
         new Date(Date.now() + sessionLengthMs).toISOString()
       );
-      res.cookie("session_id", session_id, {
+      res.cookie('session_id', session_id, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // HTTPS only in prod (so we can test locally over HTTP)
-        sameSite: "strict",
+        secure: process.env.NODE_ENV === 'production', // HTTPS only in prod (so we can test locally over HTTP)
+        sameSite: 'strict',
         maxAge: sessionLengthMs,
-        path: "/",
+        path: '/',
       });
       req.username = session.username;
       req.session_id = session_id;
@@ -67,25 +72,23 @@ app.use("/api", async function (req, res, next) {
 });
 
 // api routes
-app.use("/api/auth", authRouter);
-app.use("/api/public", publicRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/public', publicRouter);
 
 // api 404 handler
-app.use("/api", function (req, res) {
-  return res.status(404).json({ error: "API endpoint not found!" });
+app.use('/api', function (req, res) {
+  return res.status(404).json({ error: 'API endpoint not found!' });
 });
 
 // if in production mode, serve frontend static files
 // (if in dev, the frontend is running separately with its own webpack dev server)
-if (argv.mode === "prod") {
-  const frontendPath = path.join(__dirname, "..", "..", "frontend", "dist");
+if (argv.mode === 'prod') {
+  const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
   app.use(express.static(frontendPath));
-  app.use("/*any", function (req, res) {
-    return res.sendFile(path.join(frontendPath, "index.html"));
+  app.use('/*any', function (req, res) {
+    return res.sendFile(path.join(frontendPath, 'index.html'));
   });
 }
-
-
 
 // SOCKET.IO
 
@@ -98,16 +101,16 @@ io.engine.use(async (req, res, next) => {
   req.username = null;
   // only run for handshake requests without sid (new connections)
   if (req._query.sid === undefined) {
-    const session_id = req.cookies["session_id"];
+    const session_id = req.cookies['session_id'];
     if (session_id) {
-      let session = await database.sessions.getSession(session_id);
+      const session = await database.sessions.getSession(session_id);
       if (session && session.expiresAt > new Date().toISOString()) {
         req.username = session.username;
       }
     }
   }
   next();
-})
+});
 
 // Socket.io connection handler
 io.on('connection', (socket) => {
@@ -117,8 +120,6 @@ io.on('connection', (socket) => {
   }
   userManager.connectUser(socket.request.username, socket);
 });
-
-
 
 // START SERVER
 const PORT = process.env.PORT || 5000;

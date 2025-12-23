@@ -6,10 +6,35 @@
 }
 
 @font-face {
-  font-family: "SuperBubbly";
-  src: url("../fonts/Super\ Bubbly.woff") format("woff");
+  font-family: 'SuperBubbly';
+  src: url('../fonts/Super\ Bubbly.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+// Shared container styles used across multiple pages
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245, 236, 251);
+  height: 100vh;
+  width: 100%;
+  background: rgba(104, 107, 179, 0.829);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(104, 107, 179, 0.829);
+  font-family: 'SuperBubbly', sans-serif;
+  font-size: 2rem;
+  color: yellow;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
 }
 
 .notFound {
@@ -24,7 +49,7 @@
 }
 
 .notFoundContainer {
-  font-family: "SuperBubbly", sans-serif;
+  font-family: 'SuperBubbly', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;

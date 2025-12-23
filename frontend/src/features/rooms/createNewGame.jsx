@@ -1,13 +1,14 @@
-import React from "react";
-import Button1 from "../../components/Button1";
-import { useState } from "react";
-import useSocket from "../socket/useSocket";
+import React from 'react';
+import Button1 from '../../components/Button1';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import useSocket from '../socket/useSocket';
 
 function CreateNewGame() {
   const { isConnected, isLoading, appState, createRoom } = useSocket();
-  const [numOfPlayers, setNumOfPlayers] = useState("");
-  const [gameType, setGameType] = useState("");
-  const [error, setError] = useState("");
+  const [numOfPlayers, setNumOfPlayers] = useState('');
+  const [gameType, setGameType] = useState('');
+  const [error, setError] = useState('');
 
   const onNumOfPlayersChange = (e) => setNumOfPlayers(e.target.value);
   const onGameTypeChange = (e) => setGameType(e.target.value);
@@ -16,21 +17,21 @@ function CreateNewGame() {
     e.preventDefault();
 
     if (!isConnected) {
-      setError("Not connected to server!");
+      setError('Not connected to server!');
       return;
     }
 
     if (!numOfPlayers) {
-      setError("Please select number of players");
+      setError('Please select number of players');
       return;
     }
 
     if (!gameType) {
-      setError("Please select game type");
+      setError('Please select game type');
       return;
     }
 
-    setError("");
+    setError('');
 
     createRoom({
       maxPlayers: Number(numOfPlayers),
@@ -42,7 +43,7 @@ function CreateNewGame() {
     return <div className="loader">Connecting to server...</div>;
   }
 
-  if (appState.type === "room") {
+  if (appState.type === 'room') {
     return <Navigate to="/lobby" />;
   }
 
@@ -57,32 +58,17 @@ function CreateNewGame() {
             <div className="Forms">
               <label className="Labels">
                 <span>2 players</span>
-                <input
-                  type="radio"
-                  name="players"
-                  value="2"
-                  onChange={onNumOfPlayersChange}
-                />
+                <input type="radio" name="players" value="2" onChange={onNumOfPlayersChange} />
               </label>
 
               <label className="Labels">
                 <span>3 players</span>
-                <input
-                  type="radio"
-                  name="players"
-                  value="3"
-                  onChange={onNumOfPlayersChange}
-                />
+                <input type="radio" name="players" value="3" onChange={onNumOfPlayersChange} />
               </label>
 
               <label className="Labels">
                 <span>4 players</span>
-                <input
-                  type="radio"
-                  name="players"
-                  value="4"
-                  onChange={onNumOfPlayersChange}
-                />
+                <input type="radio" name="players" value="4" onChange={onNumOfPlayersChange} />
               </label>
             </div>
           </div>
@@ -108,22 +94,12 @@ function CreateNewGame() {
             <div className="Forms">
               <label className="Labels">
                 <span>private</span>
-                <input
-                  type="radio"
-                  name="gameType"
-                  value="private"
-                  onChange={onGameTypeChange}
-                />
+                <input type="radio" name="gameType" value="private" onChange={onGameTypeChange} />
               </label>
 
               <label className="Labels">
                 <span>public</span>
-                <input
-                  type="radio"
-                  name="gameType"
-                  value="public"
-                  onChange={onGameTypeChange}
-                />
+                <input type="radio" name="gameType" value="public" onChange={onGameTypeChange} />
               </label>
             </div>
           </div>

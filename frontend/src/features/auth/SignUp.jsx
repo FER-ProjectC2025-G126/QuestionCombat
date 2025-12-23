@@ -1,15 +1,15 @@
-import { useState } from "react";
-import React from "react";
-import { Link } from "react-router";
-import api from "../../api/api";
-import Button1 from "../../components/Button1";
+import { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../api/api';
+import Button1 from '../../components/Button1';
 
 function SignUpPage() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [success, setSuccess] = useState(false);
 
   const onUsernameChanged = (e) => setUsername(e.target.value);
@@ -20,27 +20,24 @@ function SignUpPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.error("Passwords do not match");
-      setErrorMessage("Passwords do not match");
+      setErrorMessage('Passwords do not match');
       return;
     }
     api
-      .post("/auth/register", {
+      .post('/auth/register', {
         username,
         password,
         email,
       })
-      .then((response) => {
-        console.log(response.data);
-        (setUsername(""),
-          setEmail(""),
-          setPassword(""),
-          setConfirmPassword(""),
-          setErrorMessage(""),
+      .then(() => {
+        (setUsername(''),
+          setEmail(''),
+          setPassword(''),
+          setConfirmPassword(''),
+          setErrorMessage(''),
           setSuccess(true));
       })
       .catch((error) => {
-        console.error(error.response.data.error);
         setErrorMessage(error.response.data.error);
       });
   };
@@ -48,16 +45,16 @@ function SignUpPage() {
   return (
     <div>
       <div className="Container">
-        <div id="q1" className="falling-question" style={{ left: "5vw" }}>
+        <div id="q1" className="falling-question" style={{ left: '5vw' }}>
           ?
         </div>
-        <div id="q2" className="falling-question" style={{ left: "20vw" }}>
+        <div id="q2" className="falling-question" style={{ left: '20vw' }}>
           ?
         </div>
-        <div id="q3" className="falling-question" style={{ left: "75vw" }}>
+        <div id="q3" className="falling-question" style={{ left: '75vw' }}>
           ?
         </div>
-        <div id="q4" className="falling-question" style={{ left: "90vw" }}>
+        <div id="q4" className="falling-question" style={{ left: '90vw' }}>
           ?
         </div>
 

@@ -1,15 +1,15 @@
-import { useState } from "react";
-import React from "react";
-import { Link } from "react-router";
-import api from "../../api/api";
-import { useAuth } from "./AuthProvider";
-import Button1 from "../../components/Button1";
+import { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../api/api';
+import { useAuth } from './AuthProvider';
+import Button1 from '../../components/Button1';
 
 function LoginPage() {
   const { login } = useAuth();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onUsernameChanged = (e) => setUsername(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
@@ -17,12 +17,11 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     api
-      .post("/auth/login", {
+      .post('/auth/login', {
         username,
         password,
       })
       .then(() => {
-        console.log("Login successful");
         return login();
       })
       .catch((error) => {
@@ -34,16 +33,16 @@ function LoginPage() {
   return (
     <div>
       <div className="Container">
-        <div id="q1" className="falling-question" style={{ left: "5vw" }}>
+        <div id="q1" className="falling-question" style={{ left: '5vw' }}>
           ?
         </div>
-        <div id="q2" className="falling-question" style={{ left: "20vw" }}>
+        <div id="q2" className="falling-question" style={{ left: '20vw' }}>
           ?
         </div>
-        <div id="q3" className="falling-question" style={{ left: "75vw" }}>
+        <div id="q3" className="falling-question" style={{ left: '75vw' }}>
           ?
         </div>
-        <div id="q4" className="falling-question" style={{ left: "90vw" }}>
+        <div id="q4" className="falling-question" style={{ left: '90vw' }}>
           ?
         </div>
 
