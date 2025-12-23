@@ -142,15 +142,15 @@ export default class UserManager {
   // join the user to an existing room
   joinRoom(username, roomName) {
     const roomId = this.roomNameToRoomID.get(roomName);
-    if (!roomId) {
-      return;
-    }
+    if (!roomId) { return; }
     const room = this.roomIDToRoom.get(roomId);
+
     if (!this.userToRoomID.get(username) && room.addPlayer(username)) {
       this.userToRoomID.set(username, roomId);
       for (const socketId of this.userToSocketIDs.get(username) || []) {
         const socket = this.io.sockets.sockets.get(socketId);
         if (socket) {
+          socket.leave(this.lobbyRoomId);
           socket.join(roomId);
         }
       }
