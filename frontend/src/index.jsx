@@ -7,6 +7,7 @@ import './styles/Home.css';
 import './styles/joinGame.css';
 import './styles/Login.css';
 import './styles/Public.css';
+import "./styles/Lobby.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

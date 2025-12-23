@@ -18,11 +18,10 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Public page is accessible to everyone */}
-          <Route index element={<Public />} />
-
+          
           {/* Auth-only pages (login/register) should be inaccessible when already authed */}
           <Route element={<PublicOnly />}>
+            <Route index element={<Public />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<SignUpPage />} />
           </Route>

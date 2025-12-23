@@ -36,7 +36,7 @@ function JoinGame() {
 
   const onGameCodeChanged = (e) => setGameCode(e.target.value);
 
-  if (isLoading && !appState) return <div className="loader">Connecting to server...</div>;
+  if (isLoading && !appState?.type) return <div className="loader">Connecting to server...</div>;
 
   if (appState.type !== 'lobby') {
     return <Navigate to="/lobby" />;
