@@ -35,29 +35,41 @@ export class Room {
     for (const setId of questionSetsIds || []) {
       questionSetsPromises.push(database.question_sets.getQuestionSet(setId));
     }
+
     if (questionSetsPromises.length === 0) {
       // if no specific sets requested, load random set
       questionSetsPromises.push(
         database.question_sets.listQuestionSets().then((qSets) => {
-          const randSetId = qSets[Math.floor(Math.random() * qSets.length)].id;
-          return database.question_sets.getQuestionSet(randSetId);
+          if (!qSets || qSets.length === 0) {
+            throw new Error('No question sets available in database.');
+          }
+          const randSet = qSets[Math.floor(Math.random() * qSets.length)];
+          return database.question_sets.getQuestionSet(randSet.id);
         })
       );
     }
-    Promise.all(questionSetsPromises).then((question_sets) => {
-      for (const qSet of question_sets) {
-        this._questionSets.push({
-          id: qSet.id,
-          title: qSet.title,
-          description: qSet.description,
-          questionCount: qSet.questions.length,
-        });
-        for (const question of qSet.questions) {
-          this._questions.push(question);
+
+    Promise.all(questionSetsPromises)
+      .then((question_sets) => {
+        for (const qSet of question_sets || []) {
+          if (!qSet) continue;
+          this._questionSets.push({
+            id: qSet.id,
+            title: qSet.title,
+            description: qSet.description,
+            questionCount: qSet.questions.length,
+          });
+          for (const question of qSet.questions) {
+            this._questions.push(question);
+          }
         }
-      }
-      this._loading = false;
-    });
+      })
+      .catch((err) => {
+        console.error('Failed to load question sets for room:', err.message);
+      })
+      .finally(() => {
+        this._loading = false;
+      });
 
     // players in the room
     this._players = new Map();
