@@ -8,8 +8,9 @@ function HomePage() {
       <div className="block">
         <LogoutButton />
         <div className="gameName">QUESTION COMBAT</div>
-        <Button1 to="/createNewGame" text="Create a new game" className="btn" />
-        <Button1 to="/joinGame" text="Join a game" className="btn" />
+        <Button1 to="/singleplayerLobby" text="Singleplayer" className="btn" />
+        <Button1 to="/createNewGame" text="Create a new room" className="btn" />
+        <Button1 to="/joinGame" text="Join a room" className="btn" />
         <Button1 to="/listOfCourses" text="List of courses" className="btn" />
       </div>
     </div>

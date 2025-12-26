@@ -34,13 +34,17 @@ const Public = () => {
         <div className="publicTitle">Welcome to Question Combat</div>
         <div className="coursesBlock">
           <h2 className="coursesTitle">Available Courses</h2>
-          {courses.map((course) => (
-            <div key={course.id}>
-              <div>{course.title}</div>
-              <div>{course.description}</div>
-              <div>{course.questionCount}</div>
-            </div>
-          ))}
+          {courses && courses.length > 0 ? (
+            courses.map((course) => (
+              <div key={course.id}>
+                <div>{course.title}</div>
+                <div>{course.description}</div>
+                <div>{course.questionCount}</div>
+              </div>
+            ))
+          ) : (
+            <div className="noItemsMessage">No courses available.</div>
+          )}
         </div>
         <Button1 to="/login" text="To start playing please Log In!" className="btn" />
       </div>

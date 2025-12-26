@@ -50,3 +50,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.noItemsMessage{
+  color: orangered;
+  font-family: 'SuperBubbly', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}

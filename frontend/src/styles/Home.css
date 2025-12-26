@@ -6,7 +6,7 @@
   background-color: rgb(112, 29, 190);
   height: 90vh;
   width: 60vw;
-  gap: 30px;
+  gap: 20px;
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
   animation: sizeUp 0.8s;

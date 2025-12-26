@@ -74,7 +74,7 @@ function CreateNewGame() {
     <div className="container">
       <form className="block2" onSubmit={onSubmitClicked}>
         <Button1 to="/home" text="BACK" className="backBtn" />
-        <div className="gameName">NEW GAME</div>
+        <div className="gameName">NEW ROOM</div>
         <div className="block3">
           <div className="elementOfBlock3">
             <h2 className="elmHeader">CHOOSE NUMBER OF PLAYERS</h2>
@@ -98,7 +98,8 @@ function CreateNewGame() {
           <div className="elementOfBlock3">
             <h2 className="elmHeader">CHOOSE COURSES</h2>
             <div className='Forms-qSets'>
-              {courses.map((course) => {
+              {courses && courses.lenght >0 ? (
+              courses.map((course) => {
                 const isSelected = selectedCourses.includes(course.id);
                  return (
                   <div
@@ -110,7 +111,10 @@ function CreateNewGame() {
                   <div className="courseDescription">{course.description}</div>
                   </div>
                  );
-            })}
+            })
+          ) : (
+            <div className="noItemsMessage">No courses available. </div>
+          )}
             </div>
           </div>
           <div className="elementOfBlock3">

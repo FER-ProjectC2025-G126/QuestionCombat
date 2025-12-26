@@ -13,6 +13,7 @@ import PublicOnly from './features/auth/PublicOnly';
 import SocketProvider from './features/socket/SocketProvider';
 import Public from './pages/Public';
 import Lobby from './features/rooms/Lobby';
+import SingleplayerLobby from './pages/SingleplayerLobby';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="joinGame" element={<JoinGame />} />
               <Route path="lobby" element={<Lobby />} />
               <Route path="listOfCourses" element={<ListOfCourses /> } />
+              <Route path ="singleplayerLobby" element={<SingleplayerLobby />} />
             </Route>
           </Route>
           {/* Protected routes end */}

@@ -45,12 +45,13 @@ function JoinGame() {
     <div className="container">
       <div className="block2">
         <Button1 to="/home" text="BACK" className="backBtn" />
-        <div className="gameName">JOIN A GAME</div>
+        <div className="gameName">JOIN A ROOM</div>
         <div className="block4">
           <div className="elementOfBlock3">
-            <div className="elmHeader">JOIN PUBLIC GAME</div>
+            <div className="elmHeader">JOIN PUBLIC ROOM</div>
             <div className="gamesList">
-              {appState.rooms.map((room) => (
+              {appState.rooms && appState.rooms.length > 0 ? (
+                appState.rooms.map((room) => (
                 <div
                   key={room.name}
                   className="gameCard"
@@ -58,11 +59,14 @@ function JoinGame() {
                 >
                   {room.name}
                 </div>
-              ))}
+              ))
+            ) : (
+            <div className='noItemsMessage'>No public rooms available.</div>
+          )}
             </div>
           </div>
           <div className="elementOfBlock3">
-            <div className="elmHeader">JOIN PRIVATE GAME</div>
+            <div className="elmHeader">JOIN PRIVATE ROOM</div>
             <div className="elmCode">
               <form className="joinPrivateForm" onSubmit={handleJoinPrivateGame}>
                 <input

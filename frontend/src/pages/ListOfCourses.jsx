@@ -20,15 +20,19 @@ const ListOfCourses = () => {
     <div className="container">
       <div className="publicBlock">
         <div className="coursesBlock">
-            <Button1 to="/home" text="BACK" className="backBtn" />
+          <Button1 to="/home" text="BACK" className="backBtn" />
           <h2 className="coursesTitle">Available Courses</h2>
-          {courses.map((course) => (
-            <div key={course.id}>
-              <div>{course.title}</div>
-              <div>{course.description}</div>
-              <div>{course.questionCount}</div>
-            </div>
-          ))}
+          {courses && courses.length > 0 ? (
+            courses.map((course) => (
+              <div key={course.id}>
+                <div>{course.title}</div>
+                <div>{course.description}</div>
+                <div>{course.questionCount}</div>
+              </div>
+            ))
+          ) : (
+            <div className="noItemsMessage">No courses available.</div>
+          )}
         </div>
       </div>
     </div>
