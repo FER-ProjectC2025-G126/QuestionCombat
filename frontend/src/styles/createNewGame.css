@@ -39,7 +39,9 @@
   font-size: 1.8rem;
 }
 
-.Forms {
+.Forms,
+.Forms-qSets,
+.Forms-qSets-expanded {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,13 +51,14 @@
 }
 
 .Forms-qSets {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 20px;
-  gap: 10px;
+  justify-content: start;
   max-height: 250px;
+  overflow-y: auto;
+}
+
+.Forms-qSets-expanded {
+  justify-content: start;
+  max-height: 52vh;
   overflow-y: auto;
 }
 
@@ -118,7 +121,7 @@
   text-shadow: 2px 2px 3px black;
   font-family: 'SuperBubbly', sans-serif;
 }
- 
+
 .startBtn:hover,
 .backBtn:hover {
   background-color: orangered;
@@ -183,6 +186,18 @@
   transition:
     background-color,
     transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: yellow;
+}
+
+.courseCard-view {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: rgb(255, 115, 0);
+  width: 20vw;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 6px;

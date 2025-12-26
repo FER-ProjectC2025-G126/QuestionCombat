@@ -32,7 +32,7 @@
 
 .coursesBlock {
   background-color: white;
-  height: 60%;
+  height: 75%;
   width: 80%;
   padding: 10px;
   border-radius: 20px;
@@ -42,7 +42,6 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  gap: 10px;
   overflow: visible;
 }
 

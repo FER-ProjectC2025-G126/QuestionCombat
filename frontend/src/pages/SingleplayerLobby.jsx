@@ -2,7 +2,6 @@ import React from 'react';
 import Button1 from '../components/Button1';
 import '../styles/SingleplayerLobby.css';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
 import api from '../api/api';
 
 function SingleplayerLobby() {
@@ -36,8 +35,8 @@ function SingleplayerLobby() {
         <div className="block4">
           <div className="elementOfBlock4">
             <h2 className="elmHeader">CHOOSE COURSES</h2>
-            <div className="Forms-qSets">
-              {courses && courses.lenght > 0 ? (
+            <div className="Forms-qSets-expanded">
+              {courses && courses.length > 0 ? (
                 courses.map((course) => {
                   const isSelected = selectedCourses.includes(course.id);
                   return (

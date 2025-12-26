@@ -1,7 +1,7 @@
 import React from 'react';
 import Button1 from '../../components/Button1';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import useSocket from '../socket/useSocket';
 import api from '../../api/api';
 
@@ -56,6 +56,7 @@ function CreateNewGame() {
       .get('/public/question_sets')
       .then((response) => {
         setCourses(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
        console.log(error.message);
@@ -98,7 +99,7 @@ function CreateNewGame() {
           <div className="elementOfBlock3">
             <h2 className="elmHeader">CHOOSE COURSES</h2>
             <div className='Forms-qSets'>
-              {courses && courses.lenght >0 ? (
+              {courses && courses.length > 0 ? (
               courses.map((course) => {
                 const isSelected = selectedCourses.includes(course.id);
                  return (
@@ -113,7 +114,7 @@ function CreateNewGame() {
                  );
             })
           ) : (
-            <div className="noItemsMessage">No courses available. </div>
+            <div className="noItemsMessage">No courses available.</div>
           )}
             </div>
           </div>
