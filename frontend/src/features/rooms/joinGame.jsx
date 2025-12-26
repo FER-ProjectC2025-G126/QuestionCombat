@@ -41,7 +41,7 @@ function JoinGame() {
   if (appState.type !== 'lobby') {
     return <Navigate to="/lobby" />;
   }
-  return (
+  return ( 
     <div className="container">
       <div className="block2">
         <Button1 to="/home" text="BACK" className="backBtn" />
@@ -68,7 +68,7 @@ function JoinGame() {
                 <input
                   type="text"
                   name="gameCode"
-                  placeholder="Enter game code"
+                  placeholder="Enter room name"
                   value={gameCode}
                   onChange={onGameCodeChanged}
                 />

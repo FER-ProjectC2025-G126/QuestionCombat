@@ -206,16 +206,16 @@ input:focus {
 
 .popup {
   position: fixed;
-  top: 20px; /* popup će biti 20px od vrha */
+  top: 20px; 
   left: 50%;
-  transform: translateX(-50%); /* samo horizontalno centriranje */
+  transform: translateX(-50%); 
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  animation: drop 0.5s ease-out forwards; /* forwards → ostaje u zadnjem položaju */
+  animation: drop 0.5s ease-out forwards; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,10 +240,10 @@ input:focus {
 @keyframes drop {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50px); /* start iznad ekrana */
+    transform: translate(-50%, -50px);
   }
   100% {
     opacity: 1;
-    transform: translateX(-50%); /* kraj na top: 20px */
+    transform: translateX(-50%); 
   }
 }

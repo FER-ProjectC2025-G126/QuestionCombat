@@ -1,0 +1,38 @@
+import React from 'react';
+import Button1 from '../components/Button1';
+import { useState, useEffect } from 'react';
+import api from '../api/api';
+
+const ListOfCourses = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('/public/question_sets')
+      .then((response) => {
+        setCourses(response.data);
+      })
+      .catch(() => {
+        // Handle error silently or show user message
+      });
+  }, []);
+  return (
+    <div className="container">
+      <div className="publicBlock">
+        <div className="coursesBlock">
+            <Button1 to="/home" text="BACK" className="backBtn" />
+          <h2 className="coursesTitle">Available Courses</h2>
+          {courses.map((course) => (
+            <div key={course.id}>
+              <div>{course.title}</div>
+              <div>{course.description}</div>
+              <div>{course.questionCount}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ListOfCourses;

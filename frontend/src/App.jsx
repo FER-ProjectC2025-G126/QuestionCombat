@@ -6,6 +6,7 @@ import LoginPage from './features/auth/Login';
 import SignUpPage from './features/auth/SignUp';
 import CreateNewGame from './features/rooms/createNewGame';
 import JoinGame from './features/rooms/joinGame';
+import ListOfCourses from './pages/ListOfCourses';
 import { AuthProvider } from './features/auth/AuthProvider';
 import RequireAuth from './features/auth/RequireAuth';
 import PublicOnly from './features/auth/PublicOnly';
@@ -33,6 +34,7 @@ function App() {
               <Route path="createNewGame" element={<CreateNewGame />} />
               <Route path="joinGame" element={<JoinGame />} />
               <Route path="lobby" element={<Lobby />} />
+              <Route path="listOfCourses" element={<ListOfCourses /> } />
             </Route>
           </Route>
           {/* Protected routes end */}
