@@ -1,10 +1,12 @@
 import React from 'react';
-import Button1 from '../components/Button1';
-import '../styles/SingleplayerLobby.css';
+import Button1 from '../../components/Button1';
 import { useState, useEffect } from 'react';
-import api from '../api/api';
+import { Navigate } from 'react-router';
+import api from '../../api/api';
+import useSocket from "../socket/useSocket"
 
 function SingleplayerLobby() {
+  const { isConnected, isLoading, appState, createRoom } = useSocket();
   const [courses, setCourses] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
 
@@ -27,9 +29,32 @@ function SingleplayerLobby() {
       });
   }, []);
 
+  const onSubmitClicked = (e) => {
+    e.preventDefault();
+
+    if (!isConnected) {
+      setError('Not connected to server!');
+      return;
+    }
+
+    createRoom({
+      maxPlayers: 1,
+      visibility: "private",
+      questionSetIds: selectedCourses,
+    });
+  };
+
+  if (isLoading || !appState) {
+    return <div className="loader">Connecting to server...</div>;
+  }
+
+  if (appState.type === 'room') {
+    return <Navigate to="/lobby" />;
+  }
+
   return (
     <div className="container">
-      <form className="block2">
+      <form className="block2" onSubmit={onSubmitClicked}>
         <Button1 to="/home" text="BACK" className="backBtn" />
         <div className="gameName">SINGLEPLAYER ROOM</div>
         <div className="block4">

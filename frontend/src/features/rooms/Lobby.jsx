@@ -9,6 +9,8 @@ const Lobby = () => {
   const [players, setPlayers] = useState([]);
   const [roomName, setRoomName] = useState('');
   const [roomType, setRoomType] = useState('');
+  const [capacity, setCapacity] = useState('');
+  const [questionSets, setQuestionSets] = useState([]);
 
   useEffect(() => {
     if (appState.players) {
@@ -16,6 +18,12 @@ const Lobby = () => {
     }
     if (appState.name) {
       setRoomName(appState.name);
+    }
+    if(appState.capacity) {
+      setCapacity(appState.capacity);
+    }
+    if(appState.questionSets) {
+      setQuestionSets(appState.questionSets);
     }
     if (appState.type) {
       setRoomType(appState.type);
@@ -36,17 +44,37 @@ const Lobby = () => {
         <div className="lobby-page">
           <h1 className="Lobbyh1">Lobby</h1>
           <div className="block5">
-            <div className="roomName">
-              <h2>Room name:</h2>
-              <h3>{roomName}</h3>
+            <div className='left'>
+              <div className="roomName">
+                <h2>Room name:</h2>
+                <h3>{roomName}</h3>
+              </div>
+              <h2 className='qSets-title'>Question Sets:</h2>
+              <div className='Forms-qSets'>
+                {questionSets.map((questionSet) => (
+                  <div
+                    key={questionSet.id}
+                    className="courseCard-view"
+                  >
+                    <div className="courseTitle">{questionSet.title}</div>
+                    <div className="courseDescription">{questionSet.description}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="players">
+            <div className='right'>
+              <div className="players">
               <h2>Players:</h2>
               {players.map((player, index) => (
                 <h3 key={index}>
                   {index + 1}. {player.username}
                 </h3>
               ))}
+            </div>
+            <div className='capacity'>
+                <h2 className='capacity-title'>Room Capacity:</h2>
+                <h3 className='capacity-body'>{players.length}/{capacity} players</h3>
+              </div>
             </div>
           </div>
           <div className='buttons'>

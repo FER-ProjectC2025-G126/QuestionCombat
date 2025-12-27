@@ -13,7 +13,7 @@ import PublicOnly from './features/auth/PublicOnly';
 import SocketProvider from './features/socket/SocketProvider';
 import Public from './pages/Public';
 import Lobby from './features/rooms/Lobby';
-import SingleplayerLobby from './pages/SingleplayerLobby';
+import SingleplayerLobby from './features/rooms/SingleplayerLobby';
 
 function App() {
   return (

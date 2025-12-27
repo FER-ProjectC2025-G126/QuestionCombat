@@ -54,6 +54,7 @@
   justify-content: start;
   max-height: 250px;
   overflow-y: auto;
+  padding-top: 0;
 }
 
 .Forms-qSets-expanded {

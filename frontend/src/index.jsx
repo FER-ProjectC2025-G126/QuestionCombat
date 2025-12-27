@@ -8,6 +8,7 @@ import './styles/joinGame.css';
 import './styles/Login.css';
 import './styles/Public.css';
 import "./styles/Lobby.css"
+import './styles/SingleplayerLobby.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
