@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../api/api';
 import { useAuth } from './AuthProvider';
