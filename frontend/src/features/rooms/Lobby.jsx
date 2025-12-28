@@ -3,7 +3,7 @@ import { Navigate } from 'react-router';
 import { useState, useEffect } from 'react';
 
 const Lobby = () => {
-  const { appState, leaveRoom } = useSocket();
+  const { appState, leaveRoom, startGame } = useSocket();
   const [players, setPlayers] = useState([]);
   const [roomName, setRoomName] = useState('');
   const [roomType, setRoomType] = useState('');
@@ -26,11 +26,17 @@ const Lobby = () => {
     if (appState.type) {
       setRoomType(appState.type);
     }
+    console.log(appState);
   }, [appState]);
 
   const onLeaveClicked = () => {
     leaveRoom();
   };
+
+  const onStartClicked = () => {
+      startGame();
+      console.log(appState);
+  }
 
   if (roomType === 'lobby') {
     return <Navigate to="/home" />;
@@ -79,7 +85,7 @@ const Lobby = () => {
             <button onClick={onLeaveClicked} type="button" className="leaveBtn">
               Leave Room
             </button>
-            <button type="submit" className="startBtn">
+            <button type="button" className="startBtn" onClick={onStartClicked}>
               START!
             </button>
           </div>

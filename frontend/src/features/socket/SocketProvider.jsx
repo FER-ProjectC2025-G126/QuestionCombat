@@ -71,6 +71,11 @@ const SocketProvider = () => {
     socketRef.current.emit('leaveRoom');
   };
 
+  const startGame = () => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("startGame");
+  }
+
   const value = {
     socket: socketRef.current,
     isConnected,
@@ -79,6 +84,7 @@ const SocketProvider = () => {
     joinRoom,
     createRoom,
     leaveRoom,
+    startGame,
   };
 
   return (
