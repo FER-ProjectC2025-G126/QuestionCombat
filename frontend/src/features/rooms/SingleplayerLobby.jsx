@@ -1,4 +1,3 @@
-import React from 'react';
 import Button1 from '../../components/Button1';
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router';

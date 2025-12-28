@@ -2,7 +2,6 @@ import { SocketContext } from './SocketContext';
 import { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { Outlet } from 'react-router-dom';
-import React from 'react';
 
 // Create socket connection using explicit WS URL if provided, otherwise fallback to current origin
 function createSocketConnection() {

@@ -1,4 +1,3 @@
-import React from 'react';
 import api from '../api/api';
 import { IoIosLogOut } from 'react-icons/io';
 import { useAuth } from '../features/auth/AuthProvider';

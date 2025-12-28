@@ -1,8 +1,6 @@
-import React from 'react';
 import useSocket from '../socket/useSocket';
 import { Navigate } from 'react-router';
 import { useState, useEffect } from 'react';
-import Button1 from '../../components/Button1';
 
 const Lobby = () => {
   const { appState, leaveRoom } = useSocket();
@@ -35,7 +33,7 @@ const Lobby = () => {
   };
 
   if (roomType === 'lobby') {
-    return <Navigate to="/joinGame" />;
+    return <Navigate to="/home" />;
   }
 
   return (

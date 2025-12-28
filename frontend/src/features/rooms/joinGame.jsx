@@ -1,6 +1,5 @@
-import React from 'react';
 import Button1 from '../../components/Button1';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useSocket from '../socket/useSocket';
 import { Navigate } from 'react-router-dom';
 
