@@ -105,7 +105,7 @@ export class Room {
       lastGameStats: this._lastGameStats, // stats for the last finished game in this room (array of { username, score, correctAns, incorrectAns, isWinner } objects where correctAns is the number of correct answers, and incorrectAns the number of incorrect answers, and isWinner is a boolean indicating whether the user was the last one alive), if no games finished yet, null
       players: [], // array of players in this room with their stats (objects described below)
       turn: this._turn, // whose turn it is (username)
-      timer: { active: this._timer.active, percentage: 0 },
+      timer: { percentage: 0 },
       state: this._state,
     };
 
@@ -143,9 +143,7 @@ export class Room {
 
             // proceed to review state
             this._state = 'review';
-            this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
-            this._timer.originalDuration = Q_REVIEW_TIME * 1000;
-            this._timer.active = true;
+            this.setTimer(Q_REVIEW_TIME)
 
             // retrigger update
             this.update();
@@ -176,9 +174,7 @@ export class Room {
             } else {
               // next question
               this._state = 'answer';
-              this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
-              this._timer.originalDuration = Q_ANSWER_TIME * 1000;
-              this._timer.active = true;
+              this.setTimer(Q_ANSWER_TIME)
             }
             this.update();
             return;
@@ -203,9 +199,7 @@ export class Room {
 
             // proceed to review state
             this._state = 'review';
-            this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
-            this._timer.originalDuration = Q_REVIEW_TIME * 1000;
-            this._timer.active = true;
+            this.setTimer(Q_REVIEW_TIME)
 
             // retrigger update
             this.update();
@@ -244,9 +238,7 @@ export class Room {
 
               // go to choice state
               this._state = 'choice';
-              this._timer.endTime = Date.now() + Q_CHOOSE_TIME * 1000;
-              this._timer.originalDuration = Q_CHOOSE_TIME * 1000;
-              this._timer.active = true;
+              this.setTimer(Q_CHOOSE_TIME)
             }
             this.update();
             return;
@@ -267,9 +259,7 @@ export class Room {
 
             // go to answer state
             this._state = 'answer';
-            this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
-            this._timer.originalDuration = Q_ANSWER_TIME * 1000;
-            this._timer.active = true;
+            this.setTimer(Q_ANSWER_TIME)
 
             // update question selector
             this._questionSelector.markQuestionChosen(this._currentQuestionIndex);
@@ -384,11 +374,16 @@ export class Room {
     this._timer = {
       endTime: 0, // timestamp when current timer ends
       originalDuration: 0, // original duration of the timer (for calculating score based on time left)
-      active: false, // whether the timer is active
     };
 
     // current game state ("choice" - waiting for question choice, "answer" - waiting for answer, "review" - reviewing the answer)
     this._state = this._capacity > 1 ? 'choice' : 'answer'; // (choice, answer, review)
+
+    if (this._state === 'choice') {
+        this.setTimer(Q_CHOOSE_TIME);
+    } else if (this._state === 'answer') {
+        this.setTimer(Q_ANSWER_TIME);
+    }
 
     // chosen answer for the current question (used for reviewing phase)
     this._chosenAnswer = null;
@@ -403,6 +398,11 @@ export class Room {
 
     // game started successfully
     return true;
+  }
+
+  setTimer(lengthInSeconds) {
+    this._timer.endTime = Date.now() + lengthInSeconds * 1000;
+    this._timer.originalDuration = lengthInSeconds * 1000;
   }
 
   submitAnswer(username, answer) {
@@ -437,9 +437,7 @@ export class Room {
 
       // proceed to review state
       this._state = 'review';
-      this._timer.endTime = Date.now() + Q_REVIEW_TIME * 1000;
-      this._timer.originalDuration = Q_REVIEW_TIME * 1000;
-      this._timer.active = true;
+      this.setTimer(Q_REVIEW_TIME);
     }
   }
 
@@ -462,9 +460,7 @@ export class Room {
 
       this._turn = attackedUsername;
       this._state = 'answer';
-      this._timer.endTime = Date.now() + Q_ANSWER_TIME * 1000;
-      this._timer.originalDuration = Q_ANSWER_TIME * 1000;
-      this._timer.active = true;
+      this.setTimer(Q_ANSWER_TIME)
 
       // get next question choices
       this._questionChoices = this._questionSelector.getNext3();
@@ -557,8 +553,8 @@ class MultiplayerQuestionSelector {
         this._questionWeights[i] = Math.min(1.0, this._questionWeights[i] + Q_WEIGHT_INCREASE);
       }
     }
-    // set chosen question weight to zero
-    this._questionWeights[questionIndex] = 0;
+    // set chosen question weight to 5%
+    this._questionWeights[questionIndex] = 0.05;
     // update cumulative weights
     this.updateCumulativeWeights();
   }
