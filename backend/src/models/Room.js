@@ -368,7 +368,7 @@ export class Room {
     // player turn tracking
     const players = Array.from(this._players.keys());
     const randPlayerIndex = Math.floor(Math.random() * players.length);
-    this._turn = this._players.get(players[randPlayerIndex]).username; // whose turn it is (username)
+    this._turn = players[randPlayerIndex]; // whose turn it is (username)
 
     // timer variable (used for time-limited actions)
     this._timer = {

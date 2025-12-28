@@ -44,7 +44,7 @@ export default class QuestionSets {
         });
       })
       .then((result) => {
-        if (!result) {
+        if (!result || result.questionIds.length < 3) {  // don't return sets with less than 3 questions
           return null;
         }
         const qSet = result.qSet;
@@ -72,7 +72,9 @@ export default class QuestionSets {
               title: row['title'],
               description: row['description'],
               questionCount: row['questionCount'],
-            }));
+            })).filter((qSet) => {
+                return qSet.questionCount >= 3;  // Only include sets with at least 3 questions (requirement for a quiz)
+            });
             resolve(questionSets);
           }
         }
