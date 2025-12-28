@@ -2,6 +2,7 @@ import { SocketContext } from './SocketContext';
 import { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { Outlet } from 'react-router-dom';
+import Lobby from '../rooms/Lobby';
 
 // Create socket connection using explicit WS URL if provided, otherwise fallback to current origin
 function createSocketConnection() {
@@ -23,7 +24,7 @@ const SocketProvider = () => {
     socketRef.current = newSocket;
 
     const handleStateUpdate = (state) => {
-      setAppState(state);
+      setAppState(state)
     };
 
     const handleConnect = () => {

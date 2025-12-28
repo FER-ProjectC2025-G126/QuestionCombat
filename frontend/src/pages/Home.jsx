@@ -1,7 +1,15 @@
 import Button1 from '../components/Button1';
 import LogoutButton from '../components/LogoutButton';
+import useSocket from '../features/socket/useSocket';
+import { Navigate } from 'react-router';
 
 function HomePage() {
+  const {appState} = useSocket();
+
+  if(!appState) return <div>Loading...</div>
+
+  if(appState.type === "room") return <Navigate to="/lobby"/>;
+
   return (
     <div className="container">
       <div className="block">

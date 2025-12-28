@@ -1,8 +1,11 @@
 import Button1 from '../components/Button1';
 import { useState, useEffect } from 'react';
 import api from '../api/api';
+import useSocket from '../features/socket/useSocket';
+import { Navigate } from 'react-router';
 
 const ListOfCourses = () => {
+  const {appState} = useSocket();
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -11,10 +14,15 @@ const ListOfCourses = () => {
       .then((response) => {
         setCourses(response.data);
       })
-      .catch(() => {
-        // Handle error silently or show user message
+      .catch((error) => {
+        console.log(error.message);
       });
   }, []);
+
+  if(!appState) return <div>Loading...</div>;
+
+  if(appState.type === "room") return <Navigate to="/lobby" />
+  
   return (
     <div className="container">
       <div className="publicBlock">

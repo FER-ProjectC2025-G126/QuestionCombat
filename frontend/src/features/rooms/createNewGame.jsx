@@ -55,7 +55,6 @@ function CreateNewGame() {
       .get('/public/question_sets')
       .then((response) => {
         setCourses(response.data);
-        console.log(response.data)
       })
       .catch((error) => {
        console.log(error.message);
@@ -66,9 +65,8 @@ function CreateNewGame() {
     return <div className="loader">Connecting to server...</div>;
   }
 
-  if (appState.type === 'room') {
-    return <Navigate to="/lobby" />;
-  }
+  if (appState.type === 'room') return <Navigate to="/lobby" />;
+
 
   return (
     <div className="container">

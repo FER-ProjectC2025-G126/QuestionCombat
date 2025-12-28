@@ -11,19 +11,19 @@ const Lobby = () => {
   const [questionSets, setQuestionSets] = useState([]);
 
   useEffect(() => {
-    if (appState.players) {
+    if (appState?.players) {
       setPlayers(appState.players);
     }
-    if (appState.name) {
+    if (appState?.name) {
       setRoomName(appState.name);
     }
-    if(appState.capacity) {
+    if(appState?.capacity) {
       setCapacity(appState.capacity);
     }
-    if(appState.questionSets) {
+    if(appState?.questionSets) {
       setQuestionSets(appState.questionSets);
     }
-    if (appState.type) {
+    if (appState?.type) {
       setRoomType(appState.type);
     }
     console.log(appState);
@@ -35,11 +35,16 @@ const Lobby = () => {
 
   const onStartClicked = () => {
       startGame();
-      console.log(appState);
   }
+
+  if(!appState) return <div>Loading...</div>
 
   if (roomType === 'lobby') {
     return <Navigate to="/home" />;
+  }
+
+  if(appState.started) {
+    return <Navigate to="/gameRoom" />;
   }
 
   return (
