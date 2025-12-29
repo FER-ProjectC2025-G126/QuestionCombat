@@ -20,3 +20,99 @@
   background: #05808c;
   transition: width 0.2s linear;
 }
+
+.question-card {
+  background-color: rgb(255, 174, 0);
+  width: 40vw;
+  min-height: 35vh;
+  border-radius: 12px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'SuperBubbly', sans-serif;
+}
+
+.question-text {
+  font-size: 40px;
+  color: yellow;
+  text-align: center;
+  -webkit-text-stroke: 2px rgb(255, 132, 0);
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  background-color: rgb(255, 89, 0);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition:
+    transform 0.15s,
+    background-color 0.15s;
+}
+
+.option span {
+  font-size: 28px;
+  color: yellow;
+  text-shadow: 2px 2px 3px black;
+}
+
+.option:hover {
+  background-color: orangered;
+  transform: scale(1.03);
+}
+
+.option:active {
+  transform: scale(0.98);
+}
+
+.option input {
+  transform: scale(1.8);
+  cursor: pointer;
+  accent-color: yellow;
+}
+
+.options.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.options.disabled .option {
+  cursor: not-allowed;
+}
+
+.waiting-text {
+  margin-top: 10px;
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 3px black;
+  font-style: italic;
+  text-align: center;
+}
+
+.review-text {
+  font-family: 'SuperBubbly', sans-serif;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin: 12px 0;
+  text-shadow: 2px 2px 4px black;
+}
+
+.review-text b {
+  color: yellow;
+  -webkit-text-stroke: 1px rgb(255, 132, 0);
+  text-shadow: 2px 2px 5px black;
+}

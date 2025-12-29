@@ -26,7 +26,6 @@ const Lobby = () => {
     if (appState?.type) {
       setRoomType(appState.type);
     }
-    console.log(appState);
   }, [appState]);
 
   const onLeaveClicked = () => {
