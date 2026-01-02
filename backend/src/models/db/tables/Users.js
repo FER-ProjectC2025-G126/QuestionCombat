@@ -15,6 +15,8 @@ export default class Users {
             username: row['username'],
             email: row['email'],
             passwordHash: row['password_hash'],
+            bio: row['bio'] || '',
+            profilePicture: row['profile_picture'] || null,
           });
         }
       });
@@ -24,8 +26,24 @@ export default class Users {
   createUser(username, email, passwordHash) {
     return new Promise((resolve, reject) => {
       this.db.run(
-        'INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)',
-        [username, email, passwordHash],
+        'INSERT INTO users (username, email, password_hash, bio, profile_picture) VALUES (?, ?, ?, ?, ?)',
+        [username, email, passwordHash, '', null],
+        function (err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        }
+      );
+    });
+  }
+
+  updateUserProfile(username, bio, profilePicture) {
+    return new Promise((resolve, reject) => {
+      this.db.run(
+        'UPDATE users SET bio = ?, profile_picture = ? WHERE username = ?',
+        [bio, profilePicture, username],
         function (err) {
           if (err) {
             reject(err);

@@ -10,6 +10,7 @@ import './styles/Public.css';
 import "./styles/Lobby.css"
 import './styles/SingleplayerLobby.css';
 import "./styles/GameRoom.css"
+import './styles/Profile.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

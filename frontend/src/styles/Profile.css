@@ -1,0 +1,205 @@
+.profileBlock {
+  position: relative;
+  width: 70%;
+  max-width: 900px;
+  padding: 30px 50px;
+  background: rgba(104, 107, 179, 0.829);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+
+.profileTitle {
+  font-family: 'SuperBubbly', sans-serif;
+  color: yellow;
+  text-align: center;
+  position: relative;
+  bottom: 10px;
+  font-size: 3.5rem;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+}
+
+.profileContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profilePictureSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.profilePictureLarge {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profilePicturePlaceholder {
+  color: white;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profileLabel {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.profileValue {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+.profileTextarea,
+.profileInput {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: white;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.profileTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.profileTextarea:focus,
+.profileInput:focus {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.profileTextarea::placeholder,
+.profileInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.profileActions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.profileBtn {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profileBtnSave {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+}
+
+.profileBtnSave:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+.profileBtnEdit {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+}
+
+.profileBtnEdit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+}
+
+.profileBtnCancel {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+}
+
+.profileBtnCancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(244, 67, 54, 0.4);
+}
+
+.profileSuccess {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid #4caf50;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profileError {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid #f44336;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* ProfileIcon styles (for Home.jsx header) */
+.profileIcon {
+  position: absolute;
+  top: 25px;
+  right: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.profileIcon:hover {
+  transform: scale(1.1);
+}
+
+.profileIconImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
