@@ -121,8 +121,42 @@ router.post('/register', async function (req, res) {
 router.get('/me', async function (req, res) {
   if (req.username) {
     const user = await database.users.getUser(req.username);
-    return res.status(200).json({ username: user.username, email: user.email });
+    return res.status(200).json({
+      username: user.username,
+      email: user.email,
+      bio: user.bio,
+      profilePicture: user.profilePicture,
+    });
   } else {
     return res.status(401).json({ error: 'User not logged in!' });
+  }
+});
+
+router.put('/profile', async function (req, res) {
+  if (!req.username) {
+    return res.status(401).json({ error: 'User not logged in!' });
+  }
+
+  const { bio, profilePicture } = req.body;
+
+  if (bio === undefined && profilePicture === undefined) {
+    return res.status(400).json({ error: 'No data to update!' });
+  }
+
+  try {
+    const user = await database.users.getUser(req.username);
+    const newBio = bio !== undefined ? bio : user.bio;
+    const newProfilePicture = profilePicture !== undefined ? profilePicture : user.profilePicture;
+
+    await database.users.updateUserProfile(req.username, newBio, newProfilePicture);
+
+    return res.status(200).json({
+      username: req.username,
+      email: user.email,
+      bio: newBio,
+      profilePicture: newProfilePicture,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to update profile!' });
   }
 });

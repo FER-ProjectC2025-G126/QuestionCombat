@@ -143,7 +143,7 @@ export class Room {
 
             // proceed to review state
             this._state = 'review';
-            this.setTimer(Q_REVIEW_TIME)
+            this.setTimer(Q_REVIEW_TIME);
 
             // retrigger update
             this.update();
@@ -174,7 +174,7 @@ export class Room {
             } else {
               // next question
               this._state = 'answer';
-              this.setTimer(Q_ANSWER_TIME)
+              this.setTimer(Q_ANSWER_TIME);
             }
             this.update();
             return;
@@ -199,7 +199,7 @@ export class Room {
 
             // proceed to review state
             this._state = 'review';
-            this.setTimer(Q_REVIEW_TIME)
+            this.setTimer(Q_REVIEW_TIME);
 
             // retrigger update
             this.update();
@@ -238,7 +238,7 @@ export class Room {
 
               // go to choice state
               this._state = 'choice';
-              this.setTimer(Q_CHOOSE_TIME)
+              this.setTimer(Q_CHOOSE_TIME);
             }
             this.update();
             return;
@@ -259,7 +259,7 @@ export class Room {
 
             // go to answer state
             this._state = 'answer';
-            this.setTimer(Q_ANSWER_TIME)
+            this.setTimer(Q_ANSWER_TIME);
 
             // update question selector
             this._questionSelector.markQuestionChosen(this._currentQuestionIndex);
@@ -333,7 +333,8 @@ export class Room {
       this._started ||
       this._loading ||
       this._players.size < this._capacity ||
-      someoneLooksAtEndStats
+      someoneLooksAtEndStats ||
+      this._questions.length === 0
     ) {
       return false;
     }
@@ -380,9 +381,9 @@ export class Room {
     this._state = this._capacity > 1 ? 'choice' : 'answer'; // (choice, answer, review)
 
     if (this._state === 'choice') {
-        this.setTimer(Q_CHOOSE_TIME);
+      this.setTimer(Q_CHOOSE_TIME);
     } else if (this._state === 'answer') {
-        this.setTimer(Q_ANSWER_TIME);
+      this.setTimer(Q_ANSWER_TIME);
     }
 
     // chosen answer for the current question (used for reviewing phase)
@@ -460,7 +461,7 @@ export class Room {
 
       this._turn = attackedUsername;
       this._state = 'answer';
-      this.setTimer(Q_ANSWER_TIME)
+      this.setTimer(Q_ANSWER_TIME);
 
       // get next question choices
       this._questionChoices = this._questionSelector.getNext3();

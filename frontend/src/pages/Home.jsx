@@ -1,19 +1,21 @@
 import Button1 from '../components/Button1';
 import LogoutButton from '../components/LogoutButton';
+import ProfileIcon from '../components/ProfileIcon';
 import useSocket from '../features/socket/useSocket';
 import { Navigate } from 'react-router';
 
 function HomePage() {
-  const {appState} = useSocket();
+  const { appState } = useSocket();
 
-  if(!appState) return <div>Loading...</div>
+  if (!appState) return <div>Loading...</div>;
 
-  if(appState.type === "room") return <Navigate to="/lobby"/>;
+  if (appState.type === 'room') return <Navigate to="/lobby" />;
 
   return (
     <div className="container">
       <div className="block">
         <LogoutButton />
+        <ProfileIcon />
         <div className="gameName">QUESTION COMBAT</div>
         <Button1 to="/singleplayerLobby" text="Singleplayer" className="btn" />
         <Button1 to="/createNewGame" text="Create a new room" className="btn" />

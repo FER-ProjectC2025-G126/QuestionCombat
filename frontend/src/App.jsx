@@ -6,6 +6,7 @@ import SignUpPage from './features/auth/SignUp';
 import CreateNewGame from './features/rooms/createNewGame';
 import JoinGame from './features/rooms/joinGame';
 import ListOfCourses from './pages/ListOfCourses';
+import Profile from './pages/Profile';
 import { AuthProvider } from './features/auth/AuthProvider';
 import RequireAuth from './features/auth/RequireAuth';
 import PublicOnly from './features/auth/PublicOnly';
@@ -20,7 +21,6 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          
           {/* Auth-only pages (login/register) should be inaccessible when already authed */}
           <Route element={<PublicOnly />}>
             <Route index element={<Public />} />
@@ -30,14 +30,15 @@ function App() {
 
           {/* Protected routes start */}
           <Route element={<RequireAuth />}>
+            <Route path="profile" element={<Profile />} />
             <Route element={<SocketProvider />}>
               <Route path="home" element={<HomePage />} />
               <Route path="createNewGame" element={<CreateNewGame />} />
               <Route path="joinGame" element={<JoinGame />} />
               <Route path="lobby" element={<Lobby />} />
-              <Route path="listOfCourses" element={<ListOfCourses /> } />
-              <Route path ="singleplayerLobby" element={<SingleplayerLobby />} />
-              <Route path='gameRoom' element={<GameRoom />}/>
+              <Route path="listOfCourses" element={<ListOfCourses />} />
+              <Route path="singleplayerLobby" element={<SingleplayerLobby />} />
+              <Route path="gameRoom" element={<GameRoom />} />
             </Route>
           </Route>
           {/* Protected routes end */}
