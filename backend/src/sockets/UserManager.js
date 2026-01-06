@@ -120,6 +120,11 @@ export default class UserManager {
       return;
     }
 
+    // enforce valid capacity: 1 for singleplayer, 2-4 for multiplayer (F-10, F-27)
+    if (roomCapacity < 1 || roomCapacity > 4) {
+      return;
+    }
+
     const roomId = ++this.lastGameRoomId;
     let roomName = this.roomNameGen();
     while (this.roomNameToRoomID.has(roomName)) {
