@@ -18,11 +18,9 @@ function HomePage() {
       <div className="block">
         <LogoutButton />
         <ProfileIcon />
-        {user?.role === 'ADMIN' && (
-          <Button1 to="/admin" text="Admin Panel" className="btn adminBtn" />
-        )}
         <div className="gameName">QUESTION COMBAT</div>
         <div className="buttonsHomeGroup">
+          {user?.role === 'ADMIN' && <Button1 to="/admin" text="Admin Panel" className="btn" />}
           <Button1 to="/singleplayerLobby" text="Singleplayer" className="btn" />
           <Button1 to="/createNewGame" text="Create a new room" className="btn" />
           <Button1 to="/joinGame" text="Join a room" className="btn" />
