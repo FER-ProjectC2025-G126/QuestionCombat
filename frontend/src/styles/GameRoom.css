@@ -1,23 +1,85 @@
-.gameRoom {
+.gameHeader{
+  width: 100%;
+  height:15%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.leaveBtn{
+  position: absolute;
+  top:0.3vh;
+  left: 2vw;
+}
+
+.gameRoom {
   height: 100vh;
   width: 100vw;
 }
 
-.progress {
-  width: 10%;
+.Players{
+  width: 100%;
+  height: 85%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap:20px;
+  justify-items: center;
+}
+
+.playerCard{
+  width:12vw;
+  height: 30vh;
+  background-color: rgb(169, 169, 204);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.Questions{
+  background-color: rgb(162, 158, 158);
+  position: absolute;
+  top:20%;
+  left:35%;
+  height: 70vh;
+  width: 30vw;
+}
+
+.HP {
+  width: 80%;
   height: 20px;
   background: #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.progressBar {
+.HealthBar {
   height: 100%;
   background: #05808c;
+  transition: width 0.2s linear;
+}
+
+.playerName{
+  
+}
+
+.timer {
+  position: absolute;
+  top:93%;
+  left: 9%;
+  width: 80%;
+  height: 20px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.timerBar{
+  height: 100%;
+  background: #d05f09;
   transition: width 0.2s linear;
 }
 
