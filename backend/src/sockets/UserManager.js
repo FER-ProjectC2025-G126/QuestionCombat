@@ -120,19 +120,20 @@ export default class UserManager {
       return;
     }
 
-    // enforce max 5 question sets per requirements
-    const setIds = Array.isArray(roomQuestionSetsIDs) ? roomQuestionSetsIDs : [];
-    if (setIds.length > 5) {
-      return;
-    }
-
     const roomId = ++this.lastGameRoomId;
     let roomName = this.roomNameGen();
     while (this.roomNameToRoomID.has(roomName)) {
       roomName = this.roomNameGen();
     }
     this.roomNameToRoomID.set(roomName, roomId);
-    const room = new Room(this.io, roomId, roomName, roomCapacity, roomIsPrivate, setIds);
+    const room = new Room(
+      this.io,
+      roomId,
+      roomName,
+      roomCapacity,
+      roomIsPrivate,
+      roomQuestionSetsIDs
+    );
     this.roomIDToRoom.set(roomId, room);
 
     this.joinRoom(username, roomName);
@@ -141,6 +142,9 @@ export default class UserManager {
   // join the user to an existing room
   joinRoom(username, roomName) {
     const roomId = this.roomNameToRoomID.get(roomName);
+    if (!roomId) {
+      return;
+    }
     if (!roomId) {
       return;
     }
