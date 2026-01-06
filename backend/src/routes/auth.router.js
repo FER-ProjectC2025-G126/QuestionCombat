@@ -3,6 +3,7 @@ import Database from '../models/db/Database.js';
 const database = new Database();
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
+import { requireAdmin } from '../middleware/auth.js';
 
 export const router = express.Router();
 export const sessionLength = 7; // days
@@ -126,6 +127,7 @@ router.get('/me', async function (req, res) {
       email: user.email,
       bio: user.bio,
       profilePicture: user.profilePicture,
+      role: user.role,
     });
   } else {
     return res.status(401).json({ error: 'User not logged in!' });
@@ -158,5 +160,55 @@ router.put('/profile', async function (req, res) {
     });
   } catch (error) {
     return res.status(500).json({ error: 'Failed to update profile!' });
+  }
+});
+
+// Admin endpoints
+router.get('/users', requireAdmin, async function (req, res) {
+  try {
+    const users = await database.users.getAllUsers();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return res.status(500).json({ error: 'Failed to fetch users!' });
+  }
+});
+
+router.put('/users/:username/role', requireAdmin, async function (req, res) {
+  const { username } = req.params;
+  const { role } = req.body;
+
+  // Prevent admin from changing their own role
+  if (username === req.username) {
+    return res
+      .status(400)
+      .json({
+        error: 'You cannot change your own role! You can change roles just for other users!',
+      });
+  }
+
+  if (!role) {
+    return res.status(400).json({ error: 'Role is required!' });
+  }
+
+  if (!['USER', 'ADMIN'].includes(role)) {
+    return res.status(400).json({ error: 'Invalid role. Must be USER or ADMIN' });
+  }
+
+  try {
+    await database.users.updateUserRole(username, role);
+    const updatedUser = await database.users.getUser(username);
+
+    return res.status(200).json({
+      username: updatedUser.username,
+      email: updatedUser.email,
+      role: updatedUser.role,
+    });
+  } catch (error) {
+    if (error.message === 'User not found') {
+      return res.status(404).json({ error: 'User not found!' });
+    }
+    console.error('Error updating user role:', error);
+    return res.status(500).json({ error: 'Failed to update user role!' });
   }
 });

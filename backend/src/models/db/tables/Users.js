@@ -17,6 +17,7 @@ export default class Users {
             passwordHash: row['password_hash'],
             bio: row['bio'] || '',
             profilePicture: row['profile_picture'] || null,
+            role: row['role'] || 'USER',
           });
         }
       });
@@ -52,6 +53,45 @@ export default class Users {
           }
         }
       );
+    });
+  }
+
+  getAllUsers() {
+    return new Promise((resolve, reject) => {
+      this.db.all('SELECT username, email, role FROM users ORDER BY username', (err, rows) => {
+        if (err) {
+          reject(err);
+        } else if (!rows) {
+          resolve([]);
+        } else {
+          resolve(
+            rows.map((row) => ({
+              username: row['username'],
+              email: row['email'],
+              role: row['role'] || 'USER',
+            }))
+          );
+        }
+      });
+    });
+  }
+
+  updateUserRole(username, role) {
+    return new Promise((resolve, reject) => {
+      if (!['USER', 'ADMIN'].includes(role)) {
+        reject(new Error('Invalid role. Must be USER or ADMIN'));
+        return;
+      }
+
+      this.db.run('UPDATE users SET role = ? WHERE username = ?', [role, username], function (err) {
+        if (err) {
+          reject(err);
+        } else if (this.changes === 0) {
+          reject(new Error('User not found'));
+        } else {
+          resolve();
+        }
+      });
     });
   }
 }

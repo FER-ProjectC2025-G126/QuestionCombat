@@ -7,6 +7,7 @@ import CreateNewGame from './features/rooms/createNewGame';
 import JoinGame from './features/rooms/joinGame';
 import ListOfCourses from './pages/ListOfCourses';
 import Profile from './pages/Profile';
+import AdminPanel from './pages/AdminPanel';
 import { AuthProvider } from './features/auth/AuthProvider';
 import RequireAuth from './features/auth/RequireAuth';
 import PublicOnly from './features/auth/PublicOnly';
@@ -31,6 +32,7 @@ function App() {
           {/* Protected routes start */}
           <Route element={<RequireAuth />}>
             <Route path="profile" element={<Profile />} />
+            <Route path="admin" element={<AdminPanel />} />
             <Route element={<SocketProvider />}>
               <Route path="home" element={<HomePage />} />
               <Route path="createNewGame" element={<CreateNewGame />} />

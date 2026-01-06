@@ -45,6 +45,14 @@
   overflow: visible;
 }
 
+.adminBtn {
+  position: relative;
+  height: 60px;
+  top: 28px;
+  width: 28%;
+  right: 350px;
+}
+
 @keyframes sizeUp {
   0% {
     transform: scale(0);

@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS users (
     email TEXT NOT NULL,
     password_hash TEXT NOT NULL,
     bio TEXT DEFAULT '',
-    profile_picture TEXT DEFAULT NULL
+    profile_picture TEXT DEFAULT NULL,
+    role TEXT DEFAULT 'USER'
 );
 CREATE TABLE IF NOT EXISTS sessions (
     sid TEXT PRIMARY KEY,

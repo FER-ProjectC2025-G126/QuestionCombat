@@ -1,0 +1,246 @@
+.adminBlock {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  padding: 40px;
+  background: rgba(104, 107, 179, 0.829);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+}
+
+.adminTitle {
+  font-family: 'SuperBubbly', sans-serif;
+  color: yellow;
+  text-align: center;
+  font-size: 3.5rem;
+  -webkit-text-stroke: 2px rgba(249, 151, 4, 0.889);
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
+}
+
+.adminContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.usersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.usersTitle {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.usersTable {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 2fr;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: white;
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 2fr;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.tableRow:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.colUsername,
+.colEmail,
+.colRole,
+.colActions {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-family: 'Gotham Pro', sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.youBadge {
+  margin-left: 10px;
+  background: rgba(255, 152, 0, 0.3);
+  color: #ff9800;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.colEmail {
+  font-family: 'Gotham Pro', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.roleBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Gotham Pro', sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.role-user {
+  background: rgba(76, 175, 80, 0.3);
+  color: #4caf50;
+}
+
+.role-admin {
+  background: rgba(255, 152, 0, 0.3);
+  color: #ff9800;
+}
+
+.roleButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.roleBtn {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.roleBtn:hover:not(:disabled) {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.roleBtn.active {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  border-color: #ff9800;
+  color: white;
+}
+
+.roleBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.noActions {
+  font-family: 'Gotham Pro', sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.adminError {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 2px solid #f44336;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.adminSuccess {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 2px solid #4caf50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.adminLoading {
+  text-align: center;
+  font-family: 'Gotham Pro', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+}
+
+.noUsers {
+  text-align: center;
+  font-family: 'Gotham Pro', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+}
+
+@media (max-width: 1024px) {
+  .tableHeader,
+  .tableRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .colRole,
+  .colActions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .adminBlock {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .adminTitle {
+    font-size: 2.5rem;
+  }
+
+  .tableHeader,
+  .tableRow {
+    grid-template-columns: 1fr;
+  }
+
+  .colRole,
+  .colActions {
+    grid-column: 1 / -1;
+  }
+}
