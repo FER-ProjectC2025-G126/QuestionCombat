@@ -4,7 +4,6 @@ import { Navigate } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 
-
 const GameRoom = () => {
   const { user } = useAuth();
   const { appState, leaveRoom } = useSocket();
@@ -14,9 +13,7 @@ const GameRoom = () => {
   const [questionChoices, setQuestionChoices] = useState([]);
   const [state, setState] = useState('');
   const [isOnTurn, setIsOnTurn] = useState(false);
-
   const [players, setPlayers] = useState([]);
-  const [profilePicture, setProfilePicture] = useState('');
 
   useEffect(() => {
     if (appState?.players) {
@@ -57,7 +54,6 @@ const GameRoom = () => {
         Leave Room
       </button>
       <div className="gameHeader">
-        <h1>Game Room</h1>
         <p className="turn">{turn}'s turn</p>
       </div>
       <div className="Players">
@@ -81,16 +77,15 @@ const GameRoom = () => {
           </div>
         ))}
       </div>
-      <div className="Questions">Q</div>
       <div className="timer">
         <div className="timerBar" style={{ width: `${progressBar * 100}%` }} />
       </div>
       {state === 'choice' && (
         <div className="question-card">
           <div className="question-text">Choose Question</div>
-
           <div className={`options ${!isOnTurn ? 'disabled' : ''}`}>
             {questionChoices.map((q) => (
+              // we should discuss how many questions we show
               <button
                 key={q.id}
                 className="option"
@@ -104,15 +99,16 @@ const GameRoom = () => {
               </button>
             ))}
           </div>
-
-          {!isOnTurn && <p className="waiting-text">Waiting for {turn} to choose a question...</p>}
+          <p className={`waiting-text ${isOnTurn ? 'your-turn' : ''}`}>
+            {isOnTurn ? "It's your turn" : `Waiting for ${turn} to answer`}
+          </p>{' '}
         </div>
       )}
       {state === 'answer' && (
         <div className="question-card" data-id={question.id}>
           <div className="question-text">{question.text}</div>
 
-          <div className={`options ${!isOnTurn ? 'disabled' : ''}`}>
+          <div className={`options ${state} ${!isOnTurn ? 'disabled' : ''}`}>
             {question.options.map((option, index) => (
               <label key={index} className="option">
                 <input
@@ -130,7 +126,9 @@ const GameRoom = () => {
             ))}
           </div>
 
-          {!isOnTurn && <p className="waiting-text">Waiting for {turn} to answer</p>}
+          <p className={`waiting-text ${isOnTurn ? 'your-turn' : ''}`}>
+            {isOnTurn ? "It's your turn" : `Waiting for ${turn} to answer`}
+          </p>
         </div>
       )}
       {state === 'review' && (
@@ -138,7 +136,7 @@ const GameRoom = () => {
           <div className="question-text">Result</div>
 
           <p className="review-text">
-            Correct answer <b>{question.correctOption}</b>
+            Correct answer: <b>{question.correctOption}</b>
           </p>
 
           <p className="review-text">
