@@ -16,6 +16,7 @@ import Public from './pages/Public';
 import Lobby from './features/rooms/Lobby';
 import SingleplayerLobby from './features/rooms/SingleplayerLobby';
 import GameRoom from './features/rooms/GameRoom';
+import LeaderBoard from './pages/LeaderBoard';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path="listOfCourses" element={<ListOfCourses />} />
               <Route path="singleplayerLobby" element={<SingleplayerLobby />} />
               <Route path="gameRoom" element={<GameRoom />} />
+              <Route path="leaderBoard" element={<LeaderBoard />} />
             </Route>
           </Route>
           {/* Protected routes end */}

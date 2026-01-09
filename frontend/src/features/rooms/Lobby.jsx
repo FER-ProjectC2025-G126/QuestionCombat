@@ -54,7 +54,7 @@ const Lobby = () => {
           <div className="block5">
             <div className='left'>
               <div className="roomName">
-                <h2>Room name:</h2>
+                <h2>Room name:</h2> 
                 <h3>{roomName}</h3>
               </div>
               <h2 className='qSets-title'>Question Sets:</h2>

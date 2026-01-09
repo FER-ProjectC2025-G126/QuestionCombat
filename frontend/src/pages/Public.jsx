@@ -23,10 +23,10 @@ const Public = () => {
       <div id="q2" className="falling-question" style={{ left: '15vw' }}>
         ?
       </div>
-      <div id="q3" className="falling-question" style={{ left: '85vw' }}>
+      <div id="q3" className="falling-question" style={{ left: '83vw' }}>
         ?
       </div>
-      <div id="q4" className="falling-question" style={{ left: '95vw' }}>
+      <div id="q4" className="falling-question" style={{ left: '93vw' }}>
         ?
       </div>
       <div className="publicBlock">

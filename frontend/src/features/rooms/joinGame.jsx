@@ -40,7 +40,7 @@ function JoinGame() {
   if (appState.type !== 'lobby') {
     return <Navigate to="/lobby" />;
   }
-  return ( 
+  return (
     <div className="container">
       <div className="block2">
         <Button1 to="/home" text="BACK" className="backBtn" />
@@ -51,17 +51,17 @@ function JoinGame() {
             <div className="gamesList">
               {appState.rooms && appState.rooms.length > 0 ? (
                 appState.rooms.map((room) => (
-                <div
-                  key={room.name}
-                  className="gameCard"
-                  onClick={() => handleJoinPublicGame(room.name)}
-                >
-                  {room.name}
-                </div>
-              ))
-            ) : (
-            <div className='noItemsMessage'>No public rooms available.</div>
-          )}
+                  <div
+                    key={room.name}
+                    className="gameCard"
+                    onClick={() => handleJoinPublicGame(room.name)}
+                  >
+                    {room.name}
+                  </div>
+                ))
+              ) : (
+                <div className="noItemsMessage">No public rooms available.</div>
+              )}
             </div>
           </div>
           <div className="elementOfBlock3">
@@ -69,6 +69,7 @@ function JoinGame() {
             <div className="elmCode">
               <form className="joinPrivateForm" onSubmit={handleJoinPrivateGame}>
                 <input
+                  className="joinInput"
                   type="text"
                   name="gameCode"
                   placeholder="Enter room name"

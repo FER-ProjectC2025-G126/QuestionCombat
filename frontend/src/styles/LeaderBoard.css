@@ -1,0 +1,104 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: white;
+  width: 90%;
+  max-width: 700px;
+  height: 60%;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  font-size: 28px;
+  box-sizing: border-box;
+}
+
+.playerRow {
+  color: rgb(152, 7, 7);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 50%;
+  width: auto;
+  max-width: 600px;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgb(255, 176, 29);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: rowFadeUp 0.8s ease forwards;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+.playerRow.winner {
+  animation: winnerRow 1.4s ease-out forwards;
+}
+
+.playerRow p {
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.playerScore {
+  width: 60px;
+  text-align: center;
+  font-size: clamp(20px, 3vw, 30px);
+  font-family: 'SuperBubbly', sans-serif;
+  color: rgb(217, 184, 238);
+  -webkit-text-stroke: 1px rgba(83, 14, 118, 0.889);
+  text-shadow: 2px 2px 5px black;
+  flex-shrink: 0;
+}
+
+@keyframes rowFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes winnerRow {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1.2);
+    background-color: yellow;
+  }
+}
+
+@media (max-width: 700px) {
+  .board {
+    min-width: 70%;
+  }
+  .playerRow {
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    font-size: 25px;
+    width: 40vw;
+    height: 70px;
+  }
+
+  .playerRow p {
+    text-align: center;
+    white-space: normal;
+  }
+
+  .playerScore {
+    width: auto;
+    font-size: 20px;
+  }
+}

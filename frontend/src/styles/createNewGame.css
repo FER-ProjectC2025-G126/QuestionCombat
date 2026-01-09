@@ -14,11 +14,12 @@
 .block3 {
   background-color: white;
   gap: 10px;
-  height: 70%;
+  height: 75%;
   width: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
   padding: 10px;
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
@@ -28,15 +29,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
 
 .elmHeader {
   text-align: center;
   font-family: 'SuperBubbly', sans-serif;
   color: rgb(217, 184, 238);
-  -webkit-text-stroke: 2px rgba(83, 14, 118, 0.889);
+  -webkit-text-stroke: 1px rgba(83, 14, 118, 0.889);
   text-shadow: 2px 2px 5px black;
-  font-size: 1.8rem;
+  font-size: clamp(20px, 2vw, 28px);
 }
 
 .Forms,
@@ -66,12 +68,11 @@
 .Labels {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-evenly;
   cursor: pointer;
   background-color: rgb(255, 115, 0);
   border-radius: 10px;
-  width: 10vw;
+  width: 12vw;
   height: 6vh;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   font-family: 'SuperBubbly', sans-serif;
@@ -80,8 +81,13 @@
   font-size: 20px;
 }
 
-.Labels input {
-  width: 10px;
+.newRoomSpan {
+  font-size: clamp(15px, 2vw, 20px);
+  text-align: center;
+}
+
+.gameCreateInput {
+  width: 25px;
   accent-color: rgb(255, 68, 0);
 }
 
@@ -93,7 +99,8 @@
   cursor: pointer;
   height: 7vh;
   width: 10vw;
-  font-size: 30px;
+  min-width: 65px;
+  font-size: clamp(20px, 2vw, 30px);
   color: yellow;
   text-shadow: 2px 2px 3px black;
   border-radius: 10px;
@@ -105,12 +112,13 @@
 
 .backBtn {
   position: absolute;
-  top: 20px;
+  top: 7px;
   right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
+  min-height: 4.5vh;
   background-color: rgb(255, 115, 0);
   color: yellow;
   font-size: 20px;
@@ -237,4 +245,30 @@
   flex-direction: column;
   gap: 12px;
   padding-right: 6px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    height: auto;
+  }
+  .block2 {
+    height: 700px;
+    width: 400px;
+  }
+  .block3 {
+    height: auto;
+    margin-bottom: 10px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    font-size: clamp(20px, 2vw, 25px);
+  }
+  .elementOfBlock3 {
+    width: 80%;
+  }
+  .Labels {
+    width: 25vw;
+  }
 }

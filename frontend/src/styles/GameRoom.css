@@ -9,7 +9,7 @@
 
 .leaveBtn {
   position: absolute;
-  top: 0.3vh;
+  top: 20px;
   left: 2vw;
 }
 
@@ -18,7 +18,7 @@
   width: 100vw;
 }
 
-.turn{
+.turn {
   font-family: 'SuperBubbly', sans-serif;
   font-size: 45px;
   color: yellow;
@@ -144,7 +144,7 @@
   transform: scale(0.98);
 }
 
-.option span{
+.option span {
   width: 10vw;
 }
 
@@ -194,4 +194,9 @@
   -webkit-text-stroke: 1px rgb(255, 132, 0);
 }
 
-
+@media (max-width: 800px) {
+  .leaveBtn {
+    top: 8px;
+  
+  }
+}

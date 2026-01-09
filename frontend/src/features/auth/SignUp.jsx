@@ -72,6 +72,7 @@ function SignUpPage() {
             <p className="text">Please signup</p>
             <form onSubmit={handleSubmit} className="loginForm">
               <input
+                className="loginInput"
                 type="text"
                 id="userName"
                 name="userName"
@@ -83,6 +84,7 @@ function SignUpPage() {
               ></input>
               <br />
               <input
+                className="loginInput"
                 type="email"
                 id="Email"
                 name="Email"
@@ -94,6 +96,7 @@ function SignUpPage() {
               ></input>
               <br />
               <input
+                className="loginInput"
                 type="password"
                 id="password"
                 name="password"
@@ -104,6 +107,7 @@ function SignUpPage() {
               ></input>
               <br />
               <input
+                className="loginInput"
                 type="password"
                 id="confirmPpassword"
                 name="confirmPassword"

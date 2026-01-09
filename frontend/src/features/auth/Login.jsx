@@ -54,6 +54,7 @@ function LoginPage() {
             <p className="text">Please login</p>
             <form onSubmit={handleSubmit} className="loginForm">
               <input
+                className="loginInput"
                 type="text"
                 id="userName"
                 name="userName"
@@ -65,6 +66,7 @@ function LoginPage() {
               ></input>
               <br />
               <input
+                className="loginInput"
                 type="password"
                 id="password"
                 name="password"

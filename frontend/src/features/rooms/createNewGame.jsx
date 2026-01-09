@@ -78,18 +78,18 @@ function CreateNewGame() {
             <h2 className="elmHeader">CHOOSE NUMBER OF PLAYERS</h2>
             <div className="Forms">
               <label className="Labels">
-                <span>2 players</span>
-                <input type="radio" name="players" value="2" onChange={onNumOfPlayersChange} />
+                <span className='newRoomSpan'>2 players</span>
+                <input className="gameCreateInput" type="radio" name="players" value="2" onChange={onNumOfPlayersChange} />
               </label>
 
               <label className="Labels">
-                <span>3 players</span>
-                <input type="radio" name="players" value="3" onChange={onNumOfPlayersChange} />
+                <span className='newRoomSpan'>3 players</span>
+                <input className="gameCreateInput" type="radio" name="players" value="3" onChange={onNumOfPlayersChange} />
               </label>
 
               <label className="Labels">
-                <span>4 players</span>
-                <input type="radio" name="players" value="4" onChange={onNumOfPlayersChange} />
+                <span className='newRoomSpan'>4 players</span>
+                <input className="gameCreateInput" type="radio" name="players" value="4" onChange={onNumOfPlayersChange} />
               </label>
             </div>
           </div>
@@ -119,13 +119,13 @@ function CreateNewGame() {
             <h2 className="elmHeader">PRIVATE OR PUBLIC?</h2>
             <div className="Forms">
               <label className="Labels">
-                <span>private</span>
-                <input type="radio" name="gameType" value="private" onChange={onGameTypeChange} />
+                <span className='newRoomSpan'>private</span>
+                <input className="gameCreateInput" type="radio" name="gameType" value="private" onChange={onGameTypeChange} />
               </label>
 
               <label className="Labels">
-                <span>public</span>
-                <input type="radio" name="gameType" value="public" onChange={onGameTypeChange} />
+                <span className='newRoomSpan'>public</span>
+                <input className="gameCreateInput" type="radio" name="gameType" value="public" onChange={onGameTypeChange} />
               </label>
             </div>
           </div>
