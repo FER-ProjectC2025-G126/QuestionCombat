@@ -4,3 +4,22 @@
   align-items: center;
   flex-direction: column;
 }
+.block7{
+  background-color: white;
+  gap: 10px;
+  height: 70%;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1000px) {
+  .block7{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
