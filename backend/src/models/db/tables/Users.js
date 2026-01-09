@@ -24,6 +24,27 @@ export default class Users {
     });
   }
 
+  getUserByEmail(email) {
+    return new Promise((resolve, reject) => {
+      this.db.get('SELECT * FROM users WHERE email = ?', [email], (err, row) => {
+        if (err) {
+          reject(err);
+        } else if (!row) {
+          resolve(null);
+        } else {
+          resolve({
+            username: row['username'],
+            email: row['email'],
+            passwordHash: row['password_hash'],
+            bio: row['bio'] || '',
+            profilePicture: row['profile_picture'] || null,
+            role: row['role'] || 'USER',
+          });
+        }
+      });
+    });
+  }
+
   createUser(username, email, passwordHash) {
     return new Promise((resolve, reject) => {
       this.db.run(

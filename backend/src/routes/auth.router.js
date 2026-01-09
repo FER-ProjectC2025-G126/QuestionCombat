@@ -81,8 +81,8 @@ router.post('/register', async function (req, res) {
     return res.status(400).json({ error: 'Missing password!' });
   }
 
-  if (username.length > 32) {
-    return res.status(400).json({ error: 'Username too long! (max 32 characters)' });
+  if (username.length > 25) {
+    return res.status(400).json({ error: 'Username too long! (max 25 characters)' });
   }
 
   if (await database.users.getUser(username)) {
@@ -110,6 +110,10 @@ router.post('/register', async function (req, res) {
     /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
   if (!HTML5_EMAIL_RE.test(email)) {
     return res.status(400).json({ error: 'Invalid email address!' });
+  }
+
+  if (await database.users.getUserByEmail(email)) {
+    return res.status(409).json({ error: 'Account with this email already exists!' });
   }
 
   const passwordHash = await argon2.hash(password);
