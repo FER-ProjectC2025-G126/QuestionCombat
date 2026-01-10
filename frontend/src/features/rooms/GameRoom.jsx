@@ -36,7 +36,7 @@ const GameRoom = () => {
     if (appState?.state) {
       setState(appState.state);
     }
-    if(appState?.chosenAnswers) {
+    if(appState?.chosenAnswer) {
       setChosenAnswer(appState.chosenAnswer);
     }
     setIsOnTurn(user.username === appState?.turn);
@@ -57,7 +57,7 @@ const GameRoom = () => {
   }
 
   const onChooseNextPlayer = (player) => {
-    if(state !== "choice" || !isOnTurn) return;
+    if(state !== "choice") return;
     setNextPlayer(player);
   }
 
@@ -77,11 +77,11 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className={`playerCard ${nextPlayer === player.username ? "clicked" : ""}`} style={{  }} onClick={() => {
-            if (user.username !== player.username) {
+          <div key={player.id} className={`playerCard ${(nextPlayer === player.username && state === "choice") ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
+            if(user.username !== player.username) {
               onChooseNextPlayer(player.username)
-            }
-          }}>
+              }
+            }}>
             <div className="playerName">{player.username}</div>
             <div className="profilePictureSection">
               {(player.username === user.username) && user.profile_picture ? (
