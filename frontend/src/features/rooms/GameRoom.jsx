@@ -6,7 +6,7 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const GameRoom = () => {
   const { user } = useAuth();
-  const { appState, leaveRoom } = useSocket();
+  const { appState, leaveRoom, chooseQuestion, answerQuestion } = useSocket();
   const [progressBar, setProgressBar] = useState(1);
   const [turn, setTurn] = useState('');
   const [question, setQuestion] = useState({});
@@ -14,6 +14,8 @@ const GameRoom = () => {
   const [state, setState] = useState('');
   const [isOnTurn, setIsOnTurn] = useState(false);
   const [players, setPlayers] = useState([]);
+  const [nextPlayer, setNextPlayer] = useState('');
+  const [chosenAnswer, setChosenAnswer] = useState('');
 
   useEffect(() => {
     if (appState?.players) {
@@ -34,6 +36,9 @@ const GameRoom = () => {
     if (appState?.state) {
       setState(appState.state);
     }
+    if(appState?.chosenAnswers) {
+      setChosenAnswer(appState.chosenAnswer);
+    }
     setIsOnTurn(user.username === appState?.turn);
     console.log(appState);
   }, [appState]);
@@ -41,6 +46,19 @@ const GameRoom = () => {
   const onLeaveClicked = () => {
     leaveRoom();
   };
+
+  const onChooseQuestion = (questionId, username) => {
+    setNextPlayer('');
+    chooseQuestion(questionId, username);
+  };
+
+  const onAnswerQuestion = (answer) => {
+    answerQuestion(answer);
+  }
+
+  const onChooseNextPlayer = (player) => {
+    setNextPlayer(player);
+  }
 
   if (!appState) return <div>Loading...</div>;
 
@@ -58,13 +76,13 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className="playerCard">
+          <div key={player.id} className={`playerCard ${nextPlayer === player.username ? "clicked" : ""}`} onClick={() => onChooseNextPlayer(player.username)}>
             <div className="playerName">{player.username}</div>
             <div className="profilePictureSection">
-              {player.profilePicture ? (
+              {(player.username === user.username) && user.profile_picture ? (
                 <img
-                  src={player.profilePicture}
-                  alt={player.username}
+                  src={user.profile_picture}
+                  alt={user.username}
                   className="profilePictureSmall"
                 />
               ) : (
@@ -72,8 +90,9 @@ const GameRoom = () => {
               )}
             </div>
             <div className="HP">
-              <div className="HealthBar" style={{ width: `${player.health}%` }} />
+              <div className="HealthBar" style={{ width: `${player.hp}%` }} />
             </div>
+            <div>{player.score}</div>
           </div>
         ))}
       </div>
@@ -84,24 +103,24 @@ const GameRoom = () => {
         <div className="question-card">
           <div className="question-text">Choose Question</div>
           <div className={`options ${!isOnTurn ? 'disabled' : ''}`}>
-            {questionChoices.map((q) => (
+            {questionChoices.map((choice) => (
               // we should discuss how many questions we show
               <button
-                key={q.id}
+                key={choice.id}
                 className="option"
-                disabled={!isOnTurn}
+                disabled={!isOnTurn || !nextPlayer}
                 onClick={() => {
                   if (!isOnTurn) return;
-                  chooseQuestion(q.id); // socket emit
+                  onChooseQuestion(choice.index, nextPlayer);
                 }}
               >
-                {q.text}
+                {choice.text}
               </button>
             ))}
           </div>
           <p className={`waiting-text ${isOnTurn ? 'your-turn' : ''}`}>
             {isOnTurn ? "It's your turn" : `Waiting for ${turn} to answer`}
-          </p>{' '}
+          </p>
         </div>
       )}
       {state === 'answer' && (
@@ -118,7 +137,7 @@ const GameRoom = () => {
                   disabled={!isOnTurn}
                   onChange={() => {
                     if (!isOnTurn) return;
-                    answerQuestion(question.id, option); // socket emit
+                    onAnswerQuestion(question.id, option);
                   }}
                 />
                 <span>{option}</span>
@@ -140,7 +159,7 @@ const GameRoom = () => {
           </p>
 
           <p className="review-text">
-            {turn} answered: <b>{question.playerAnswer}</b>
+            {turn} answered: <b>{chosenAnswer}</b>
           </p>
         </div>
       )}

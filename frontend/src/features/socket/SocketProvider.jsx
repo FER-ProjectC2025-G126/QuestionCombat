@@ -77,6 +77,16 @@ const SocketProvider = () => {
     socketRef.current.emit("startGame");
   }
 
+  const chooseQuestion = (questionId, username) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("chooseQuestion", questionId, username);
+  }
+
+  const answerQuestion = (questionId, answer) => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("submitAnswer", answer);
+  }
+
   const value = {
     socket: socketRef.current,
     isConnected,
@@ -86,6 +96,8 @@ const SocketProvider = () => {
     createRoom,
     leaveRoom,
     startGame,
+    chooseQuestion,
+    answerQuestion,
   };
 
   return (
