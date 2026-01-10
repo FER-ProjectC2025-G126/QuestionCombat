@@ -136,7 +136,7 @@ export class Room {
       if (this._capacity === 1) {
         // singleplayer mode updates
         if (this._state === 'answer') {
-          if (this._timer.endTime < Date.now()) {
+          if (this.timerExpired()) {
             // time's up, question unanswered (count as incorrect)
             const player = this._players.values().next().value;
             player.incorrectAns += 1;
@@ -152,7 +152,7 @@ export class Room {
           updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
         } else if (this._state === 'review') {
-          if (this._timer.endTime < Date.now()) {
+          if (this.timerExpired()) {
             // review time over, proceed to next question
             this._currentQuestionIndex += 1;
             if (this._currentQuestionIndex >= this._questionOrder.length) {
@@ -186,9 +186,8 @@ export class Room {
         }
       } else {
         // multiplayer mode updates
-
         if (this._state === 'answer') {
-          if (this._timer.endTime < Date.now()) {
+          if (this.timerExpired()) {
             // time's up, question unanswered (count as incorrect)
             const player = this._players.get(this._turn);
             player.incorrectAns += 1;
@@ -208,7 +207,7 @@ export class Room {
           updateJSON.question = this._questions[this._currentQuestionIndex];
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
         } else if (this._state === 'review') {
-          if (this._timer.endTime < Date.now()) {
+          if (this.timerExpired()) {
             // review time over, proceed to next turn
             // check for game over condition (only one player with hp > 0)
             let playersAlive = 0;
@@ -246,7 +245,7 @@ export class Room {
           updateJSON.question = this._questions[this._currentQuestionIndex];
           updateJSON.chosenAnswer = this._chosenAnswer;
         } else if (this._state === 'choice') {
-          if (this._timer.endTime < Date.now()) {
+          if (this.timerExpired()) {
             // time's up, choose random question and random player to answer
             const randQuestionIndex = Math.floor(Math.random() * this._questionChoices.length);
             this._currentQuestionIndex = this._questionChoices[randQuestionIndex];
@@ -267,13 +266,12 @@ export class Room {
             this._questionChoices = this._questionSelector.getNext3();
 
             // retrigger update
-            this.update();
-            return;
+            return this.update();
           }
           updateJSON.questionChoices = this._questionChoices.map((index) => {
             return { index: index, ...this._questions[index] };
           });
-          for (const question of this._players.values()) {
+          for (const question of updateJSON.questionChoices) {
             question.correctOption = null; // hide correct answers during question choosing phase
           }
         } else {
@@ -406,8 +404,12 @@ export class Room {
     this._timer.originalDuration = lengthInSeconds * 1000;
   }
 
+  timerExpired() {
+    return Date.now() >= this._timer.endTime;
+  }
+
   submitAnswer(username, answer) {
-    if (username === this._turn && this._state === 'answer' && Date.now() < this._timer.endTime) {
+    if (username === this._turn && this._state === 'answer' && !this.timerExpired()) {
       const player = this._players.get(username);
       const currentQuestion = this._questions[this._questionOrder[this._currentQuestionIndex]];
 
@@ -449,7 +451,7 @@ export class Room {
       this._capacity > 1 &&
       this._turn === username &&
       this._state === 'choice' &&
-      Date.now() < this._timer.endTime &&
+      !this.timerExpired() &&
       this._questionChoices.includes(username) &&
       attackedUser &&
       attackedUser.hp > 0 &&
