@@ -1,5 +1,5 @@
 import { useAuth } from './AuthProvider';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router';
 
 const PublicOnly = () => {
   const { isAuthenticated } = useAuth();

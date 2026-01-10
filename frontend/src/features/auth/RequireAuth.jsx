@@ -1,5 +1,5 @@
 import { useAuth } from './AuthProvider';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router';
 
 const RequireAuth = () => {
   const { isAuthenticated } = useAuth();

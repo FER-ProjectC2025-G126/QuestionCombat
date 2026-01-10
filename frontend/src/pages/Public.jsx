@@ -17,18 +17,10 @@ const Public = () => {
   }, []);
   return (
     <div className="container">
-      <div id="q1" className="falling-question" style={{ left: '5vw' }}>
-        ?
-      </div>
-      <div id="q2" className="falling-question" style={{ left: '15vw' }}>
-        ?
-      </div>
-      <div id="q3" className="falling-question" style={{ left: '83vw' }}>
-        ?
-      </div>
-      <div id="q4" className="falling-question" style={{ left: '93vw' }}>
-        ?
-      </div>
+      <div id="q1" className="falling-question" style={{ left: '5vw' }}>?</div>
+      <div id="q2" className="falling-question" style={{ left: '15vw' }}>?</div>
+      <div id="q3" className="falling-question" style={{ left: '83vw' }}>?</div>
+      <div id="q4" className="falling-question" style={{ left: '93vw' }}>?</div>
       <div className="publicBlock">
         <div className="publicTitle">Welcome to Question Combat</div>
         <div className="coursesBlock">

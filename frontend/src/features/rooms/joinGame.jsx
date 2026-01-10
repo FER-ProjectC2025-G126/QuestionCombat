@@ -1,7 +1,7 @@
 import Button1 from '../../components/Button1';
 import { useState } from 'react';
 import useSocket from '../socket/useSocket';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 function JoinGame() {
   const { isConnected, isLoading, appState, joinRoom } = useSocket();
