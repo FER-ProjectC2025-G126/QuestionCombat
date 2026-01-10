@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import api from '../../api/api';
 import Button1 from '../../components/Button1';
+import Background from "../../components/Background";
 
 function SignUpPage() {
   const [username, setUsername] = useState('');
@@ -41,94 +42,77 @@ function SignUpPage() {
       });
   };
 
-  return (
-    <div>
-      <div className="Container">
-        <div id="q1" className="falling-question" style={{ left: '5vw' }}>
-          ?
-        </div>
-        <div id="q2" className="falling-question" style={{ left: '20vw' }}>
-          ?
-        </div>
-        <div id="q3" className="falling-question" style={{ left: '75vw' }}>
-          ?
-        </div>
-        <div id="q4" className="falling-question" style={{ left: '90vw' }}>
-          ?
-        </div>
-
-        <div className="LoginBlock">
-          {success && (
-            <div className="popup">
-              <p className="popupTitle">Registration Successful!</p>
-              <Link to="/login">Login here!</Link>
-            </div>
-          )}
-          <div className="gameName">
-            <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
+  return <Background>
+    <div className="LoginBlock">
+      {success && (
+          <div className="popup">
+            <p className="popupTitle">Registration Successful!</p>
+            <Link to="/login">Login here!</Link>
           </div>
-          <div className="LoginCard">
-            <Button1 to="/home" text="HOME" className="backBtn" />
-            <p className="text">Please signup</p>
-            <form onSubmit={handleSubmit} className="loginForm">
-              <input
-                className="loginInput"
-                type="text"
-                id="userName"
-                name="userName"
-                placeholder="Username"
-                value={username}
-                required
-                onChange={onUsernameChanged}
-                autoComplete="true"
-              ></input>
-              <br />
-              <input
-                className="loginInput"
-                type="email"
-                id="Email"
-                name="Email"
-                placeholder="Email"
-                value={email}
-                required
-                onChange={onEmailChanged}
-                autoComplete="true"
-              ></input>
-              <br />
-              <input
-                className="loginInput"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                required
-                onChange={onPasswordChanged}
-              ></input>
-              <br />
-              <input
-                className="loginInput"
-                type="password"
-                id="confirmPpassword"
-                name="confirmPassword"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                required
-                onChange={onConfirmPasswordChanged}
-              ></input>
-              <br />
-              <Link to="/login">Have an account? Login here.</Link>
-              {errorMessage && <div className="error">{errorMessage}</div>}
-              <br />
-              <button type="submit" className="submitBtn">
-                SIGNUP
-              </button>
-            </form>
-          </div>
-        </div>
+      )}
+      <div className="gameName">
+        <h1 className="Header">WELCOME TO QUESTION COMBAT</h1>
+      </div>
+      <div className="LoginCard">
+        <Button1 to="/home" text="HOME" className="backBtn" />
+        <p className="text">Please signup</p>
+        <form onSubmit={handleSubmit} className="loginForm">
+          <input
+              className="loginInput"
+              type="text"
+              id="userName"
+              name="userName"
+              placeholder="Username"
+              value={username}
+              required
+              onChange={onUsernameChanged}
+              autoComplete="true"
+          ></input>
+          <br />
+          <input
+              className="loginInput"
+              type="email"
+              id="Email"
+              name="Email"
+              placeholder="Email"
+              value={email}
+              required
+              onChange={onEmailChanged}
+              autoComplete="true"
+          ></input>
+          <br />
+          <input
+              className="loginInput"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              required
+              onChange={onPasswordChanged}
+          ></input>
+          <br />
+          <input
+              className="loginInput"
+              type="password"
+              id="confirmPpassword"
+              name="confirmPassword"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              required
+              onChange={onConfirmPasswordChanged}
+          ></input>
+          <br />
+          <Link to="/login">Have an account? Login here.</Link>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          <br />
+          <button type="submit" className="submitBtn">
+            SIGNUP
+          </button>
+        </form>
       </div>
     </div>
-  );
+  </Background>;
 }
 
 export default SignUpPage;

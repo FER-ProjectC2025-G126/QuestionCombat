@@ -4,6 +4,7 @@ import ProfileIcon from '../components/ProfileIcon';
 import useSocket from '../features/socket/useSocket';
 import { Navigate } from 'react-router';
 import { useAuth } from '../features/auth/AuthProvider';
+import Background from "../components/Background";
 
 function HomePage() {
   const { appState } = useSocket();
@@ -14,7 +15,7 @@ function HomePage() {
   if (appState.type === 'room') return <Navigate to="/lobby" />;
 
   return (
-    <div className="container">
+    <Background>
       <div className="block">
         <LogoutButton />
         <ProfileIcon />
@@ -27,7 +28,7 @@ function HomePage() {
           <Button1 to="/listOfCourses" text="List of courses" className="btn" />
         </div>
       </div>
-    </div>
+    </Background>
   );
 }
 

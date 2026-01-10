@@ -4,6 +4,7 @@ import api from '../api/api';
 import Button1 from '../components/Button1';
 import { FaUserCircle } from 'react-icons/fa';
 import '../styles/Profile.css';
+import Background from "../components/Background";
 
 const Profile = () => {
   const { user, login } = useAuth();
@@ -44,7 +45,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="container">
+    <Background>
       <div className="profileBlock">
         <Button1 to="/home" text="BACK" className="backBtn" />
         <div className="profileTitle">My Profile</div>
@@ -130,7 +131,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Background>
   );
 };
 

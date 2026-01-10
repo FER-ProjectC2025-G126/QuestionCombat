@@ -152,50 +152,6 @@ a:active {
   box-shadow: 3px 3px 0 #000;
   background-color: #ffcc00;
 }
-.falling-question {
-  font-family: 'SuperBubbly', sans-serif;
-  position: absolute;
-  font-size: 50px;
-  color: red;
-  top: -200px;
-  animation: fall 5s linear infinite;
-  z-index: 0;
-}
-
-#q1 {
-  left: 10vw;
-  animation-delay: 1.5s;
-  animation-direction: normal;
-}
-
-#q2 {
-  left: 30vw;
-  animation-delay: 2.5s;
-  animation-direction: reverse;
-}
-
-#q3 {
-  left: 50vw;
-  animation-delay: 3s;
-  animation-direction: normal;
-}
-
-#q4 {
-  left: 70vw;
-  animation-delay: 2s;
-  animation-direction: reverse;
-}
-
-@keyframes fall {
-  0% {
-    top: -20px;
-    transform: rotate(0deg);
-  }
-  100% {
-    top: 90vh;
-    transform: rotate(360deg);
-  }
-}
 
 .error {
   font-family: 'SuperBubbly', sans-serif;

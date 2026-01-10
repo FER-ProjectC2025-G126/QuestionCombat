@@ -11,6 +11,7 @@ import "./styles/Lobby.css"
 import './styles/SingleplayerLobby.css';
 import "./styles/GameRoom.css"
 import './styles/Profile.css';
+import './styles/Background.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

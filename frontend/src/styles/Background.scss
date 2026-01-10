@@ -1,0 +1,82 @@
+.background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #a3a5c8, #8184bf);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.falling-question {
+  font-family: 'SuperBubbly', sans-serif;
+  user-select: none;
+  position: absolute;
+  font-size: 50px;
+  top: -100px;
+  color: red;
+  animation: fall 5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes fall {
+  0% {
+    top: -20vh;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 120vh;
+    transform: rotate(360deg);
+  }
+}
+
+#q1 {
+  left: 10vw;
+  animation-delay: 0.55s;
+  animation-direction: normal;
+}
+
+#q2 {
+  left: 20vw;
+  animation-delay: 2.75s;
+  animation-direction: reverse;
+}
+
+#q3 {
+  left: 30vw;
+  animation-delay: 3.85s;
+  animation-direction: normal;
+}
+
+#q4 {
+  left: 40vw;
+  animation-delay: 4.95s;
+  animation-direction: reverse;
+}
+#q5 {
+  left: 50vw;
+  animation-delay: 1.65s;
+  animation-direction: normal;
+}
+#q6 {
+  left: 60vw;
+  animation-delay: 1.1s;
+  animation-direction: reverse;
+}
+#q7 {
+  left: 70vw;
+  animation-delay: 4.4s;
+  animation-direction: normal;
+}
+#q8 {
+  left: 80vw;
+  animation-delay: 3.3s;
+  animation-direction: reverse;
+}
+#q9 {
+  left: 90vw;
+  animation-delay: 2.2s;
+  animation-direction: normal;
+}
