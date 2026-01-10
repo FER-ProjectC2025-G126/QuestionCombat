@@ -82,9 +82,9 @@ const SocketProvider = () => {
     socketRef.current.emit("chooseQuestion", questionId, username);
   }
 
-  const answerQuestion = (answer) => {
+  const answerQuestion = (answerIndex) => {
     if (!socketRef.current) return;
-    socketRef.current.emit("submitAnswer", answer);
+    socketRef.current.emit("submitAnswer", answerIndex);
   }
 
   const value = {

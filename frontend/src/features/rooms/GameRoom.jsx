@@ -36,7 +36,7 @@ const GameRoom = () => {
     if (appState?.state) {
       setState(appState.state);
     }
-    if(appState?.chosenAnswers) {
+    if(appState?.chosenAnswer) {
       setChosenAnswer(appState.chosenAnswer);
     }
     setIsOnTurn(user.username === appState?.turn);
@@ -57,7 +57,7 @@ const GameRoom = () => {
   }
 
   const onChooseNextPlayer = (player) => {
-    if(state !== "choice" || !isOnTurn) return;
+    if(state !== "choice") return;
     setNextPlayer(player);
   }
 
@@ -77,7 +77,11 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className={`playerCard ${nextPlayer === player.username ? "clicked" : ""}`} style={{  }} onClick={() => onChooseNextPlayer(player.username)}>
+          <div key={player.id} className={`playerCard ${(nextPlayer === player.username && state === "choice") ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
+            if(user.username !== player.username) {
+              onChooseNextPlayer(player.username)
+              }
+            }}>
             <div className="playerName">{player.username}</div>
             <div className="profilePictureSection">
               {(player.username === user.username) && user.profile_picture ? (
@@ -102,10 +106,9 @@ const GameRoom = () => {
       </div>
       {state === 'choice' && (
         <div className="question-card">
-          <div className="question-text">Choose Question</div>
+          <div className="question-text">Choose Question and Player to Attack</div>
           <div className={`options ${!isOnTurn || !nextPlayer ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
-              // we should discuss how many questions we show
               <button
                 key={choice.id}
                 className="option"
@@ -155,11 +158,11 @@ const GameRoom = () => {
           <div className="question-text">Result</div>
 
           <p className="review-text">
-            Correct answer: <b>{question.correctOption}</b>
+            Correct answer: <b>{question.options[question.correctOption]}</b>
           </p>
 
           <p className="review-text">
-            {turn} answered: <b>{chosenAnswer}</b>
+            {turn} answered: <b>{question.options[chosenAnswer]}</b>
           </p>
         </div>
       )}
