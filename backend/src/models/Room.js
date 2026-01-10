@@ -148,7 +148,7 @@ export class Room {
             // retrigger update
             return this.update();
           }
-          updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
+          updateJSON.question = { ...this._questions[this._questionOrder[this._currentQuestionIndex]] };
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
         } else if (this._state === 'review') {
           if (this.timerExpired()) {
@@ -201,7 +201,7 @@ export class Room {
             // retrigger update
             return this.update();
           }
-          updateJSON.question = this._questions[this._currentQuestionIndex];
+          updateJSON.question = { ...this._questions[this._currentQuestionIndex] };
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
         } else if (this._state === 'review') {
           if (this.timerExpired()) {
@@ -438,6 +438,7 @@ export class Room {
           }
         }
       }
+      this._chosenAnswer = answer;
 
       // proceed to review state
       this._state = 'review';
@@ -453,12 +454,11 @@ export class Room {
       this._turn === username &&
       this._state === 'choice' &&
       !this.timerExpired() &&
-      this._questionChoices.includes(username) &&
+      this._questionChoices.includes(questionIndex) &&
       attackedUser &&
       attackedUser.hp > 0 &&
       attackedUsername !== username
     ) {
-      const user = this._players.get(username);
       this._questionSelector.markQuestionChosen(questionIndex);
       this._currentQuestionIndex = questionIndex;
 
