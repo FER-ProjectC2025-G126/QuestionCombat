@@ -146,8 +146,7 @@ export class Room {
             this.setTimer(Q_REVIEW_TIME);
 
             // retrigger update
-            this.update();
-            return;
+            return this.update();
           }
           updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
@@ -176,8 +175,7 @@ export class Room {
               this._state = 'answer';
               this.setTimer(Q_ANSWER_TIME);
             }
-            this.update();
-            return;
+            return this.update();
           }
           updateJSON.question = this._questions[this._questionOrder[this._currentQuestionIndex]];
           updateJSON.chosenAnswer = this._chosenAnswer;
@@ -201,8 +199,7 @@ export class Room {
             this.setTimer(Q_REVIEW_TIME);
 
             // retrigger update
-            this.update();
-            return;
+            return this.update();
           }
           updateJSON.question = this._questions[this._currentQuestionIndex];
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
@@ -239,8 +236,7 @@ export class Room {
               this._state = 'choice';
               this.setTimer(Q_CHOOSE_TIME);
             }
-            this.update();
-            return;
+            return this.update();
           }
           updateJSON.question = this._questions[this._currentQuestionIndex];
           updateJSON.chosenAnswer = this._chosenAnswer;
@@ -411,7 +407,12 @@ export class Room {
   submitAnswer(username, answer) {
     if (username === this._turn && this._state === 'answer' && !this.timerExpired()) {
       const player = this._players.get(username);
-      const currentQuestion = this._questions[this._questionOrder[this._currentQuestionIndex]];
+      let currentQuestion;
+      if (this._capacity === 1) {
+        currentQuestion = this._questions[this._questionOrder[this._currentQuestionIndex]];
+      } else {
+        currentQuestion = this._questions[this._currentQuestionIndex];
+      }
 
       if (answer === currentQuestion.correctOption) {
         // correct answer
