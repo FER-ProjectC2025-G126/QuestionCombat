@@ -4,7 +4,7 @@ import ProfileIcon from '../components/ProfileIcon';
 import useSocket from '../features/socket/useSocket';
 import { Navigate } from 'react-router';
 import { useAuth } from '../features/auth/AuthProvider';
-import Background from "../components/Background";
+import Background from '../components/Background';
 
 function HomePage() {
   const { appState } = useSocket();
@@ -17,11 +17,17 @@ function HomePage() {
   return (
     <Background>
       <div className="block">
-        <LogoutButton />
-        <ProfileIcon />
-        <div className="gameName">QUESTION COMBAT</div>
+        <div className="gameName">
+          QUESTION COMBAT
+          <div className="logOutAndProfil">
+            <LogoutButton />
+            <ProfileIcon />
+          </div>
+        </div>
         <div className="buttonsHomeGroup">
-          {user?.role === 'ADMIN' && <Button1 to="/admin" text="Admin Panel" className="ProfilBtn" />}
+          {user?.role === 'ADMIN' && (
+            <Button1 to="/admin" text="Admin Panel" className="ProfilBtn" />
+          )}
           <Button1 to="/singleplayerLobby" text="Singleplayer" className="btn" />
           <Button1 to="/createNewGame" text="Create a new room" className="btn" />
           <Button1 to="/joinGame" text="Join a room" className="btn" />

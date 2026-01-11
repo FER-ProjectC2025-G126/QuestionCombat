@@ -47,7 +47,7 @@ const GameRoom = () => {
     leaveRoom();
   };
 
-  const onChooseQuestion = (questionId, username) => {
+  const onChooseQuestion = (questionId, username) => { 
     setNextPlayer('');
     chooseQuestion(questionId, username);
   };

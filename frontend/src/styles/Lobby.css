@@ -13,6 +13,7 @@
   height: 70vh;
   width: 50vw;
   min-width: 320px;
+  min-height: fit-content;
 }
  
 .players {
@@ -63,6 +64,7 @@
   background-color: rgb(255, 174, 0);
   height: 45vh;
   width: 40vw;
+  min-height: fit-content;
   min-width: 280px;
   border-radius: 10px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
@@ -76,7 +78,8 @@
   height: 7vh;
   width: 10vw;
   min-width: 9vh;
-  font-size: clamp(18px, 3vw, 25px);
+  min-height: fit-content;
+  font-size: clamp(18px, 2vw, 25px);
   color: yellow;
   text-shadow: 2px 2px 3px black;
   border-radius: 10px;

@@ -6,6 +6,7 @@
   background-color: rgb(112, 29, 190);
   height: 90vh;
   width: 60vw;
+  min-height: fit-content;
   gap: 20px;
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
@@ -23,9 +24,7 @@
 }
 
 .logoutBtn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +37,17 @@
   cursor: pointer;
   box-shadow: 1px 2px 3px rgb(98, 3, 3);
   font-family: 'SuperBubbly', sans-serif;
+  height: 7vh;
+  width: 4rem;
+}
+
+.logOutAndProfil{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 20vw;
+  height: 10vh;
 }
 
 .btn {
@@ -89,12 +99,5 @@
 }
 
 @media (max-width: 1200px){
-  .logoutBtn{
-    top: 16%;
-    right: 30%;
-  }
-  .profileIcon{
-    top: 17%;
-    right: 54%;
-  }
+
 }
