@@ -19,7 +19,7 @@ function LeaderBoard() {
     <Background>
       <div className="block">
         <button onClick={onLeaveClicked} type="button" className="leaveBtn">
-          Leave Room
+          Close {appState.capacity > 1 ? "leaderboard" : "stats"}
         </button>
         <h1 className="gameName">{appState.capacity > 1 ? "LEADERBOARD" : "STATS"}</h1>
         <div className="board">
