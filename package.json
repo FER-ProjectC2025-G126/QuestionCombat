@@ -1,13 +1,9 @@
 {
   "name": "question-combat",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "cd frontend && npm run start",
-    "dev:backend": "cd backend && npm run start-dev",
-    "postinstall": "cd frontend && npm install && cd ../backend && npm install",
-    "production": "cd frontend && npm run build && cd ../backend && npm run start-prod"
+    "postinstall": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "start": "cd backend && npm run start-prod"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
