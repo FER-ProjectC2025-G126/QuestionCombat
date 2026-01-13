@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router';
 import api from '../../api/api';
 import useSocket from "../socket/useSocket"
+import Background from "../../components/Background.jsx";
 
 function SingleplayerLobby() {
   const { isConnected, isLoading, appState, createRoom } = useSocket();
@@ -52,7 +53,7 @@ function SingleplayerLobby() {
   }
 
   return (
-    <div className="container">
+    <Background>
       <form className="block2" onSubmit={onSubmitClicked}>
         <Button1 to="/home" text="BACK" className="backBtn" />
         <div className="gameName">SINGLEPLAYER ROOM</div>
@@ -87,7 +88,7 @@ function SingleplayerLobby() {
           </div>
         </div>
       </form>
-    </div>
+    </Background>
   );
 }
 

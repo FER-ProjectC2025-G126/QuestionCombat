@@ -87,6 +87,11 @@ const SocketProvider = () => {
     socketRef.current.emit("submitAnswer", answerIndex);
   }
 
+  const closeEndOfGameStats = () => {
+    if (!socketRef.current) return;
+    socketRef.current.emit("closeEndOfGameStats");
+  }
+
   const value = {
     socket: socketRef.current,
     isConnected,
@@ -98,6 +103,7 @@ const SocketProvider = () => {
     startGame,
     chooseQuestion,
     answerQuestion,
+    closeEndOfGameStats
   };
 
   return (

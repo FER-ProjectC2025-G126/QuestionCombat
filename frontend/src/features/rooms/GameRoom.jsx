@@ -15,31 +15,44 @@ const GameRoom = () => {
   const [isOnTurn, setIsOnTurn] = useState(false);
   const [players, setPlayers] = useState([]);
   const [nextPlayer, setNextPlayer] = useState('');
-  const [chosenAnswer, setChosenAnswer] = useState('');
+  const [chosenAnswer, setChosenAnswer] = useState(null);
+  const [capacity, setCapacity] = useState(0);
+  const [viewingStats, setViewingStats] = useState(false);
 
   useEffect(() => {
-    if (appState?.players) {
+    if(!appState) return;
+
+    if (appState.players) {
       setPlayers(appState.players);
     }
-    if (appState?.timer?.percentage) {
+    if (appState.timer?.percentage) {
       setProgressBar(appState.timer.percentage);
     }
-    if (appState?.turn) {
+    if (appState.turn) {
       setTurn(appState.turn);
     }
-    if (appState?.question) {
+    if (appState.question) {
       setQuestion(appState.question);
     }
-    if (appState?.questionChoices) {
+    if (appState.questionChoices) {
       setQuestionChoices(appState.questionChoices);
     }
-    if (appState?.state) {
+    if (appState.state) {
       setState(appState.state);
     }
-    if(appState?.chosenAnswer) {
+    if(appState.chosenAnswer !== null) {
       setChosenAnswer(appState.chosenAnswer);
     }
-    setIsOnTurn(user.username === appState?.turn);
+    if(appState.capacity) {
+      setCapacity(appState.capacity);
+    }
+    for(let player of appState.players) {
+      if (player.username === user.username) {
+        setViewingStats(player.viewingStats);
+        break;
+      }
+    }
+    setIsOnTurn(user.username === appState.turn);
     console.log(appState);
   }, [appState]);
 
@@ -65,6 +78,10 @@ const GameRoom = () => {
 
   if (appState.type === 'lobby') {
     return <Navigate to="/home" />;
+  }
+
+  if(viewingStats && !appState?.started) {
+    return <Navigate to="/leaderboard" />
   }
 
   return (
@@ -94,9 +111,11 @@ const GameRoom = () => {
                 <FaUserCircle size={60} className="profilePicturePlaceholder" />
               )}
             </div>
-            <div className="HP">
-              <div className="HealthBar" style={{ width: `${player.hp}%` }} />
-            </div>
+            {capacity > 1 && (
+                <div className="HP">
+                  <div className="HealthBar" style={{ width: `${player.hp}%` }} />
+                </div>
+            )}
             <div>{player.score}</div>
           </div>
         ))}
@@ -106,7 +125,7 @@ const GameRoom = () => {
       </div>
       {state === 'choice' && (
         <div className="question-card">
-          <div className="question-text">Choose Question</div>
+          <div className="question-text">Choose Question and Player to Attack</div>
           <div className={`options ${!isOnTurn || !nextPlayer ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
               // we should discuss how many questions we show
@@ -159,11 +178,11 @@ const GameRoom = () => {
           <div className="question-text">Result</div>
 
           <p className="review-text">
-            Correct answer: <b>{question.correctOption}</b>
+            Correct answer: <b>{question.options[question.correctOption]}</b>
           </p>
 
           <p className="review-text">
-            {turn} answered: <b>{chosenAnswer}</b>
+            {turn} answered: <b>{question.options[chosenAnswer]}</b>
           </p>
         </div>
       )}

@@ -1,6 +1,7 @@
 import useSocket from '../socket/useSocket';
 import { Navigate } from 'react-router';
 import { useState, useEffect } from 'react';
+import Background from "../../components/Background.jsx";
 
 const Lobby = () => {
   const { appState, leaveRoom, startGame } = useSocket();
@@ -47,7 +48,7 @@ const Lobby = () => {
   }
 
   return (
-    <div className="container">
+    <Background>
       <div className="block2">
         <div className="lobby-page">
           <h1 className="Lobbyh1">Lobby</h1>
@@ -95,7 +96,7 @@ const Lobby = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Background>
   );
 };
 

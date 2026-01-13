@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import api from '../api/api';
 import useSocket from '../features/socket/useSocket';
 import { Navigate } from 'react-router';
+import Background from "../components/Background";
 
 const ListOfCourses = () => {
   const {appState} = useSocket();
@@ -24,7 +25,7 @@ const ListOfCourses = () => {
   if(appState.type === "room") return <Navigate to="/lobby" />
   
   return (
-    <div className="container">
+    <Background>
       <div className="publicBlock">
         <div className="coursesBlock">
           <Button1 to="/home" text="BACK" className="backBtn" />
@@ -48,7 +49,7 @@ const ListOfCourses = () => {
             </div>
         </div>
       </div>
-    </div>
+    </Background>
   );
 };
 

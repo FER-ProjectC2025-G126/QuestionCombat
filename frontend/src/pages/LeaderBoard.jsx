@@ -1,40 +1,35 @@
 import '../styles/LeaderBoard.css';
-
-// this is just to show you how i imagined it to look like, when you connect this page to backend you can delete this
-const players = [
-  { name: 'Ana', score: 120, alive: false },
-  { name: 'Bob', score: 95, alive: true },
-  { name: 'Tea', score: 80, alive: false },
-  { name: 'Teo', score: 60, alive: true },
-];
+import Background from "../components/Background";
+import useSocket from "../features/socket/useSocket.js";
+import {useNavigate} from "react-router";
 
 function LeaderBoard() {
-  //this is that logic that we talked about, pearson who is still alive is winner, but maybe not the first on the leaderboard
-  const alivePlayers = players.filter((p) => p.alive);
-  const maxScore = Math.max(...alivePlayers.map((p) => p.score));
-  const winnerIndex = players.findIndex((p) => p.alive && p.score === maxScore);
+  const { appState, closeEndOfGameStats } = useSocket();
+  const winnerIndex = appState.lastGameStats.findIndex((p) => p.isWinner);
+  const navigate = useNavigate();
 
    const onLeaveClicked = () => {
-    leaveRoom();
+    closeEndOfGameStats();
+    navigate("/lobby");
   };
 
   const delayStep = 1; //delay for animations, pls dont change :)
 
   return (
-    <div className="container">
+    <Background>
       <div className="block">
         <button onClick={onLeaveClicked} type="button" className="leaveBtn">
           Leave Room
         </button>
-        <h1 className="gameName">LEADERBOARD</h1>
+        <h1 className="gameName">{appState.capacity > 1 ? "LEADERBOARD" : "STATS"}</h1>
         <div className="board">
-          {players.map((player, index) => {
+          {appState.capacity > 1 ? appState.lastGameStats.map((player, index) => {
             const isWinner = index === winnerIndex;
-            const delay = (players.length - 1 - index) * delayStep;
+            const delay = (appState.lastGameStats.length - 1 - index) * delayStep;
 
             return (
               <div
-                key={player.name}
+                key={player.username}
                 className={`playerRow ${isWinner ? 'winner' : ''}`}
                 style={{
                   animationDelay: `${delay}s`,
@@ -42,15 +37,27 @@ function LeaderBoard() {
                 }}
               >
                 <p>
-                  {index + 1}. {player.name}
+                  {index + 1}. {player.username}
                 </p>
                 <span className="playerScore">{player.score}</span>
               </div>
             );
-          })}
+          }) : (
+              <div
+                  key={appState.lastGameStats[0].username}
+              >
+                <p>
+                  {appState.lastGameStats[0].username}
+                </p>
+                <span className="playerScore">{appState.lastGameStats[0].score}</span>
+                <p>
+                  {appState.lastGameStats[0].correctAns} / {appState.lastGameStats[0].correctAns + appState.lastGameStats[0].incorrectAns} correct answers
+                </p>
+              </div>
+          )}
         </div>
       </div>
-    </div>
+    </Background>
   );
 }
 
