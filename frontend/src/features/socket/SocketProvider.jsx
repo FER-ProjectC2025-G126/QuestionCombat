@@ -6,7 +6,7 @@ import Lobby from '../rooms/Lobby';
 
 // Create socket connection using explicit WS URL if provided, otherwise fallback to current origin
 function createSocketConnection() {
-  const socketUrl = window.location.origin;
+  const socketUrl = import.meta.env.VITE_WS_URL || window.location.origin;
   return io(socketUrl, {
     autoConnect: false,
     withCredentials: true,
