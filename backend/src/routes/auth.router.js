@@ -39,7 +39,7 @@ router.post('/login', async function (req, res) {
     res.cookie('session_id', session_id, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // HTTPS only in prod (so we can test locally over HTTP)
-      sameSite: 'strict',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-site in production
       maxAge: sessionLengthMs,
       path: '/',
     });
@@ -184,11 +184,9 @@ router.put('/users/:username/role', requireAdmin, async function (req, res) {
 
   // Prevent admin from changing their own role
   if (username === req.username) {
-    return res
-      .status(400)
-      .json({
-        error: 'You cannot change your own role! You can change roles just for other users!',
-      });
+    return res.status(400).json({
+      error: 'You cannot change your own role! You can change roles just for other users!',
+    });
   }
 
   if (!role) {

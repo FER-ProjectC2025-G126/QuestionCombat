@@ -79,7 +79,7 @@ app.use('/api', async function (req, res, next) {
       res.cookie('session_id', session_id, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // HTTPS only in prod (so we can test locally over HTTP)
-        sameSite: 'strict',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-site in production
         maxAge: sessionLengthMs,
         path: '/',
       });
