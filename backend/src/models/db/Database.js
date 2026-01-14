@@ -30,6 +30,25 @@ function getDb() {
         console.error('Could not initialize database schema: ', err);
       }
     });
+    // seed placeholder data if questions table is empty
+    db.get('SELECT COUNT(*) as count FROM questions', (err, row) => {
+      if (err) {
+        console.error('Could not check questions table: ', err);
+        return;
+      }
+      if (row.count === 0) {
+        console.log('Questions table is empty, seeding placeholder data...');
+        const placeholdersPath = path.join(__dirname, './placeholders.sql');
+        const placeholdersSQL = fs.readFileSync(placeholdersPath, 'utf8');
+        db.exec(placeholdersSQL, (err) => {
+          if (err) {
+            console.error('Could not seed placeholder data: ', err);
+          } else {
+            console.log('Successfully seeded placeholder data');
+          }
+        });
+      }
+    });
   }
   return db;
 }
