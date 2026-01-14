@@ -1,5 +1,6 @@
 // library imports
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import minimist from 'minimist';
@@ -38,7 +39,25 @@ const io = new Server(server, {
 
 // EXPRESS
 
+// CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173', // Frontend dev
+  process.env.CLIENT_ORIGIN, // Production frontend
+];
+
 // express middleware
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -82,13 +101,13 @@ app.use('/api', function (req, res) {
 
 // if in production mode, serve frontend static files
 // (if in dev, the frontend is running separately with its own webpack dev server)
-if (argv.mode === 'prod') {
-  const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
-  app.use(express.static(frontendPath));
-  app.use('/*any', function (req, res) {
-    return res.sendFile(path.join(frontendPath, 'index.html'));
-  });
-}
+// if (argv.mode === 'prod') {
+//   const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
+//   app.use(express.static(frontendPath));
+//   app.use('/*any', function (req, res) {
+//     return res.sendFile(path.join(frontendPath, 'index.html'));
+//   });
+// }
 
 // SOCKET.IO
 
