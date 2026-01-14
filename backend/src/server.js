@@ -1,6 +1,5 @@
 // library imports
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import minimist from 'minimist';
@@ -28,36 +27,11 @@ import { router as publicRouter } from './routes/public.router.js';
 // server setup
 const app = express();
 const server = http.createServer(app);
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
-const io = new Server(server, {
-  cors: {
-    origin: CLIENT_ORIGIN,
-    methods: ['GET', 'POST'],
-    credentials: true,
-  },
-});
+const io = new Server(server);
 
 // EXPRESS
 
-// CORS configuration
-const allowedOrigins = [
-  'http://localhost:5173', // Frontend dev
-  process.env.CLIENT_ORIGIN, // Production frontend
-];
-
 // express middleware
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-  })
-);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -79,7 +53,7 @@ app.use('/api', async function (req, res, next) {
       res.cookie('session_id', session_id, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // HTTPS only in prod (so we can test locally over HTTP)
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-site in production
+        sameSite: 'strict',
         maxAge: sessionLengthMs,
         path: '/',
       });
@@ -101,7 +75,7 @@ app.use('/api', function (req, res) {
 
 // if in production mode, serve frontend static files
 // (if in dev, the frontend is running separately with its own webpack dev server)
-if (argv.mode === 'prod') {
+if (argv.mode === 'production') {
   const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
   app.use(express.static(frontendPath));
   app.use('/*any', function (req, res) {

@@ -2,15 +2,13 @@
   "name": "question-combat",
   "private": true,
   "scripts": {
-    "postinstall": "cd frontend && npm install && npm run build && cd ../backend && npm install",
-    "start": "cd backend && npm run start-prod"
+    "postinstall": "cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "start": "cd frontend && npm run build && cd ../backend && npm run start"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "react-icons": "^5.5.0",
-    "socket.io-client": "^4.8.1"
   }
 }

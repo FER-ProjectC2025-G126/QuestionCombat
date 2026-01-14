@@ -12,7 +12,6 @@
   font-style: normal;
 }
 
-// Shared container styles used across multiple pages
 .container {
   display: flex;
   justify-content: center;
