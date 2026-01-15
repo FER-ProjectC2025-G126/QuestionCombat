@@ -101,13 +101,13 @@ app.use('/api', function (req, res) {
 
 // if in production mode, serve frontend static files
 // (if in dev, the frontend is running separately with its own webpack dev server)
-// if (argv.mode === 'prod') {
-//   const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
-//   app.use(express.static(frontendPath));
-//   app.use('/*any', function (req, res) {
-//     return res.sendFile(path.join(frontendPath, 'index.html'));
-//   });
-// }
+if (argv.mode === 'prod') {
+  const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
+  app.use(express.static(frontendPath));
+  app.use('/*any', function (req, res) {
+    return res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+}
 
 // SOCKET.IO
 
