@@ -27,7 +27,6 @@ import { router as publicRouter } from './routes/public.router.js';
 // server setup
 const app = express();
 const server = http.createServer(app);
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
 const io = new Server(server);
 
 // EXPRESS
