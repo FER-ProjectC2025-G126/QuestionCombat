@@ -26,8 +26,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          cd frontend && npm install && npm run build
-          cd ../backend && npm install
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -47,13 +47,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_69ECA2520CE1461187B08C323C8C123B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_686B04412CEC44DCAAD41856C4FB2EF1 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CE268D6A4CC14FF2B44A2D8759BC285A }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_EE6293BF80A147C8AB7B18364F60D205 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_774C68387AC84DB1A249C382018AB592 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_29576A2373F245AD9E12101A4C28CFA1 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -62,3 +62,4 @@ jobs:
           app-name: 'questioncombatgame'
           slot-name: 'Production'
           package: .
+          
