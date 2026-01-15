@@ -1,10 +1,12 @@
 import useSocket from '../socket/useSocket';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import HPHearts from '../../components/HPhearts';
 
 const GameRoom = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { appState, leaveRoom, chooseQuestion, answerQuestion } = useSocket();
   const [progressBar, setProgressBar] = useState(1);
@@ -18,6 +20,7 @@ const GameRoom = () => {
   const [chosenAnswer, setChosenAnswer] = useState(null);
   const [capacity, setCapacity] = useState(0);
   const [viewingStats, setViewingStats] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     if(!appState) return;
@@ -71,17 +74,21 @@ const GameRoom = () => {
 
   const onChooseNextPlayer = (player) => {
     if(state !== "choice") return;
+    setClicked(prev => !prev);
     setNextPlayer(player);
   }
 
   if (!appState) return <div>Loading...</div>;
 
   if (appState.type === 'lobby') {
-    return <Navigate to="/home" />;
+    navigate("/home");
+    window.location.reload();
+    return null;
   }
 
   if(viewingStats && !appState?.started) {
-    return <Navigate to="/leaderboard" />
+    navigate('/leaderboard');
+    return null;
   }
 
   return (
@@ -94,8 +101,8 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className={`playerCard ${(nextPlayer === player.username && state === "choice") ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
-            if(user.username !== player.username) {
+          <div key={player.id} className={`playerCard ${clicked && nextPlayer === player.username ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
+            if(turn !== player.username && user.username !== player.username) {
               onChooseNextPlayer(player.username)
               }
             }}>
@@ -113,7 +120,7 @@ const GameRoom = () => {
             </div>
             {capacity > 1 && (
                 <div className="HP">
-                  <div className="HealthBar" style={{ width: `${player.hp}%` }} />
+                  <HPHearts hp={Math.round((player.hp / 100) * 10)} />
                 </div>
             )}
             <div>{player.score}</div>
@@ -126,7 +133,7 @@ const GameRoom = () => {
       {state === 'choice' && (
         <div className="question-card">
           <div className="question-text">Choose Question and Player to Attack</div>
-          <div className={`options ${!isOnTurn || !nextPlayer ? 'disabled' : ''}`}>
+          <div className={`options ${!isOnTurn || !nextPlayer || !clicked ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
               // we should discuss how many questions we show
               <button

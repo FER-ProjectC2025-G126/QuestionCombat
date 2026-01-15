@@ -8,11 +8,11 @@ export const TICK_RATE = 20; // ticks per second
 // time limits in seconds
 const Q_CHOOSE_TIME = 10; // time to choose a question (seconds)
 const Q_ANSWER_TIME = 15; // time to answer a question (seconds)
-const Q_REVIEW_TIME = 5; // time to review question answer (seconds)
+const Q_REVIEW_TIME = 3; // time to review question answer (seconds)
 
 const Q_WEIGHT_INCREASE = 0.05; // question weight increase per turn (multiplayer mode, max 1.0)
 
-const PLAYER_HP_DECREASE = 20; // health points decrease on incorrect answer (multiplayer mode)
+const PLAYER_HP_DECREASE = 10; // health points decrease on incorrect answer (multiplayer mode)
 const PLAYER_MAX_SCORE_INCREASE = 50; // max score increase on correct answer (if player answers instantly)
 
 export class Room {
@@ -148,7 +148,9 @@ export class Room {
             // retrigger update
             return this.update();
           }
-          updateJSON.question = { ...this._questions[this._questionOrder[this._currentQuestionIndex]] };
+          updateJSON.question = {
+            ...this._questions[this._questionOrder[this._currentQuestionIndex]],
+          };
           updateJSON.question.correctOption = null; // hide correct answer during answering phase
         } else if (this._state === 'review') {
           if (this.timerExpired()) {

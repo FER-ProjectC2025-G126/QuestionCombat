@@ -13,6 +13,11 @@ function LeaderBoard() {
     navigate("/lobby");
   };
 
+  if (appState.type === 'lobby') {
+    navigate('/lobby');
+    return null;
+  }
+
   const delayStep = 1; //delay for animations, pls dont change :)
 
   return (
