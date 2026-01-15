@@ -1,11 +1,12 @@
 import useSocket from '../socket/useSocket';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import HPHearts from '../../components/HPhearts';
 
 const GameRoom = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { appState, leaveRoom, chooseQuestion, answerQuestion } = useSocket();
   const [progressBar, setProgressBar] = useState(1);
@@ -80,11 +81,14 @@ const GameRoom = () => {
   if (!appState) return <div>Loading...</div>;
 
   if (appState.type === 'lobby') {
-    return <Navigate to="/home" />;
+    navigate("/home");
+    window.location.reload();
+    return null;
   }
 
   if(viewingStats && !appState?.started) {
-    return <Navigate to="/leaderboard" />
+    navigate('/leaderboard');
+    return null;
   }
 
   return (
