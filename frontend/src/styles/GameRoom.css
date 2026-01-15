@@ -37,7 +37,7 @@
   justify-items: center;
 }
 
-.playerCard { 
+.playerCard {
   border-radius: 12px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
   width: 12vw;
@@ -48,7 +48,7 @@
   font-family: 'SuperBubbly', sans-serif;
   -webkit-text-stroke: 2px rgb(109, 5, 141);
   color: white;
-  font-size: clamp(20px, 2vw,30px);
+  font-size: clamp(20px, 2vw, 30px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,10 +71,17 @@
 
 .HP {
   width: 80%;
-  height: 20px;
+  height: 25px;
   background: #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.HPhearts {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
 }
 
 .HealthBar {
@@ -133,7 +140,7 @@
 }
 
 .option {
-  font-size: clamp(20px,2vw, 23px);
+  font-size: clamp(20px, 2vw, 23px);
   height: 10vh;
   color: rgb(255, 255, 255);
   background-color: rgb(255, 89, 0);
@@ -182,7 +189,7 @@
 .waiting-text {
   font-family: 'SuperBubbly', sans-serif;
   margin-top: 10px;
-  font-size: clamp(20px.2vw,24px);
+  font-size: clamp(20px.2vw, 24px);
   color: white;
   text-shadow: 2px 2px 3px black;
   font-style: italic;

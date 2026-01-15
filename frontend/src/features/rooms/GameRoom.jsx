@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import HPHearts from '../../components/HPhearts';
 
 const GameRoom = () => {
   const { user } = useAuth();
@@ -53,7 +54,6 @@ const GameRoom = () => {
       }
     }
     setIsOnTurn(user.username === appState.turn);
-    console.log(appState);
   }, [appState]);
 
   const onLeaveClicked = () => {
@@ -113,7 +113,7 @@ const GameRoom = () => {
             </div>
             {capacity > 1 && (
                 <div className="HP">
-                  <div className="HealthBar" style={{ width: `${player.hp}%` }} />
+                  <HPHearts hp={Math.round((player.hp / 100) * 10)} />
                 </div>
             )}
             <div>{player.score}</div>
