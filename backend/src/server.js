@@ -36,6 +36,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+// serve built frontend
+const frontendDistPath = path.join(__dirname, '../../frontend/dist');
+app.use(express.static(frontendDistPath));
+
 // parse authentication cookie
 app.use('/api', async function (req, res, next) {
   req.session_id = null;
@@ -112,6 +116,11 @@ io.on('connection', (socket) => {
     return socket.disconnect(true);
   }
   userManager.connectUser(socket.request.username, socket);
+});
+
+// Serve index.html for React Router (catch-all for SPA)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendDistPath, 'index.html'));
 });
 
 // START SERVER
