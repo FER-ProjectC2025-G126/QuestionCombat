@@ -36,10 +36,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-// serve built frontend
-const frontendDistPath = path.join(__dirname, '../../frontend/dist');
-app.use(express.static(frontendDistPath));
-
 // parse authentication cookie
 app.use('/api', async function (req, res, next) {
   req.session_id = null;
