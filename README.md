@@ -7,4 +7,4 @@
 
 #### Production
 1. npm install
-2. npm run production
+2. npm run start
