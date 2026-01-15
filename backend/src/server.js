@@ -114,11 +114,6 @@ io.on('connection', (socket) => {
   userManager.connectUser(socket.request.username, socket);
 });
 
-// Serve index.html for React Router (catch-all for SPA)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendDistPath, 'index.html'));
-});
-
 // START SERVER
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
