@@ -6,7 +6,7 @@
     "dev": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
-    "start": "cd backend && npm run start-prod"
+    "start": "cd backend && npm start"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
