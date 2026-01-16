@@ -36,7 +36,7 @@ const GameRoom = () => {
     if (appState?.state) {
       setState(appState.state);
     }
-    if(appState?.chosenAnswer) {
+    if (appState?.chosenAnswer) {
       setChosenAnswer(appState.chosenAnswer);
     }
     setIsOnTurn(user.username === appState?.turn);
@@ -47,19 +47,19 @@ const GameRoom = () => {
     leaveRoom();
   };
 
-  const onChooseQuestion = (questionId, username) => { 
+  const onChooseQuestion = (questionId, username) => {
     setNextPlayer('');
     chooseQuestion(questionId, username);
   };
 
   const onAnswerQuestion = (answerIndex) => {
     answerQuestion(answerIndex);
-  }
+  };
 
   const onChooseNextPlayer = (player) => {
-    if(state !== "choice") return;
+    if (state !== 'choice') return;
     setNextPlayer(player);
-  }
+  };
 
   if (!appState) return <div>Loading...</div>;
 
@@ -77,14 +77,18 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className={`playerCard ${(nextPlayer === player.username && state === "choice") ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
-            if(user.username !== player.username) {
-              onChooseNextPlayer(player.username)
+          <div
+            key={player.id}
+            className={`playerCard ${nextPlayer === player.username && state === 'choice' ? 'clicked' : ''} ${player.username === user.username ? 'me' : 'others'}`}
+            onClick={() => {
+              if (user.username !== player.username) {
+                onChooseNextPlayer(player.username);
               }
-            }}>
+            }}
+          >
             <div className="playerName">{player.username}</div>
             <div className="profilePictureSection">
-              {(player.username === user.username) && user.profile_picture ? (
+              {player.username === user.username && user.profile_picture ? (
                 <img
                   src={user.profile_picture}
                   alt={user.username}
@@ -106,7 +110,7 @@ const GameRoom = () => {
       </div>
       {state === 'choice' && (
         <div className="question-card">
-          <div className="question-text">Choose Question</div>
+          <div className="question-text">Choose opponent and question</div>
           <div className={`options ${!isOnTurn || !nextPlayer ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
               // we should discuss how many questions we show

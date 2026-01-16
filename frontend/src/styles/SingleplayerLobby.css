@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
 }
-.block7{
+.block7 {
   background-color: white;
   gap: 10px;
   height: 70%;
@@ -17,9 +17,12 @@
 }
 
 @media (max-width: 1000px) {
-  .block7{
+  .block7 {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
+}
+
+@media (mex-width: 600px) {
 }

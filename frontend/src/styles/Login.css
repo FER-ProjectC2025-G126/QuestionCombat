@@ -104,7 +104,6 @@ a {
   font-family: 'SuperBubbly', sans-serif;
   text-decoration: none;
   justify-self: left;
-  width: 20vw;
   margin-left: 10px;
   text-align: left;
   font-size: clamp(10px, 3vw, 17px);
@@ -218,5 +217,15 @@ a:active {
 
   .LoginCard{
     padding-top: 5vh;
+  }
+}
+
+@media (max-width: 600px){
+  .LoginBlock{
+    min-width: 80%;
+  }
+  .LoginCard{
+    min-width: 80%;
+    min-height: fit-content;
   }
 }

@@ -2,7 +2,7 @@ import Button1 from '../../components/Button1';
 import { useState } from 'react';
 import useSocket from '../socket/useSocket';
 import { Navigate } from 'react-router';
-import Background from "../../components/Background";
+import Background from '../../components/Background';
 
 function JoinGame() {
   const { isConnected, isLoading, appState, joinRoom } = useSocket();
@@ -43,7 +43,7 @@ function JoinGame() {
   }
   return (
     <Background>
-      <div className="block2">
+      <div className="block8">
         <Button1 to="/home" text="BACK" className="backBtn" />
         <div className="gameName">JOIN A ROOM</div>
         <div className="block4">

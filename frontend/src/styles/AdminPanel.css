@@ -11,7 +11,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   margin: 20px auto;
 }
-
+ 
 .adminTitle {
   font-family: 'SuperBubbly', sans-serif;
   color: yellow;
@@ -242,5 +242,80 @@
   .colRole,
   .colActions {
     grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .adminBlock {
+    width: 90%;
+    padding: 16px;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .adminTitle {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .usersTable {
+    background: transparent;
+    gap: 16px;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .colUsername,
+  .colEmail,
+  .colRole,
+  .colActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .colUsername {
+    font-size: 1rem;
+  }
+
+  .colEmail {
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+
+  .roleBadge {
+    align-self: flex-start;
+  }
+
+  .roleButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .roleBtn {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+
+  .noActions {
+    text-align: center;
+    width: 100%;
+  }
+
+  .adminError,
+  .adminSuccess {
+    font-size: 0.9rem;
+    padding: 12px;
   }
 }
