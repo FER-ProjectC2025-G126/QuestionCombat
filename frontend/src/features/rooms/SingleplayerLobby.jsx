@@ -65,7 +65,7 @@ function SingleplayerLobby() {
                 courses.map((course) => {
                   const isSelected = selectedCourses.includes(course.id);
                   return (
-                    <div
+                    <div 
                       key={course.id}
                       className={`courseCard ${isSelected ? 'selected' : ''}`}
                       onClick={() => onCourseSelectClicked(course.id)}

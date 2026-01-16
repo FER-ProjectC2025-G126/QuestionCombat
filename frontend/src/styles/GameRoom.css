@@ -221,3 +221,106 @@
     top: 8px;
   }
 }
+
+@media (max-width: 600px) {
+  .gameRoom {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leaveBtn {
+    position: absolute;
+    top: 10px;
+    left: 2vw;
+    margin-bottom: 10px;
+    width: 20vw;
+    order: -1;
+  }
+
+  .gameHeader {
+    height: auto;
+    margin-bottom: 10px;
+    order: 0;
+    position: relative;
+    top: 10px;
+  }
+
+  .turn {
+    font-size: 1.8rem;
+  }
+
+  .Players {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    margin-bottom: 20px;
+    order: 3;
+  }
+
+  .playerCard {
+    width: 95%;
+    height: auto;
+    padding: 12px;
+    font-size: 1.4rem;
+    gap: 10px;
+    -webkit-text-stroke: 1.5px rgb(109, 5, 141);
+  }
+
+  .profilePictureSmall,
+  .profilePicturePlaceholder {
+    display: none;
+  }
+
+  .timer {
+    position: static;
+    width: 100%;
+    margin: 12px 0;
+    order: 2;
+  }
+
+  .question-card {
+    position: relative;
+    top:20px;
+    left:1px;
+    width: auto;
+    height: auto;
+    min-height: unset;
+    padding: 16px;
+    margin-bottom: 20px;
+    order: 1;
+  }
+
+  .question-text {
+    font-size: 1.5rem;
+  }
+
+  .option {
+    height: auto;
+    min-height: 48px;
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .option span {
+    width: auto;
+  }
+
+  .option input {
+    width: auto;
+    transform: scale(1.4);
+  }
+
+  .review-text {
+    font-size: 1.1rem;
+  }
+
+  .review-text b {
+    font-size: 1.6rem;
+  }
+}

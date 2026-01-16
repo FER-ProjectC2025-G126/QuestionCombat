@@ -105,10 +105,11 @@ const GameRoom = () => {
             if(turn !== player.username && user.username !== player.username) {
               onChooseNextPlayer(player.username)
               }
-            }}>
+            }}
+          >
             <div className="playerName">{player.username}</div>
             <div className="profilePictureSection">
-              {(player.username === user.username) && user.profile_picture ? (
+              {player.username === user.username && user.profile_picture ? (
                 <img
                   src={user.profile_picture}
                   alt={user.username}

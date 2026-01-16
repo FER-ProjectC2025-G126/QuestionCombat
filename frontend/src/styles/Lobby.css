@@ -154,3 +154,9 @@
     top: 10px;
   }
 }
+
+@media (max-width: 600px){
+  .lobby-page{
+    min-width: fit-content;
+  }
+}

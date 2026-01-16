@@ -39,7 +39,7 @@ const Public = () => {
                   )}
               </div>
           </div>
-          <Button1 to="/login" text="To start playing please Log In!" className="btn" />
+          <Button1 to="/login" text="To start playing please Log In!" className="btn2" />
       </div>
     </Background>;
 };

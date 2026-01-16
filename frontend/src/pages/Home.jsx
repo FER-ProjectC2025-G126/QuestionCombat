@@ -26,7 +26,7 @@ function HomePage() {
         </div>
         <div className="buttonsHomeGroup">
           {user?.role === 'ADMIN' && (
-            <Button1 to="/admin" text="Admin Panel" className="ProfilBtn" />
+            <Button1 to="/admin" text="Admin Panel" className="btn" />
           )}
           <Button1 to="/singleplayerLobby" text="Singleplayer" className="btn" />
           <Button1 to="/createNewGame" text="Create a new room" className="btn" />

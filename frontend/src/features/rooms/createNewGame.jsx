@@ -73,7 +73,7 @@ function CreateNewGame() {
     <Background>
       <form className="block2" onSubmit={onSubmitClicked}>
         <Button1 to="/home" text="BACK" className="backBtn" />
-        <div className="gameName">NEW ROOM</div>
+        <div className="newGameName">NEW ROOM</div>
         <div className="block3">
           <div className="elementOfBlock3">
             <h2 className="elmHeader">CHOOSE NUMBER OF PLAYERS</h2>
