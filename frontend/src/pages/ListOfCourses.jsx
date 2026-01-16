@@ -30,7 +30,7 @@ const ListOfCourses = () => {
         <div className="coursesBlock">
           <Button1 to="/home" text="BACK" className="backBtn" />
           <h2 className="coursesTitle">Available Courses</h2>
-          <div className='Forms-qSets-expanded'>
+          <div className='Forms-qSets-expanded-available'>
               {courses && courses.length > 0 ? (
               courses.map((course) => {
                  return (

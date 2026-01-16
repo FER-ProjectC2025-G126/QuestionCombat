@@ -59,6 +59,7 @@
   justify-content: start;
   max-height: 250px;
   overflow-y: auto;
+  overflow-x: auto;
   padding-top: 0;
 }
 
@@ -200,6 +201,7 @@
   background-color: rgb(255, 115, 0);
   cursor: pointer;
   width: 20vw;
+  height: 15vh;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   transition:
     background-color,
@@ -228,21 +230,21 @@
 }
 
 .courseCard.selected {
-  background-color: rgb(255, 115, 0);
+  background-color: rgba(255, 51, 0, 0.899);
   color: yellow;
-  border: 2px solid yellow;
+  border: 2px solid rgba(255, 68, 0, 0.611);
 }
 
 .courseTitle {
-  font-family: 'SuperBubbly', sans-serif;
+  font-family: sans-serif;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: clamp(15px, 2vw, 25px);
   text-shadow: 2px 2px 3px black;
 }
 
 .courseDescription {
-  font-family: 'SuperBubbly', sans-serif;
-  font-size: 0.9rem;
+  font-family: sans-serif;
+  font-size: clamp(13px, 2vw, 15px);
   text-shadow: 2px 2px 3px black;
 }
 
@@ -285,14 +287,16 @@
 @media (max-width: 600px) {
   .newGameName {
     height: 5vh;
-    margin:15px;
+    margin: 15px;
+  }
+  .background {
+    min-height: fit-content;
   }
 
   .block2 {
     width: 90%;
-    height: auto;
-    min-height: 80vh;
-    padding-bottom: 30px;
+    min-height: min-content;
+    margin-top: 10px;
   }
 
   .block3 {
@@ -309,8 +313,7 @@
   }
 
   .Labels {
-    width: 100%;
-    max-width: 320px;
+    width: 200px;
   }
 
   .startBtn {
@@ -321,11 +324,13 @@
   .courseCard,
   .courseCard-view {
     width: 100%;
+    height: min-content;
   }
 
   .Forms-qSets {
-    max-height: none;
-    overflow-y: visible;
+    overflow-y: scroll;
+    max-height: 13vh;
+    min-width: fit-content;
   }
 
   .error {

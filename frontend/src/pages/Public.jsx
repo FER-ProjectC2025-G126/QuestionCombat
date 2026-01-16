@@ -21,7 +21,7 @@ const Public = () => {
           <div className="publicTitle">Welcome to Question Combat</div>
           <div className="coursesBlock">
               <h2 className="coursesTitle">Available Courses</h2>
-              <div className='Forms-qSets-expanded'>
+              <div className='Forms-qSets-expanded-available'>
                   {courses && courses.length > 0 ? (
                       courses.map((course) => {
                           return (

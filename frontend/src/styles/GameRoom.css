@@ -70,7 +70,8 @@
 }
 
 .HP {
-  width: 80%;
+  width: fit-content;
+  min-width: min-content;
   height: 25px;
   background: #e5e7eb;
   border-radius: 10px;
@@ -322,5 +323,9 @@
 
   .review-text b {
     font-size: 1.6rem;
+  }
+
+  .HP{
+    width:fit-content;
   }
 }

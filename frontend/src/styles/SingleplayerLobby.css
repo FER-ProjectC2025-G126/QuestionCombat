@@ -16,6 +16,14 @@
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 
+.Forms-qSets-expanded-available{
+  height: 350px;
+  overflow: auto;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 @media (max-width: 1000px) {
   .block7 {
     display: flex;
@@ -24,5 +32,9 @@
   }
 }
 
-@media (mex-width: 600px) {
+@media (max-width: 600px) {
+  .Forms-qSets-expanded{
+    height: 30vh;
+    overflow-x: scroll;
+  }
 }
