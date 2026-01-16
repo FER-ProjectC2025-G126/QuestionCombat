@@ -23,7 +23,7 @@ const GameRoom = () => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    if(!appState) return;
+    if (!appState) return;
 
     if (appState.players) {
       setPlayers(appState.players);
@@ -43,13 +43,13 @@ const GameRoom = () => {
     if (appState.state) {
       setState(appState.state);
     }
-    if(appState.chosenAnswer !== null) {
+    if (appState.chosenAnswer !== null) {
       setChosenAnswer(appState.chosenAnswer);
     }
-    if(appState.capacity) {
+    if (appState.capacity) {
       setCapacity(appState.capacity);
     }
-    for(let player of appState.players) {
+    for (let player of appState.players) {
       if (player.username === user.username) {
         setViewingStats(player.viewingStats);
         break;
@@ -63,30 +63,30 @@ const GameRoom = () => {
     leaveRoom();
   };
 
-  const onChooseQuestion = (questionId, username) => { 
+  const onChooseQuestion = (questionId, username) => {
     setNextPlayer('');
     chooseQuestion(questionId, username);
   };
 
   const onAnswerQuestion = (answerIndex) => {
     answerQuestion(answerIndex);
-  }
+  };
 
   const onChooseNextPlayer = (player) => {
-    if(state !== "choice") return;
-    setClicked(prev => !prev);
+    if (state !== 'choice') return;
+    setClicked((prev) => !prev);
     setNextPlayer(player);
-  }
+  };
 
   if (!appState) return <div>Loading...</div>;
 
   if (appState.type === 'lobby') {
-    navigate("/home");
+    navigate('/home');
     window.location.reload();
     return null;
   }
 
-  if(viewingStats && !appState?.started) {
+  if (viewingStats && !appState?.started) {
     navigate('/leaderboard');
     return null;
   }
@@ -101,28 +101,27 @@ const GameRoom = () => {
       </div>
       <div className="Players">
         {players.map((player) => (
-          <div key={player.id} className={`playerCard ${clicked && nextPlayer === player.username ? "clicked" : ""} ${player.username === user.username ? "me" : "others"}`} onClick={() => {
-            if(turn !== player.username && user.username !== player.username) {
-              onChooseNextPlayer(player.username)
+          <div
+            key={player.id}
+            className={`playerCard ${clicked && nextPlayer === player.username ? 'clicked' : ''} ${player.username === user.username ? 'me' : 'others'}`}
+            onClick={() => {
+              if (turn !== player.username && user.username !== player.username) {
+                onChooseNextPlayer(player.username);
               }
             }}
           >
             <div className="playerName">{player.username}</div>
-            <div className="profilePictureSection">
-              {player.username === user.username && user.profile_picture ? (
-                <img
-                  src={user.profile_picture}
-                  alt={user.username}
-                  className="profilePictureSmall"
-                />
+            <div className="profilePictureSelection" title="View Profile">
+              {user.profilePicture ? (
+                <img src={user.profilePicture} alt="Profile" className="profileIconImage" />
               ) : (
-                <FaUserCircle size={60} className="profilePicturePlaceholder" />
+                <FaUserCircle size={40} color="#FF7300" />
               )}
             </div>
             {capacity > 1 && (
-                <div className="HP">
-                  <HPHearts hp={Math.round((player.hp / 100) * 10)} />
-                </div>
+              <div className="HP">
+                <HPHearts hp={Math.round((player.hp / 100) * 10)} />
+              </div>
             )}
             <div>{player.score}</div>
           </div>
