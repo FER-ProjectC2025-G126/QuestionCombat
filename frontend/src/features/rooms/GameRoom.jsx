@@ -132,7 +132,7 @@ const GameRoom = () => {
       </div>
       {state === 'choice' && (
         <div className="question-card">
-          <div className="question-text">Choose Question and Player to Attack</div>
+          {isOnTurn && (<div className="question-text">Choose Question and Player to Attack</div>)}
           <div className={`options ${!isOnTurn || !nextPlayer || !clicked ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
               // we should discuss how many questions we show
@@ -149,7 +149,7 @@ const GameRoom = () => {
             ))}
           </div>
           <p className={`waiting-text ${isOnTurn ? 'your-turn' : ''}`}>
-            {isOnTurn ? "It's your turn" : `Waiting for ${turn} to answer`}
+            {isOnTurn ? "It's your turn" : `Waiting for ${turn} to choose`}
           </p>
         </div>
       )}
