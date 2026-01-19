@@ -1,0 +1,206 @@
+{
+  "title": "Matematička analiza 2",
+  "description": "Kviz o matematičkoj analizi funkcija više varijabli",
+  "questions": [
+    {
+      "question": "Što proučava matematička analiza funkcija više varijabli?",
+      "answers": {
+        "a": "Funkcije jedne varijable",
+        "b": "Diskretne strukture",
+        "c": "Funkcije koje ovise o dvije ili više varijabli",
+        "d": "Linearne jednadžbe"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Kako se označava funkcija dviju varijabli?",
+      "answers": {
+        "a": "f(x)",
+        "b": "f(x, y)",
+        "c": "f(t)",
+        "d": "f(n)"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što predstavlja graf funkcije dviju varijabli?",
+      "answers": {
+        "a": "Krivulju u ravnini",
+        "b": "Točku u prostoru",
+        "c": "Površinu u prostoru",
+        "d": "Pravac u prostoru"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što znači da funkcija ima granicu u točki?",
+      "answers": {
+        "a": "Vrijednost funkcije je maksimalna",
+        "b": "Vrijednosti funkcije se približavaju jednoj vrijednosti",
+        "c": "Funkcija nije definirana",
+        "d": "Funkcija je periodična"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Kada je funkcija neprekidna u točki?",
+      "answers": {
+        "a": "Ako nema maksimum",
+        "b": "Ako postoji parcijalna derivacija",
+        "c": "Ako je vrijednost funkcije jednaka granici u toj točki",
+        "d": "Ako je derivacija jednaka nuli"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je parcijalna derivacija?",
+      "answers": {
+        "a": "Derivacija funkcije jedne varijable",
+        "b": "Derivacija po jednoj varijabli uz fiksiranje ostalih",
+        "c": "Integral funkcije",
+        "d": "Granica funkcije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Kako se označava parcijalna derivacija po x?",
+      "answers": {
+        "a": "df/dx",
+        "b": "∂f/∂x",
+        "c": "Δf",
+        "d": "f′"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je gradijent funkcije?",
+      "answers": {
+        "a": "Skalar",
+        "b": "Integral funkcije",
+        "c": "Vektor parcijalnih derivacija",
+        "d": "Matrica drugog reda"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što gradijent pokazuje u točki?",
+      "answers": {
+        "a": "Smjer najsporijeg rasta",
+        "b": "Smjer najvećeg porasta funkcije",
+        "c": "Smjer minimuma",
+        "d": "Smjer osi x"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Kada je točka stacionarna?",
+      "answers": {
+        "a": "Kad je funkcija neprekidna",
+        "b": "Kad su sve parcijalne derivacije jednake nuli",
+        "c": "Kad je funkcija ograničena",
+        "d": "Kad je Hessijan negativan"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Čemu služi Hessova matrica?",
+      "answers": {
+        "a": "Računanju parcijalnih derivacija prvog reda",
+        "b": "Određivanju tipa stacionarne točke",
+        "c": "Računanju integrala",
+        "d": "Računanju granica"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači ako je Hessijan pozitivan definitan?",
+      "answers": {
+        "a": "Točka je maksimum",
+        "b": "Točka je minimum",
+        "c": "Točka je sedlo",
+        "d": "Funkcija nema ekstrem"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači ako je Hessijan negativan definitan?",
+      "answers": {
+        "a": "Minimum",
+        "b": "Sedlo",
+        "c": "Maksimum",
+        "d": "Nema rješenja"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je sedlasta točka?",
+      "answers": {
+        "a": "Lokalni minimum",
+        "b": "Lokalni maksimum",
+        "c": "Točka bez ekstremne vrijednosti",
+        "d": "Točka diskontinuiteta"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je dvostruki integral?",
+      "answers": {
+        "a": "Integral funkcije jedne varijable",
+        "b": "Integral po dvjema varijablama",
+        "c": "Derivacija drugog reda",
+        "d": "Parcijalna derivacija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Čemu služi dvostruki integral?",
+      "answers": {
+        "a": "Računanju derivacija",
+        "b": "Računanju površine ili volumena",
+        "c": "Računanju granica",
+        "d": "Računanju gradijenta"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što predstavlja područje integracije?",
+      "answers": {
+        "a": "Skup točaka po kojima se integrira",
+        "b": "Vrijednost integrala",
+        "c": "Derivaciju funkcije",
+        "d": "Granice funkcije"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Koji se koordinatni sustav često koristi kod dvostrukih integrala?",
+      "answers": {
+        "a": "Kartesijev",
+        "b": "Polarni",
+        "c": "Cilindrični",
+        "d": "Sferni"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što omogućuje zamjena varijabli u integralu?",
+      "answers": {
+        "a": "Teže računanje",
+        "b": "Jednostavnije računanje integrala",
+        "c": "Računanje derivacija",
+        "d": "Računanje gradijenta"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači da je funkcija diferencijabilna?",
+      "answers": {
+        "a": "Ima maksimum",
+        "b": "Ima parcijalne derivacije",
+        "c": "Može se lokalno aproksimirati linearnom funkcijom",
+        "d": "Ima integral"
+      },
+      "correct": "c"
+    }
+  ]
+}

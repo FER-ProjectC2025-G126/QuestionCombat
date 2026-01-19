@@ -210,7 +210,7 @@ export class Room {
             // review time over, proceed to next turn
             // check for game over condition (only one player with hp > 0)
             let playersAlive = 0;
-            for (const [_, player] of this._players) {
+            for (const [, player] of this._players) {
               if (player.hp > 0 && player.present) {
                 playersAlive += 1;
               }
@@ -231,6 +231,7 @@ export class Room {
                   isWinner: player.hp > 0 && player.present,
                 });
               }
+              this._lastGameStats.sort((a, b) => b.score - a.score);
             } else {
               // this._turn unchanged (the player who answered will choose the next question and player who answers next)
 
@@ -310,7 +311,7 @@ export class Room {
 
     // if this was the last player, stop the room update loop
     // (since the room will be deleted by the UserManager)
-    if (this._players.size === 0) {
+    if (this.playerCount === 0) {
       clearInterval(this.roomUpdateInterval);
     }
   }
@@ -319,7 +320,7 @@ export class Room {
     // if game is already started, or room is still loading, or room is not full,
     // or someone is viewing end of game stats, cannot start
     let someoneLooksAtEndStats = false;
-    for (const [_, player] of this._players) {
+    for (const [, player] of this._players) {
       if (player.viewingStats) {
         someoneLooksAtEndStats = true;
         break;
@@ -353,7 +354,7 @@ export class Room {
     this._currentQuestionIndex = 0;
 
     // reset player stats
-    for (const [_, player] of this._players) {
+    for (const [, player] of this._players) {
       player.present = true; // whether player is still present in the game
       player.correctAns = 0; // the number of correct answers given
       player.incorrectAns = 0; // the number of incorrect answers given
@@ -501,7 +502,13 @@ export class Room {
   }
 
   get playerCount() {
-    return this._players.size;
+    let activePlayers = 0;
+    for (const [, player] of this._players) {
+      if (player.present) {
+        activePlayers += 1;
+      }
+    }
+    return activePlayers;
   }
 
   get questionSets() {
@@ -511,7 +518,6 @@ export class Room {
 
 class MultiplayerQuestionSelector {
   constructor(questions) {
-    this._questions = questions;
     this._questionWeights = new Array(questions.length).fill(1.0);
     this._questionWeightsCumulative = new Array(questions.length);
     this._totalWeight = 0;

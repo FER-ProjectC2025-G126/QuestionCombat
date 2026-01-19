@@ -58,6 +58,22 @@ export default class QuestionSets {
       });
   }
 
+  createQuestionSet(title, description) {
+    return new Promise((resolve, reject) => {
+      this.db.run(
+        'INSERT INTO question_sets (title, description) VALUES (?, ?)',
+        [title, description],
+        function (err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(this.lastID);
+          }
+        }
+      );
+    });
+  }
+
   listQuestionSets() {
     return new Promise((resolve, reject) => {
       this.db.all(

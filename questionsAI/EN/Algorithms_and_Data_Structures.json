@@ -1,0 +1,206 @@
+{
+  "title": "Algorithms and Data Structures",
+  "description": "Questions about algorithms and data structures",
+  "questions": [
+    {
+      "question": "What does the time complexity of an algorithm describe?",
+      "answers": {
+        "a": "The amount of memory the algorithm uses",
+        "b": "The execution time of the algorithm as a function of input size",
+        "c": "The number of variables in the algorithm",
+        "d": "The number of lines of code in the algorithm"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which notation describes the upper bound of an algorithm's time complexity?",
+      "answers": {
+        "a": "Ω",
+        "b": "Θ",
+        "c": "O",
+        "d": "log"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the basic characteristic of a stack?",
+      "answers": {
+        "a": "FIFO",
+        "b": "LIFO",
+        "c": "Random access",
+        "d": "Sorted access"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which operation removes an element from a stack?",
+      "answers": {
+        "a": "push",
+        "b": "enqueue",
+        "c": "pop",
+        "d": "peek"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the time complexity of push and pop operations in an ideal stack implementation?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(log n)",
+        "c": "O(1)",
+        "d": "O(n log n)"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the basic characteristic of a queue?",
+      "answers": {
+        "a": "LIFO",
+        "b": "FILO",
+        "c": "FIFO",
+        "d": "Random access"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which operation adds an element to a queue?",
+      "answers": {
+        "a": "push",
+        "b": "enqueue",
+        "c": "pop",
+        "d": "dequeue"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Why is a circular queue used?",
+      "answers": {
+        "a": "To sort elements",
+        "b": "To reduce memory usage",
+        "c": "To avoid shifting elements",
+        "d": "For recursion"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is true for an empty circular queue?",
+      "answers": {
+        "a": "read > write",
+        "b": "read == write",
+        "c": "write + 1 == read",
+        "d": "read == -1"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which data structure is used in recursion?",
+      "answers": {
+        "a": "Queue",
+        "b": "List",
+        "c": "Stack",
+        "d": "Graph"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What must every recursive function have?",
+      "answers": {
+        "a": "A loop",
+        "b": "A global variable",
+        "c": "A base case",
+        "d": "Sorting"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is an advantage of a singly linked list over an array?",
+      "answers": {
+        "a": "Faster access to elements",
+        "b": "Lower memory consumption",
+        "c": "Easier insertion and deletion of elements",
+        "d": "Automatic sorting"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the main disadvantage of a singly linked list?",
+      "answers": {
+        "a": "No pointers",
+        "b": "Slow access to an arbitrary element",
+        "c": "Cannot be resized",
+        "d": "Cannot delete elements"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which sorting algorithm has an average complexity of O(n log n)?",
+      "answers": {
+        "a": "Bubble sort",
+        "b": "Insertion sort",
+        "c": "Quick sort",
+        "d": "Selection sort"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which sorting algorithm is stable?",
+      "answers": {
+        "a": "Quick sort",
+        "b": "Heap sort",
+        "c": "Insertion sort",
+        "d": "Selection sort"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the basic characteristic of a heap?",
+      "answers": {
+        "a": "Sorted array",
+        "b": "Complete binary tree with the heap property",
+        "c": "Graph without cycles",
+        "d": "Linear list"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is true for a max-heap?",
+      "answers": {
+        "a": "The smallest element is at the root",
+        "b": "All leaves are greater than the root",
+        "c": "The root contains the largest value",
+        "d": "Elements are sorted in ascending order"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the time complexity of building a heap?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(n log n)",
+        "c": "O(log n)",
+        "d": "O(n²)"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is the main difference between a tree and a graph?",
+      "answers": {
+        "a": "A tree has no nodes",
+        "b": "A graph has no edges",
+        "c": "A tree has no cycles",
+        "d": "A graph must be directed"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "How many edges does a tree with n nodes have?",
+      "answers": {
+        "a": "n",
+        "b": "n + 1",
+        "c": "2n",
+        "d": "n − 1"
+      },
+      "correct": "d"
+    }
+  ]
+}

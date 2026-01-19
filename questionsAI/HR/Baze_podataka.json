@@ -1,0 +1,206 @@
+{
+  "title": "Baze podataka",
+  "description": "Osnove baza podataka, SQL",
+  "questions": [
+    {
+      "question": "Što je baza podataka?",
+      "answers": {
+        "a": "Program za obradu teksta",
+        "b": "Organizirana zbirka povezanih podataka",
+        "c": "Skup nepovezanih datoteka",
+        "d": "Operacijski sustav"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna uloga sustava za upravljanje bazom podataka (DBMS)?",
+      "answers": {
+        "a": "Izrada hardvera",
+        "b": "Upravljanje i pristup podacima u bazi",
+        "c": "Pisanje aplikacijskog koda",
+        "d": "Upravljanje mrežom"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji model baze podataka koristi tablice s redcima i stupcima?",
+      "answers": {
+        "a": "Hijerarhijski model",
+        "b": "Mrežni model",
+        "c": "Relacijski model",
+        "d": "Objektni model"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Kako se u relacijskom modelu naziva redak tablice?",
+      "answers": {
+        "a": "Atribut",
+        "b": "Relacija",
+        "c": "Torka",
+        "d": "Domena"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Kako se u relacijskom modelu naziva stupac tablice?",
+      "answers": {
+        "a": "Torka",
+        "b": "Atribut",
+        "c": "Relacija",
+        "d": "Instanca"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što predstavlja primarni ključ (PRIMARY KEY)?",
+      "answers": {
+        "a": "Atribut koji može imati NULL vrijednost",
+        "b": "Atribut koji jedinstveno identificira svaki redak",
+        "c": "Vezu između tablica",
+        "d": "Indeks tablice"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je svrha stranog ključa (FOREIGN KEY)?",
+      "answers": {
+        "a": "Jedinstvena identifikacija zapisa",
+        "b": "Povezivanje tablica",
+        "c": "Ubrzavanje pretraživanja",
+        "d": "Sprječavanje unosa NULL vrijednosti"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je relacija u relacijskom modelu?",
+      "answers": {
+        "a": "Jedan redak tablice",
+        "b": "Jedan stupac tablice",
+        "c": "Tablica podataka",
+        "d": "Veza između baza"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što označava domena atributa?",
+      "answers": {
+        "a": "Naziv atributa",
+        "b": "Skup dozvoljenih vrijednosti atributa",
+        "c": "Primarni ključ",
+        "d": "Broj redaka u tablici"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja normalna forma uklanja parcijalne ovisnosti?",
+      "answers": {
+        "a": "1NF",
+        "b": "2NF",
+        "c": "3NF",
+        "d": "BCNF"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja normalna forma uklanja tranzitivne ovisnosti?",
+      "answers": {
+        "a": "1NF",
+        "b": "2NF",
+        "c": "3NF",
+        "d": "4NF"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je cilj normalizacije baze podataka?",
+      "answers": {
+        "a": "Povećanje broja tablica bez razloga",
+        "b": "Smanjenje redundancije podataka",
+        "c": "Povećanje veličine baze",
+        "d": "Smanjenje sigurnosti"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja SQL naredba se koristi za dohvat podataka?",
+      "answers": {
+        "a": "INSERT",
+        "b": "UPDATE",
+        "c": "SELECT",
+        "d": "DELETE"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja SQL naredba se koristi za umetanje novih zapisa?",
+      "answers": {
+        "a": "SELECT",
+        "b": "INSERT",
+        "c": "CREATE",
+        "d": "ALTER"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja SQL naredba se koristi za promjenu postojećih podataka?",
+      "answers": {
+        "a": "UPDATE",
+        "b": "SELECT",
+        "c": "DROP",
+        "d": "CREATE"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Što je indeks u bazi podataka?",
+      "answers": {
+        "a": "Tablica s podacima",
+        "b": "Mehanizam za ubrzavanje pretraživanja",
+        "c": "Primarni ključ",
+        "d": "Strani ključ"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je glavna mana indeksa?",
+      "answers": {
+        "a": "Usporava SELECT upite",
+        "b": "Povećava potrošnju prostora i vrijeme upisa",
+        "c": "Onemogućuje normalizaciju",
+        "d": "Ne može se koristiti s ključevima"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je transakcija u bazi podataka?",
+      "answers": {
+        "a": "Jedan SELECT upit",
+        "b": "Skup SQL naredbi koji se izvršava kao cjelina",
+        "c": "Jedna tablica",
+        "d": "Jedan indeks"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koje svojstvo transakcija osigurava da se sve promjene izvrše ili nijedna?",
+      "answers": {
+        "a": "Izoliranost",
+        "b": "Trajnost",
+        "c": "Atomarnost",
+        "d": "Konzistentnost"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koje ACID svojstvo osigurava da podaci ostanu spremljeni nakon potvrde transakcije?",
+      "answers": {
+        "a": "Atomarnost",
+        "b": "Konzistentnost",
+        "c": "Izoliranost",
+        "d": "Trajnost"
+      },
+      "correct": "d"
+    }
+  ]
+}

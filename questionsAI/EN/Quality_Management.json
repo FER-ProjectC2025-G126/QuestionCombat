@@ -1,0 +1,206 @@
+{
+  "title": "Quality Management",
+  "description": "Test your knowledge of quality management principles, systems, and practices.",
+  "questions": [
+    {
+      "question": "What is meant by the term quality?",
+      "answers": {
+        "a": "Product price",
+        "b": "The ability of a product or service to meet requirements",
+        "c": "Product durability",
+        "d": "Visual appearance of the product"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the main objective of quality management?",
+      "answers": {
+        "a": "Increasing product prices",
+        "b": "Reducing production",
+        "c": "Customer satisfaction",
+        "d": "Reducing the number of employees"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a quality management system?",
+      "answers": {
+        "a": "A set of machines",
+        "b": "A set of processes, procedures, and resources for managing quality",
+        "c": "A set of products",
+        "d": "A computer program"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which standard is best known for quality management systems?",
+      "answers": {
+        "a": "ISO 9001",
+        "b": "ISO 14001",
+        "c": "ISO 27001",
+        "d": "ISO 45001"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is ISO 9001 based on?",
+      "answers": {
+        "a": "Technical product specifications",
+        "b": "The process approach",
+        "c": "Financial reporting",
+        "d": "Marketing strategies"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the role of leadership in a quality management system?",
+      "answers": {
+        "a": "Only controlling employees",
+        "b": "Defining the quality policy and objectives",
+        "c": "Preparing technical documentation",
+        "d": "Conducting inspections"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does customer focus mean?",
+      "answers": {
+        "a": "Reducing production costs",
+        "b": "Meeting customer requirements",
+        "c": "Increasing profit",
+        "d": "Reducing the number of products"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the goal of continual improvement?",
+      "answers": {
+        "a": "Maintaining the current state",
+        "b": "Cost control",
+        "c": "Continuous improvement of effectiveness",
+        "d": "Reducing documentation"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the PDCA cycle represent?",
+      "answers": {
+        "a": "A cost control method",
+        "b": "A model for planning and improving processes",
+        "c": "A financial reporting model",
+        "d": "A marketing strategy"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which phases make up the PDCA cycle?",
+      "answers": {
+        "a": "Plan, Do, Check, Act",
+        "b": "Prepare, Develop, Control, Adjust",
+        "c": "Plan, Design, Create, Analyze",
+        "d": "Process, Deliver, Control, Assess"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is an internal audit?",
+      "answers": {
+        "a": "An inspection performed by customers",
+        "b": "A system check by an external organization",
+        "c": "An internal review of the quality management system",
+        "d": "Financial control"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the goal of an internal audit?",
+      "answers": {
+        "a": "Punishing employees",
+        "b": "Determining compliance and opportunities for improvement",
+        "c": "Reducing documentation",
+        "d": "Increasing prices"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is a nonconformity?",
+      "answers": {
+        "a": "Meeting all requirements",
+        "b": "Deviation from requirements",
+        "c": "Process improvement",
+        "d": "A documented procedure"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "How is the cause of a nonconformity eliminated?",
+      "answers": {
+        "a": "Through preventive action",
+        "b": "Through corrective action",
+        "c": "Through inspection",
+        "d": "Through auditing"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is corrective action?",
+      "answers": {
+        "a": "An action to eliminate the cause of a detected nonconformity",
+        "b": "An action to detect nonconformities",
+        "c": "Routine control",
+        "d": "A preventive measure"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is preventive action?",
+      "answers": {
+        "a": "An action taken after a problem occurs",
+        "b": "An action to eliminate a potential nonconformity",
+        "c": "A quality control action",
+        "d": "An action to document processes"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the role of documentation in a quality system?",
+      "answers": {
+        "a": "Increasing bureaucracy",
+        "b": "Ensuring consistent implementation of processes",
+        "c": "Reducing productivity",
+        "d": "Only archiving data"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is considered evidence of conformity?",
+      "answers": {
+        "a": "An oral statement",
+        "b": "A documented record",
+        "c": "An assumption",
+        "d": "An informal agreement"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the process approach mean?",
+      "answers": {
+        "a": "Managing individuals",
+        "b": "Managing activities as interrelated processes",
+        "c": "Managing finances",
+        "d": "Managing projects"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Why is continual improvement important?",
+      "answers": {
+        "a": "To increase costs",
+        "b": "To maintain competitiveness",
+        "c": "To reduce quality",
+        "d": "To eliminate procedures"
+      },
+      "correct": "b"
+    }
+  ]
+}

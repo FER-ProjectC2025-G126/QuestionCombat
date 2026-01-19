@@ -1,0 +1,206 @@
+{
+  "title": "Databases",
+  "description": "Test your knowledge of database concepts, models, normalization, SQL commands, indexing, and transactions",
+  "questions": [
+    {
+      "question": "What is a database?",
+      "answers": {
+        "a": "A word processing program",
+        "b": "An organized collection of related data",
+        "c": "A set of unrelated files",
+        "d": "An operating system"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the primary role of a Database Management System (DBMS)?",
+      "answers": {
+        "a": "Hardware manufacturing",
+        "b": "Managing and accessing data in the database",
+        "c": "Writing application code",
+        "d": "Network management"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which database model uses tables with rows and columns?",
+      "answers": {
+        "a": "Hierarchical model",
+        "b": "Network model",
+        "c": "Relational model",
+        "d": "Object model"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a row in a relational table called?",
+      "answers": {
+        "a": "Attribute",
+        "b": "Relation",
+        "c": "Tuple",
+        "d": "Domain"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a column in a relational table called?",
+      "answers": {
+        "a": "Tuple",
+        "b": "Attribute",
+        "c": "Relation",
+        "d": "Instance"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does a primary key represent?",
+      "answers": {
+        "a": "An attribute that can have NULL values",
+        "b": "An attribute that uniquely identifies each row",
+        "c": "A relationship between tables",
+        "d": "A table index"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the purpose of a foreign key?",
+      "answers": {
+        "a": "Unique record identification",
+        "b": "Linking tables",
+        "c": "Speeding up searches",
+        "d": "Preventing NULL values"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is a relation in the relational model?",
+      "answers": {
+        "a": "A single table row",
+        "b": "A single table column",
+        "c": "A data table",
+        "d": "A connection between databases"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does an attribute domain define?",
+      "answers": {
+        "a": "The attribute name",
+        "b": "The set of allowed attribute values",
+        "c": "The primary key",
+        "d": "The number of rows in a table"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which normal form removes partial dependencies?",
+      "answers": {
+        "a": "1NF",
+        "b": "2NF",
+        "c": "3NF",
+        "d": "BCNF"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which normal form removes transitive dependencies?",
+      "answers": {
+        "a": "1NF",
+        "b": "2NF",
+        "c": "3NF",
+        "d": "4NF"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the goal of database normalization?",
+      "answers": {
+        "a": "Increasing the number of tables without reason",
+        "b": "Reducing data redundancy",
+        "c": "Increasing database size",
+        "d": "Reducing security"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which SQL command is used to retrieve data?",
+      "answers": {
+        "a": "INSERT",
+        "b": "UPDATE",
+        "c": "SELECT",
+        "d": "DELETE"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which SQL command is used to insert new records?",
+      "answers": {
+        "a": "SELECT",
+        "b": "INSERT",
+        "c": "CREATE",
+        "d": "ALTER"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which SQL command is used to modify existing data?",
+      "answers": {
+        "a": "UPDATE",
+        "b": "SELECT",
+        "c": "DROP",
+        "d": "CREATE"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is an index in a database?",
+      "answers": {
+        "a": "A data table",
+        "b": "A mechanism to speed up searching",
+        "c": "A primary key",
+        "d": "A foreign key"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the main disadvantage of an index?",
+      "answers": {
+        "a": "It slows down SELECT queries",
+        "b": "It increases storage usage and write time",
+        "c": "It prevents normalization",
+        "d": "It cannot be used with keys"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is a transaction in a database?",
+      "answers": {
+        "a": "A single SELECT query",
+        "b": "A set of SQL commands executed as a whole",
+        "c": "A single table",
+        "d": "A single index"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which transaction property ensures that all changes are executed or none are?",
+      "answers": {
+        "a": "Isolation",
+        "b": "Durability",
+        "c": "Atomicity",
+        "d": "Consistency"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which ACID property ensures that data remains stored after a transaction is committed?",
+      "answers": {
+        "a": "Atomicity",
+        "b": "Consistency",
+        "c": "Isolation",
+        "d": "Durability"
+      },
+      "correct": "d"
+    }
+  ]
+}

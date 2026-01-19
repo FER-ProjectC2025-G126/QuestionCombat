@@ -1,0 +1,206 @@
+{
+  "title": "Web Technologies",
+  "description": "Test your knowledge of web technologies, including Internet concepts, HTML, CSS",
+  "questions": [
+    {
+      "question": "What is the Internet?",
+      "answers": {
+        "a": "A single computer network",
+        "b": "A global system of interconnected computer networks",
+        "c": "A collection of web pages",
+        "d": "A single server"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the primary role of the client in the WWW system?",
+      "answers": {
+        "a": "Storing resources",
+        "b": "Processing requests",
+        "c": "Sending requests to the server",
+        "d": "Managing a database"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which protocol is used for communication on the web?",
+      "answers": {
+        "a": "FTP",
+        "b": "SMTP",
+        "c": "HTTP",
+        "d": "SNMP"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the acronym URL stand for?",
+      "answers": {
+        "a": "Uniform Resource Language",
+        "b": "Universal Resource Locator",
+        "c": "Uniform Resource Locator",
+        "d": "Unified Resource Link"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which language defines the structure and content of a web page?",
+      "answers": {
+        "a": "CSS",
+        "b": "JavaScript",
+        "c": "HTML",
+        "d": "PHP"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the primary purpose of CSS?",
+      "answers": {
+        "a": "Data processing",
+        "b": "Defining the design and appearance of a page",
+        "c": "Sending HTTP requests",
+        "d": "Working with databases"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which HTML element contains document metadata?",
+      "answers": {
+        "a": "<body>",
+        "b": "<meta>",
+        "c": "<head>",
+        "d": "<section>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which HTML element is mandatory in the document head?",
+      "answers": {
+        "a": "<meta>",
+        "b": "<style>",
+        "c": "<title>",
+        "d": "<script>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which global attribute defines a unique element identifier?",
+      "answers": {
+        "a": "class",
+        "b": "style",
+        "c": "id",
+        "d": "name"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the difference between block and inline elements?",
+      "answers": {
+        "a": "Inline elements are always hidden",
+        "b": "Block elements occupy the full line width",
+        "c": "Inline elements start on a new line",
+        "d": "Block elements cannot be styled"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the purpose of the HTML <div> element?",
+      "answers": {
+        "a": "Inserting an image",
+        "b": "Grouping elements",
+        "c": "Defining a hyperlink",
+        "d": "Defining a form"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which element is used for navigation on a web page?",
+      "answers": {
+        "a": "<aside>",
+        "b": "<article>",
+        "c": "<nav>",
+        "d": "<section>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which HTML element is used to create a hyperlink?",
+      "answers": {
+        "a": "<link>",
+        "b": "<a>",
+        "c": "<href>",
+        "d": "<url>"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which attribute defines the target of a hyperlink?",
+      "answers": {
+        "a": "src",
+        "b": "target",
+        "c": "action",
+        "d": "method"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which HTTP method is used to send form data to a server?",
+      "answers": {
+        "a": "GET and POST",
+        "b": "PUT and DELETE",
+        "c": "FETCH",
+        "d": "CONNECT"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What does a CSS selector define?",
+      "answers": {
+        "a": "A property value",
+        "b": "Which elements a style applies to",
+        "c": "An element color",
+        "d": "An element position"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which CSS selector has the highest priority?",
+      "answers": {
+        "a": "Element selector",
+        "b": "Class selector",
+        "c": "ID selector",
+        "d": "Universal selector"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is JavaScript?",
+      "answers": {
+        "a": "A descriptive language",
+        "b": "A scripting programming language",
+        "c": "A database",
+        "d": "An HTTP protocol"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which object represents the HTML document in JavaScript?",
+      "answers": {
+        "a": "window",
+        "b": "navigator",
+        "c": "document",
+        "d": "location"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is JSON used for?",
+      "answers": {
+        "a": "Styling web pages",
+        "b": "Data exchange between client and server",
+        "c": "Creating databases",
+        "d": "Defining HTML structure"
+      },
+      "correct": "b"
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "title": "Macroeconomics",
+  "description": "Quiz on the fundamentals of macroeconomics, including key concepts, measures, and policies.",
+  "questions": [
+    {
+      "question": "What does macroeconomics study?",
+      "answers": {
+        "a": "The behavior of individual consumers",
+        "b": "The behavior of individual firms",
+        "c": "The behavior of the economy as a whole",
+        "d": "Exclusively financial markets"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which economist is considered the founder of macroeconomics?",
+      "answers": {
+        "a": "Adam Smith",
+        "b": "John Maynard Keynes",
+        "c": "Ragnar Frisch",
+        "d": "David Ricardo"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What are macroeconomic aggregates?",
+      "answers": {
+        "a": "Ratios between economic variables",
+        "b": "Individual product prices",
+        "c": "Aggregate measures such as GDP and employment",
+        "d": "Microeconomic indicators"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "When is macroeconomic equilibrium achieved?",
+      "answers": {
+        "a": "When inflation is zero",
+        "b": "When aggregate supply equals aggregate demand",
+        "c": "When there is no unemployment",
+        "d": "When taxes are minimal"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the term nominal value mean?",
+      "answers": {
+        "a": "Values expressed in constant prices",
+        "b": "Values adjusted for inflation",
+        "c": "Values expressed in current prices",
+        "d": "Values expressed in kind"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is real GDP?",
+      "answers": {
+        "a": "GDP expressed in current prices",
+        "b": "GDP expressed in constant prices",
+        "c": "GDP increased by inflation",
+        "d": "GDP excluding taxes"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the primary purpose of GDP?",
+      "answers": {
+        "a": "Measuring inflation",
+        "b": "Measuring total economic production",
+        "c": "Measuring unemployment",
+        "d": "Measuring tax burden"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which goods are not included in GDP according to the expenditure approach?",
+      "answers": {
+        "a": "Final goods",
+        "b": "Exports",
+        "c": "Intermediate goods",
+        "d": "Government consumption"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the growth rate of real GDP indicate?",
+      "answers": {
+        "a": "The price level",
+        "b": "Changes in real economic activity",
+        "c": "The unemployment rate",
+        "d": "The level of taxation"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is inflation?",
+      "answers": {
+        "a": "A decrease in the general price level",
+        "b": "An increase in production",
+        "c": "A general increase in prices of goods and services",
+        "d": "A reduction in the money supply"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the opposite of inflation?",
+      "answers": {
+        "a": "Disinflation",
+        "b": "Recession",
+        "c": "Deflation",
+        "d": "Stagflation"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the Consumer Price Index (CPI) measure?",
+      "answers": {
+        "a": "The unemployment rate",
+        "b": "The general price level",
+        "c": "The level of GDP",
+        "d": "The money supply"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which institution conducts monetary policy in a country?",
+      "answers": {
+        "a": "The government",
+        "b": "The Ministry of Finance",
+        "c": "The central bank",
+        "d": "Parliament"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the goal of expansionary monetary policy?",
+      "answers": {
+        "a": "Reducing inflation",
+        "b": "Reducing the money supply",
+        "c": "Increasing economic activity",
+        "d": "Raising taxes"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "When is restrictive fiscal policy applied?",
+      "answers": {
+        "a": "During a recession",
+        "b": "During high inflation",
+        "c": "During unemployment",
+        "d": "During an economic downturn"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What are business cycles?",
+      "answers": {
+        "a": "Constant economic growth",
+        "b": "Fluctuations in output, income, and employment",
+        "c": "Changes in tax rates",
+        "d": "Changes in exchange rates"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which phase of the business cycle indicates a decline in real GDP for at least two quarters?",
+      "answers": {
+        "a": "Expansion",
+        "b": "Recovery",
+        "c": "Recession",
+        "d": "Peak"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the unemployment rate?",
+      "answers": {
+        "a": "The ratio of employed people to the total population",
+        "b": "The ratio of unemployed people to the labor force",
+        "c": "The ratio of working-age people to employed people",
+        "d": "The ratio of unemployed people to the total population"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does full employment mean?",
+      "answers": {
+        "a": "There is no unemployment",
+        "b": "Only frictional and structural unemployment exist",
+        "c": "Only cyclical unemployment exists",
+        "d": "There is no inflation"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the primary function of fiscal policy?",
+      "answers": {
+        "a": "Regulating the money supply",
+        "b": "Managing the exchange rate",
+        "c": "Managing taxes and public spending",
+        "d": "Controlling inflation through interest rates"
+      },
+      "correct": "c"
+    }
+  ]
+}

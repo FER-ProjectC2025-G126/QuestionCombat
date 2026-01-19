@@ -1,0 +1,206 @@
+{
+  "title": "Physics 1",
+  "description": "Quiz on the basics of physics as a natural science, covering fundamental concepts and units of measurement.",
+  "questions": [
+    {
+      "question": "What does physics study as a natural science?",
+      "answers": {
+        "a": "Chemical reactions",
+        "b": "Biological processes",
+        "c": "Natural phenomena and the laws of motion and energy",
+        "d": "The structure of society"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the SI unit of length?",
+      "answers": {
+        "a": "Second",
+        "b": "Kilogram",
+        "c": "Meter",
+        "d": "Newton"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the SI unit of time?",
+      "answers": {
+        "a": "Hour",
+        "b": "Minute",
+        "c": "Second",
+        "d": "Hertz"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the SI unit of mass?",
+      "answers": {
+        "a": "Gram",
+        "b": "Newton",
+        "c": "Kilogram",
+        "d": "Joule"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the velocity of a body describe?",
+      "answers": {
+        "a": "Change of position over time",
+        "b": "Change of mass",
+        "c": "The force acting on the body",
+        "d": "The energy of the body"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "What is the difference between velocity and acceleration?",
+      "answers": {
+        "a": "There is no difference",
+        "b": "Velocity describes change of velocity",
+        "c": "Acceleration describes change of velocity over time",
+        "d": "Acceleration is always constant"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the SI unit of force?",
+      "answers": {
+        "a": "Joule",
+        "b": "Watt",
+        "c": "Newton",
+        "d": "Pascal"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the expression for force according to Newton's second law?",
+      "answers": {
+        "a": "F = m / a",
+        "b": "F = m · a",
+        "c": "F = a / m",
+        "d": "F = m · v"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the mass of a body describe?",
+      "answers": {
+        "a": "The weight of the body",
+        "b": "The resistance of the body to changes in motion",
+        "c": "The speed of motion",
+        "d": "The position of the body"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the difference between mass and weight?",
+      "answers": {
+        "a": "Mass depends on gravity, weight does not",
+        "b": "Weight is a vector quantity",
+        "c": "Mass and weight are the same quantity",
+        "d": "Mass changes with height"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the SI unit of energy?",
+      "answers": {
+        "a": "Newton",
+        "b": "Watt",
+        "c": "Joule",
+        "d": "Pascal"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is kinetic energy?",
+      "answers": {
+        "a": "Energy of position",
+        "b": "Energy of motion",
+        "c": "Thermal energy",
+        "d": "Electrical energy"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is potential energy?",
+      "answers": {
+        "a": "Energy of motion",
+        "b": "Energy due to position or state",
+        "c": "Thermal energy",
+        "d": "Radiant energy"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the SI unit of power?",
+      "answers": {
+        "a": "Joule",
+        "b": "Newton",
+        "c": "Watt",
+        "d": "Hertz"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does power describe?",
+      "answers": {
+        "a": "Total energy",
+        "b": "Work per unit time",
+        "c": "Force per length",
+        "d": "Amount of mass"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the basic characteristic of heat?",
+      "answers": {
+        "a": "A form of energy",
+        "b": "A form of mass",
+        "c": "A form of force",
+        "d": "A form of motion"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Which physical quantity is measured in kelvins?",
+      "answers": {
+        "a": "Heat",
+        "b": "Temperature",
+        "c": "Energy",
+        "d": "Power"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the relationship between temperature and particle motion?",
+      "answers": {
+        "a": "There is no relationship",
+        "b": "Higher temperature means slower motion",
+        "c": "Higher temperature means faster particle motion",
+        "d": "Temperature depends on mass"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is pressure?",
+      "answers": {
+        "a": "Force per volume",
+        "b": "Force per area",
+        "c": "Energy per time",
+        "d": "Mass per volume"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the SI unit of pressure?",
+      "answers": {
+        "a": "Newton",
+        "b": "Watt",
+        "c": "Pascal",
+        "d": "Bar"
+      },
+      "correct": "c"
+    }
+  ]
+}

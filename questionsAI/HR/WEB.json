@@ -1,0 +1,206 @@
+{
+  "title": "WEB",
+  "description": "Osnove web razvoja, HTML, CSS, JS",
+  "questions": [
+    {
+      "question": "Što je Internet?",
+      "answers": {
+        "a": "Jedna računalna mreža",
+        "b": "Globalni sustav međusobno povezanih računalnih mreža",
+        "c": "Skup web stranica",
+        "d": "Jedan poslužitelj"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna uloga klijenta u WWW sustavu?",
+      "answers": {
+        "a": "Pohranjivanje resursa",
+        "b": "Obrada zahtjeva",
+        "c": "Slanje zahtjeva poslužitelju",
+        "d": "Upravljanje bazom podataka"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji protokol se koristi za komunikaciju na webu?",
+      "answers": {
+        "a": "FTP",
+        "b": "SMTP",
+        "c": "HTTP",
+        "d": "SNMP"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što znači kratica URL?",
+      "answers": {
+        "a": "Uniform Resource Language",
+        "b": "Universal Resource Locator",
+        "c": "Uniform Resource Locator",
+        "d": "Unified Resource Link"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji jezik definira strukturu i sadržaj web stranice?",
+      "answers": {
+        "a": "CSS",
+        "b": "JavaScript",
+        "c": "HTML",
+        "d": "PHP"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna svrha CSS-a?",
+      "answers": {
+        "a": "Obrada podataka",
+        "b": "Definiranje dizajna i izgleda stranice",
+        "c": "Slanje HTTP zahtjeva",
+        "d": "Rad s bazom podataka"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji HTML element sadrži meta-podatke dokumenta?",
+      "answers": {
+        "a": "<body>",
+        "b": "<meta>",
+        "c": "<head>",
+        "d": "<section>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je HTML element obavezan u zaglavlju dokumenta?",
+      "answers": {
+        "a": "<meta>",
+        "b": "<style>",
+        "c": "<title>",
+        "d": "<script>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji globalni atribut definira jedinstveni identifikator elementa?",
+      "answers": {
+        "a": "class",
+        "b": "style",
+        "c": "id",
+        "d": "name"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je razlika između block i inline elemenata?",
+      "answers": {
+        "a": "Inline elementi su uvijek skriveni",
+        "b": "Block elementi zauzimaju cijelu širinu retka",
+        "c": "Inline elementi započinju u novom retku",
+        "d": "Block elementi se ne mogu stilizirati"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Čemu služi HTML element <div>?",
+      "answers": {
+        "a": "Umetanju slike",
+        "b": "Grupiranju elemenata",
+        "c": "Definiranju poveznice",
+        "d": "Definiranju obrasca"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji element služi za navigaciju na web stranici?",
+      "answers": {
+        "a": "<aside>",
+        "b": "<article>",
+        "c": "<nav>",
+        "d": "<section>"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji HTML element se koristi za stvaranje poveznice?",
+      "answers": {
+        "a": "<link>",
+        "b": "<a>",
+        "c": "<href>",
+        "d": "<url>"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji atribut definira cilj poveznice?",
+      "answers": {
+        "a": "src",
+        "b": "target",
+        "c": "action",
+        "d": "method"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja HTTP metoda se koristi za slanje podataka obrasca na poslužitelj?",
+      "answers": {
+        "a": "GET i POST",
+        "b": "PUT i DELETE",
+        "c": "FETCH",
+        "d": "CONNECT"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Što definira CSS selektor?",
+      "answers": {
+        "a": "Vrijednost svojstva",
+        "b": "Koje elemente stil primjenjuje",
+        "c": "Boju elementa",
+        "d": "Poziciju elementa"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji CSS selektor ima najveći prioritet?",
+      "answers": {
+        "a": "Element selektor",
+        "b": "Class selektor",
+        "c": "ID selektor",
+        "d": "Univerzalni selektor"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je JavaScript?",
+      "answers": {
+        "a": "Opisni jezik",
+        "b": "Skriptni programski jezik",
+        "c": "Baza podataka",
+        "d": "HTTP protokol"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji objekt predstavlja HTML dokument u JavaScriptu?",
+      "answers": {
+        "a": "window",
+        "b": "navigator",
+        "c": "document",
+        "d": "location"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Čemu služi JSON?",
+      "answers": {
+        "a": "Stiliziranju web stranica",
+        "b": "Razmjeni podataka između klijenta i poslužitelja",
+        "c": "Izradi baza podataka",
+        "d": "Definiranju HTML strukture"
+      },
+      "correct": "b"
+    }
+  ]
+}

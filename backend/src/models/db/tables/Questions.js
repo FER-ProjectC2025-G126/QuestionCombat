@@ -37,7 +37,7 @@ export default class Questions {
   createQuestion(setId, qText, qOptions, qCorrectOption) {
     return new Promise((resolve, reject) => {
       this.db.run(
-        'INSERT INTO questions (set_id, question_text) VALUES (?)',
+        'INSERT INTO questions (set_id, question_text) VALUES (?, ?)',
         [setId, qText],
         function (err) {
           if (err) {

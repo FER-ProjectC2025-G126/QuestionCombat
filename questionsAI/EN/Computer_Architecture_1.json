@@ -1,0 +1,206 @@
+{
+  "title": "Computer Architecture 1",
+  "description": "Questions about the basics of computer architecture",
+  "questions": [
+    {
+      "question": "What is the primary function of the processor (CPU) in a computer system?",
+      "answers": {
+        "a": "Permanent data storage",
+        "b": "Executing program instructions",
+        "c": "Managing external devices",
+        "d": "Displaying the graphical interface"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which processor unit is used to perform arithmetic and logical operations?",
+      "answers": {
+        "a": "Control unit",
+        "b": "Instruction register",
+        "c": "ALU",
+        "d": "Cache memory"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What are registers used for in a processor?",
+      "answers": {
+        "a": "Storing large amounts of data",
+        "b": "Temporary storage of operands and results",
+        "c": "Storing programs",
+        "d": "Communication with the disk"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which memory has the shortest access time?",
+      "answers": {
+        "a": "RAM",
+        "b": "Cache",
+        "c": "Secondary memory",
+        "d": "Virtual memory"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the role of the processor's control unit?",
+      "answers": {
+        "a": "Performing arithmetic operations",
+        "b": "Decoding instructions and controlling their execution",
+        "c": "Storing data",
+        "d": "Increasing the processor clock speed"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the instruction cycle of a processor?",
+      "answers": {
+        "a": "The process of storing data in memory",
+        "b": "The sequence of fetching, decoding, and executing instructions",
+        "c": "Communication with input-output devices",
+        "d": "Synchronization between the processor and memory"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which register contains the address of the next instruction?",
+      "answers": {
+        "a": "IR",
+        "b": "PC",
+        "c": "MAR",
+        "d": "MBR"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the main role of the data bus?",
+      "answers": {
+        "a": "Transferring addresses",
+        "b": "Transferring control signals",
+        "c": "Transferring data between components",
+        "d": "Clock synchronization"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the address bus carry?",
+      "answers": {
+        "a": "Operands",
+        "b": "Operation results",
+        "c": "Addresses of memory locations",
+        "d": "Control signals"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which component determines the order of instruction execution?",
+      "answers": {
+        "a": "ALU",
+        "b": "Control unit",
+        "c": "Cache memory",
+        "d": "RAM"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which memory is used as an intermediary between the CPU and RAM?",
+      "answers": {
+        "a": "ROM",
+        "b": "Cache",
+        "c": "Secondary memory",
+        "d": "Virtual memory"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the basic characteristic of RAM memory?",
+      "answers": {
+        "a": "Permanent storage",
+        "b": "Slower than disk",
+        "c": "Volatility",
+        "d": "Power independence"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does it mean that memory is volatile?",
+      "answers": {
+        "a": "It is slower than disk",
+        "b": "Data is lost when power is turned off",
+        "c": "It cannot be expanded",
+        "d": "It stores only instructions"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which memory is used to store firmware?",
+      "answers": {
+        "a": "RAM",
+        "b": "Cache",
+        "c": "ROM",
+        "d": "Virtual memory"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the processor clock represent?",
+      "answers": {
+        "a": "The number of instructions in a program",
+        "b": "The speed of signal changes in the processor",
+        "c": "The size of cache memory",
+        "d": "The capacity of RAM"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Which component stores the currently executed instruction?",
+      "answers": {
+        "a": "PC",
+        "b": "IR",
+        "c": "MAR",
+        "d": "SP"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the purpose of the MAR register?",
+      "answers": {
+        "a": "Storing instructions",
+        "b": "Storing data",
+        "c": "Storing the address of a memory location",
+        "d": "Storing ALU results"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Which bus carries signals for system control?",
+      "answers": {
+        "a": "Address bus",
+        "b": "Data bus",
+        "c": "Control bus",
+        "d": "Internal bus"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is the primary purpose of cache memory?",
+      "answers": {
+        "a": "Increasing memory capacity",
+        "b": "Reducing average data access time",
+        "c": "Permanent instruction storage",
+        "d": "Replacing RAM memory"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the width of the address bus determine?",
+      "answers": {
+        "a": "Processor speed",
+        "b": "The maximum number of addressable memory locations",
+        "c": "Register size",
+        "d": "Number of instructions"
+      },
+      "correct": "b"
+    }
+  ]
+}

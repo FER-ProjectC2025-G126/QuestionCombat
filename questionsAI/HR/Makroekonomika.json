@@ -1,0 +1,206 @@
+{
+  "title": "Inženjerska ekonomika 2",
+  "description": "Kviz o makroekonomici",
+  "questions": [
+    {
+      "question": "Što proučava makroekonomika?",
+      "answers": {
+        "a": "Ponašanje pojedinačnih potrošača",
+        "b": "Ponašanje pojedinih poduzeća",
+        "c": "Ponašanje privrede kao cjeline",
+        "d": "Isključivo financijska tržišta"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji se ekonomist smatra utemeljiteljem makroekonomike?",
+      "answers": {
+        "a": "Adam Smith",
+        "b": "John Maynard Keynes",
+        "c": "Ragnar Frisch",
+        "d": "David Ricardo"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što su makroekonomski agregati?",
+      "answers": {
+        "a": "Omjeri između ekonomskih varijabli",
+        "b": "Pojedinačne cijene proizvoda",
+        "c": "Ukupne veličine poput BDP-a i zaposlenosti",
+        "d": "Mikroekonomski pokazatelji"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Kada je ostvarena makroekonomska ravnoteža?",
+      "answers": {
+        "a": "Kad je inflacija jednaka nuli",
+        "b": "Kad se agregatna ponuda poklapa s agregatnom potražnjom",
+        "c": "Kad nema nezaposlenosti",
+        "d": "Kad su porezi minimalni"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači pojam nominalne veličine?",
+      "answers": {
+        "a": "Veličine izražene u stalnim cijenama",
+        "b": "Veličine usklađene za inflaciju",
+        "c": "Veličine izražene u tekućim cijenama",
+        "d": "Veličine izražene u naturi"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je realni BDP?",
+      "answers": {
+        "a": "BDP izražen u tekućim cijenama",
+        "b": "BDP izražen u stalnim cijenama",
+        "c": "BDP uvećan za inflaciju",
+        "d": "BDP bez poreza"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna svrha BDP-a?",
+      "answers": {
+        "a": "Mjerenje inflacije",
+        "b": "Mjerenje ukupne proizvodnje gospodarstva",
+        "c": "Mjerenje nezaposlenosti",
+        "d": "Mjerenje poreznog opterećenja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja dobra se ne uključuju u BDP prema rashodnoj metodi?",
+      "answers": {
+        "a": "Finalna dobra",
+        "b": "Izvoz",
+        "c": "Intermedijarna dobra",
+        "d": "Državna potrošnja"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što pokazuje stopa rasta realnog BDP-a?",
+      "answers": {
+        "a": "Razinu cijena",
+        "b": "Promjenu realne gospodarske aktivnosti",
+        "c": "Razinu nezaposlenosti",
+        "d": "Visinu poreza"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je inflacija?",
+      "answers": {
+        "a": "Pad opće razine cijena",
+        "b": "Rast proizvodnje",
+        "c": "Opći porast cijena proizvoda i usluga",
+        "d": "Smanjenje novčane mase"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je suprotan pojam inflaciji?",
+      "answers": {
+        "a": "Dezinflacija",
+        "b": "Recesija",
+        "c": "Deflacija",
+        "d": "Stagflacija"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što mjeri indeks potrošačkih cijena (CPI)?",
+      "answers": {
+        "a": "Stopu nezaposlenosti",
+        "b": "Opću razinu cijena",
+        "c": "Razinu BDP-a",
+        "d": "Novčanu masu"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja institucija u državi provodi monetarnu politiku?",
+      "answers": {
+        "a": "Vlada",
+        "b": "Ministarstvo financija",
+        "c": "Središnja banka",
+        "d": "Parlament"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je cilj ekspanzivne monetarne politike?",
+      "answers": {
+        "a": "Smanjenje inflacije",
+        "b": "Smanjenje ponude novca",
+        "c": "Povećanje gospodarske aktivnosti",
+        "d": "Povećanje poreza"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Kada se primjenjuje restriktivna fiskalna politika?",
+      "answers": {
+        "a": "U vrijeme recesije",
+        "b": "U vrijeme visoke inflacije",
+        "c": "U vrijeme nezaposlenosti",
+        "d": "U vrijeme gospodarskog pada"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što su poslovni ciklusi?",
+      "answers": {
+        "a": "Stalni rast gospodarstva",
+        "b": "Fluktuacije proizvodnje, dohotka i zaposlenosti",
+        "c": "Promjene poreznih stopa",
+        "d": "Promjene deviznog tečaja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja faza poslovnog ciklusa označava pad realnog BDP-a kroz najmanje dva tromjesečja?",
+      "answers": {
+        "a": "Ekspanzija",
+        "b": "Oporavak",
+        "c": "Recesija",
+        "d": "Vrh"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je stopa nezaposlenosti?",
+      "answers": {
+        "a": "Omjer zaposlenih i ukupnog stanovništva",
+        "b": "Omjer nezaposlenih i radne snage",
+        "c": "Omjer radno sposobnih i zaposlenih",
+        "d": "Omjer nezaposlenih i ukupnog stanovništva"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači puna zaposlenost?",
+      "answers": {
+        "a": "Nema nezaposlenosti",
+        "b": "Postoji samo frikcijska i strukturna nezaposlenost",
+        "c": "Postoji samo ciklička nezaposlenost",
+        "d": "Ne postoji inflacija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna funkcija fiskalne politike?",
+      "answers": {
+        "a": "Regulacija novčane mase",
+        "b": "Upravljanje deviznim tečajem",
+        "c": "Upravljanje porezima i javnom potrošnjom",
+        "d": "Kontrola inflacije preko kamatnih stopa"
+      },
+      "correct": "c"
+    }
+  ]
+}

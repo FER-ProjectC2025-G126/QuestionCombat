@@ -1,0 +1,206 @@
+{
+  "title": "Upravljanje kakvoćom",
+  "description": "Osnovni koncepti upravljanja kvalitetom",
+  "questions": [
+    {
+      "question": "Što se podrazumijeva pod pojmom kakvoće?",
+      "answers": {
+        "a": "Cijena proizvoda",
+        "b": "Sposobnost proizvoda ili usluge da zadovolji zahtjeve",
+        "c": "Trajnost proizvoda",
+        "d": "Vizualni izgled proizvoda"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji je osnovni cilj upravljanja kakvoćom?",
+      "answers": {
+        "a": "Povećanje cijena proizvoda",
+        "b": "Smanjenje proizvodnje",
+        "c": "Zadovoljstvo kupaca",
+        "d": "Smanjenje broja zaposlenih"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je sustav upravljanja kakvoćom?",
+      "answers": {
+        "a": "Skup strojeva",
+        "b": "Skup procesa, postupaka i resursa za upravljanje kakvoćom",
+        "c": "Skup proizvoda",
+        "d": "Računalni program"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja norma je najpoznatija za sustav upravljanja kakvoćom?",
+      "answers": {
+        "a": "ISO 9001",
+        "b": "ISO 14001",
+        "c": "ISO 27001",
+        "d": "ISO 45001"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Na čemu se temelji norma ISO 9001?",
+      "answers": {
+        "a": "Na tehničkim specifikacijama proizvoda",
+        "b": "Na procesnom pristupu",
+        "c": "Na financijskom izvještavanju",
+        "d": "Na marketinškim strategijama"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je uloga vodstva u sustavu upravljanja kakvoćom?",
+      "answers": {
+        "a": "Samo kontrola zaposlenika",
+        "b": "Definiranje politike kakvoće i ciljeva",
+        "c": "Izrada tehničke dokumentacije",
+        "d": "Provedba inspekcije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači orijentacija na kupca?",
+      "answers": {
+        "a": "Smanjenje troškova proizvodnje",
+        "b": "Zadovoljavanje zahtjeva kupaca",
+        "c": "Povećanje profita",
+        "d": "Smanjenje broja proizvoda"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji je cilj stalnog poboljšavanja?",
+      "answers": {
+        "a": "Održavanje postojećeg stanja",
+        "b": "Kontrola troškova",
+        "c": "Neprekidno unapređenje učinkovitosti",
+        "d": "Smanjenje dokumentacije"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što predstavlja PDCA ciklus?",
+      "answers": {
+        "a": "Metodu kontrole troškova",
+        "b": "Model planiranja i poboljšavanja procesa",
+        "c": "Model financijskog izvještavanja",
+        "d": "Marketinšku strategiju"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koje faze čine PDCA ciklus?",
+      "answers": {
+        "a": "Plan, Do, Check, Act",
+        "b": "Prepare, Develop, Control, Adjust",
+        "c": "Plan, Design, Create, Analyze",
+        "d": "Process, Deliver, Control, Assess"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Što je unutarnja auditacija?",
+      "answers": {
+        "a": "Provjera od strane kupaca",
+        "b": "Provjera sustava od strane vanjske organizacije",
+        "c": "Interna provjera sustava upravljanja kakvoćom",
+        "d": "Financijska kontrola"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je cilj interne auditacije?",
+      "answers": {
+        "a": "Kažnjavanje zaposlenika",
+        "b": "Utvrđivanje usklađenosti i mogućnosti poboljšanja",
+        "c": "Smanjenje dokumentacije",
+        "d": "Povećanje cijena"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je nesukladnost?",
+      "answers": {
+        "a": "Zadovoljavanje svih zahtjeva",
+        "b": "Odstupanje od zahtjeva",
+        "c": "Poboljšanje procesa",
+        "d": "Dokumentirani postupak"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Kako se uklanja uzrok nesukladnosti?",
+      "answers": {
+        "a": "Preventivnom radnjom",
+        "b": "Korektivnom radnjom",
+        "c": "Inspekcijom",
+        "d": "Auditacijom"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je korektivna radnja?",
+      "answers": {
+        "a": "Radnja za uklanjanje uzroka otkrivene nesukladnosti",
+        "b": "Radnja za otkrivanje nesukladnosti",
+        "c": "Redovna kontrola",
+        "d": "Preventivna mjera"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Što je preventivna radnja?",
+      "answers": {
+        "a": "Radnja nakon nastanka problema",
+        "b": "Radnja za uklanjanje potencijalne nesukladnosti",
+        "c": "Radnja kontrole kvalitete",
+        "d": "Radnja dokumentiranja procesa"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je uloga dokumentacije u sustavu kakvoće?",
+      "answers": {
+        "a": "Povećanje birokracije",
+        "b": "Osiguranje dosljedne provedbe procesa",
+        "c": "Smanjenje produktivnosti",
+        "d": "Samo arhiviranje podataka"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što se smatra dokazom o sukladnosti?",
+      "answers": {
+        "a": "Usmena izjava",
+        "b": "Dokumentirani zapis",
+        "c": "Pretpostavka",
+        "d": "Neformalni dogovor"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što znači procesni pristup?",
+      "answers": {
+        "a": "Upravljanje pojedincima",
+        "b": "Upravljanje aktivnostima kao međusobno povezanim procesima",
+        "c": "Upravljanje financijama",
+        "d": "Upravljanje projektima"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Zašto je stalno poboljšavanje važno?",
+      "answers": {
+        "a": "Radi povećanja troškova",
+        "b": "Radi održavanja konkurentnosti",
+        "c": "Radi smanjenja kvalitete",
+        "d": "Radi ukidanja procedura"
+      },
+      "correct": "b"
+    }
+  ]
+}

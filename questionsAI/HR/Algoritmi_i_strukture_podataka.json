@@ -1,0 +1,376 @@
+{
+  "title": "Algoritmi i strukture podataka",
+  "description": "Kviz o algoritmima i strukturama podataka",
+  "questions": [
+    {
+      "question": "Što opisuje vremenska složenost algoritma?",
+      "answers": {
+        "a": "Količinu memorije koju algoritam koristi",
+        "b": "Vrijeme izvršavanja algoritma u ovisnosti o veličini ulaza",
+        "c": "Broj varijabli u algoritmu",
+        "d": "Broj linija koda algoritma"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja notacija opisuje gornju granicu vremenske složenosti algoritma?",
+      "answers": {
+        "a": "Ω",
+        "b": "Θ",
+        "c": "O",
+        "d": "log"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna karakteristika stoga (stack)?",
+      "answers": {
+        "a": "FIFO",
+        "b": "LIFO",
+        "c": "Slučajan pristup",
+        "d": "Sortirani pristup"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja operacija uklanja element sa stoga?",
+      "answers": {
+        "a": "push",
+        "b": "enqueue",
+        "c": "pop",
+        "d": "peek"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je vremenska složenost operacija push i pop kod idealne implementacije stoga?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(log n)",
+        "c": "O(1)",
+        "d": "O(n log n)"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna karakteristika reda (queue)?",
+      "answers": {
+        "a": "LIFO",
+        "b": "FILO",
+        "c": "FIFO",
+        "d": "Nasumični pristup"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja operacija dodaje element u red?",
+      "answers": {
+        "a": "push",
+        "b": "enqueue",
+        "c": "pop",
+        "d": "dequeue"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Zašto se koristi cirkularni red?",
+      "answers": {
+        "a": "Radi sortiranja elemenata",
+        "b": "Radi smanjenja memorije",
+        "c": "Radi izbjegavanja pomicanja elemenata",
+        "d": "Radi rekurzije"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što vrijedi za prazan cirkularni red?",
+      "answers": {
+        "a": "read > write",
+        "b": "read == write",
+        "c": "write + 1 == read",
+        "d": "read == -1"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja struktura podataka se koristi kod rekurzije?",
+      "answers": {
+        "a": "Red",
+        "b": "Lista",
+        "c": "Stog",
+        "d": "Graf"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što mora imati svaka rekurzivna funkcija?",
+      "answers": {
+        "a": "Petlju",
+        "b": "Globalnu varijablu",
+        "c": "Bazni slučaj",
+        "d": "Sortiranje"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je prednost jednostruko povezane liste u odnosu na polje?",
+      "answers": {
+        "a": "Brži pristup elementima",
+        "b": "Manja potrošnja memorije",
+        "c": "Lakše umetanje i brisanje elemenata",
+        "d": "Automatsko sortiranje"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je glavna mana jednostruko povezane liste?",
+      "answers": {
+        "a": "Nema pokazivača",
+        "b": "Spor pristup proizvoljnom elementu",
+        "c": "Ne može se proširivati",
+        "d": "Ne može se brisati"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji algoritam sortiranja ima prosječnu složenost O(n log n)?",
+      "answers": {
+        "a": "Bubble sort",
+        "b": "Insertion sort",
+        "c": "Quick sort",
+        "d": "Selection sort"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji algoritam sortiranja je stabilan?",
+      "answers": {
+        "a": "Quick sort",
+        "b": "Heap sort",
+        "c": "Insertion sort",
+        "d": "Selection sort"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna karakteristika gomile (heap)?",
+      "answers": {
+        "a": "Sortirani niz",
+        "b": "Potpuno binarno stablo s heap svojstvom",
+        "c": "Graf bez ciklusa",
+        "d": "Linearni popis"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što vrijedi za max-heap?",
+      "answers": {
+        "a": "Najmanji element je u korijenu",
+        "b": "Svi listovi su veći od korijena",
+        "c": "Korijen ima najveću vrijednost",
+        "d": "Elementi su sortirani uzlazno"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je vremenska složenost izgradnje heap-a?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(n log n)",
+        "c": "O(log n)",
+        "d": "O(n²)"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Koja je osnovna razlika između stabla i grafa?",
+      "answers": {
+        "a": "Stablo nema čvorove",
+        "b": "Graf nema bridove",
+        "c": "Stablo nema cikluse",
+        "d": "Graf mora biti usmjeren"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koliko bridova ima stablo s n čvorova?",
+      "answers": {
+        "a": "n",
+        "b": "n + 1",
+        "c": "2n",
+        "d": "n − 1"
+      },
+      "correct": "d"
+    },
+    {
+      "question": "Koja metoda pretraživanja stabla koristi red?",
+      "answers": {
+        "a": "DFS",
+        "b": "Inorder",
+        "c": "Postorder",
+        "d": "BFS"
+      },
+      "correct": "d"
+    },
+    {
+      "question": "Koja metoda pretraživanja stabla koristi stog ili rekurziju?",
+      "answers": {
+        "a": "BFS",
+        "b": "Level-order",
+        "c": "DFS",
+        "d": "Hashing"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je kolizija kod hash tablice?",
+      "answers": {
+        "a": "Brisanje ključa",
+        "b": "Mapiranje više ključeva na istu adresu",
+        "c": "Neuspješno pretraživanje",
+        "d": "Sortiranje ključeva"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je prednost ulančavanja u hash tablicama?",
+      "answers": {
+        "a": "Nema dodatne memorije",
+        "b": "Tablica se ne može popuniti",
+        "c": "Brisanje nije moguće",
+        "d": "Svi elementi su sortirani"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što označava faktor opterećenja α u hash tablici?",
+      "answers": {
+        "a": "Broj kolizija",
+        "b": "Omjer broja ključeva i veličine tablice",
+        "c": "Veličinu memorije",
+        "d": "Vrijeme pretraživanja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja tehnika rješavanja kolizija NE koristi dodatne strukture?",
+      "answers": {
+        "a": "Ulančavanje",
+        "b": "Otvoreno adresiranje",
+        "c": "Liste",
+        "d": "Povezane liste"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je linearno ispitivanje kod otvorenog adresiranja?",
+      "answers": {
+        "a": "Preskakanje elemenata",
+        "b": "Dodavanje konstante i",
+        "c": "Kvadriranje indeksa",
+        "d": "Korištenje dvije hash funkcije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je prednost dvostrukog raspršivanja?",
+      "answers": {
+        "a": "Jednostavna implementacija",
+        "b": "Izbjegavanje grupiranja",
+        "c": "Manja memorija",
+        "d": "Sortirani podaci"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Čemu služi Levenshteinova udaljenost?",
+      "answers": {
+        "a": "Sortiranju nizova",
+        "b": "Mjerenju sličnosti riječi",
+        "c": "Kompresiji teksta",
+        "d": "Kriptiranju podataka"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koje operacije koristi Levenshteinova udaljenost?",
+      "answers": {
+        "a": "Zbrajanje i oduzimanje",
+        "b": "Umetanje, brisanje, izmjena",
+        "c": "Spajanje nizova",
+        "d": "Rotaciju znakova"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je vremenska složenost rekurzivne Levenshteinove implementacije?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(m * n)",
+        "c": "O(3^m)",
+        "d": "O(log n)"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je vremenska složenost iterativne Levenshteinove implementacije?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(m * n)",
+        "c": "O(3^m)",
+        "d": "O(n log n)"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji algoritam umjetne inteligencije grupira podatke u klastere?",
+      "answers": {
+        "a": "Linearna regresija",
+        "b": "K-sredina",
+        "c": "Levenshtein",
+        "d": "BFS"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što predstavlja centroid u algoritmu K-sredina?",
+      "answers": {
+        "a": "Najudaljeniju točku",
+        "b": "Prosječnu točku klastera",
+        "c": "Prvu unesenu točku",
+        "d": "Granicu klastera"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Kada algoritam K-sredina završava?",
+      "answers": {
+        "a": "Kad su svi klasteri jednaki",
+        "b": "Kad se centroidi više ne mijenjaju značajno",
+        "c": "Kad su svi podaci sortirani",
+        "d": "Nakon prve iteracije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je složenost algoritma K-sredina?",
+      "answers": {
+        "a": "O(n)",
+        "b": "O(n log n)",
+        "c": "O(n * k * e)",
+        "d": "O(k²)"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Čemu služi linearna regresija?",
+      "answers": {
+        "a": "Grupiranju podataka",
+        "b": "Pronalaženju najkraćeg puta",
+        "c": "Predviđanju vrijednosti",
+        "d": "Sortiranju nizova"
+      },
+      "correct": "c"
+    }
+  ]
+}

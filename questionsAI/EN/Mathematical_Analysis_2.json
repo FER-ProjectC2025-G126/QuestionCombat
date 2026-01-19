@@ -1,0 +1,206 @@
+{
+  "title": "Mathematical Analysis 2",
+  "description": "Quiz on Mathematical Analysis of Functions of Several Variables",
+  "questions": [
+    {
+      "question": "What does mathematical analysis of functions of several variables study?",
+      "answers": {
+        "a": "Functions of one variable",
+        "b": "Discrete structures",
+        "c": "Functions that depend on two or more variables",
+        "d": "Linear equations"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "How is a function of two variables denoted?",
+      "answers": {
+        "a": "f(x)",
+        "b": "f(x, y)",
+        "c": "f(t)",
+        "d": "f(n)"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the graph of a function of two variables represent?",
+      "answers": {
+        "a": "A curve in the plane",
+        "b": "A point in space",
+        "c": "A surface in space",
+        "d": "A line in space"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does it mean that a function has a limit at a point?",
+      "answers": {
+        "a": "The value of the function is maximal",
+        "b": "The values of the function approach a single value",
+        "c": "The function is not defined",
+        "d": "The function is periodic"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "When is a function continuous at a point?",
+      "answers": {
+        "a": "If it has no maximum",
+        "b": "If a partial derivative exists",
+        "c": "If the value of the function equals the limit at that point",
+        "d": "If the derivative equals zero"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a partial derivative?",
+      "answers": {
+        "a": "The derivative of a function of one variable",
+        "b": "The derivative with respect to one variable while keeping the others fixed",
+        "c": "The integral of a function",
+        "d": "The limit of a function"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "How is the partial derivative with respect to x denoted?",
+      "answers": {
+        "a": "df/dx",
+        "b": "∂f/∂x",
+        "c": "Δf",
+        "d": "f′"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the gradient of a function?",
+      "answers": {
+        "a": "A scalar",
+        "b": "The integral of a function",
+        "c": "A vector of partial derivatives",
+        "d": "A second-order matrix"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What does the gradient indicate at a point?",
+      "answers": {
+        "a": "The direction of slowest increase",
+        "b": "The direction of the greatest increase of the function",
+        "c": "The direction of a minimum",
+        "d": "The direction of the x-axis"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "When is a point stationary?",
+      "answers": {
+        "a": "When the function is continuous",
+        "b": "When all partial derivatives are equal to zero",
+        "c": "When the function is bounded",
+        "d": "When the Hessian is negative"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the purpose of the Hessian matrix?",
+      "answers": {
+        "a": "Computing first-order partial derivatives",
+        "b": "Determining the type of a stationary point",
+        "c": "Computing integrals",
+        "d": "Computing limits"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does it mean if the Hessian is positive definite?",
+      "answers": {
+        "a": "The point is a maximum",
+        "b": "The point is a minimum",
+        "c": "The point is a saddle",
+        "d": "The function has no extremum"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does it mean if the Hessian is negative definite?",
+      "answers": {
+        "a": "Minimum",
+        "b": "Saddle",
+        "c": "Maximum",
+        "d": "No solution"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a saddle point?",
+      "answers": {
+        "a": "A local minimum",
+        "b": "A local maximum",
+        "c": "A point without an extremum value",
+        "d": "A point of discontinuity"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "What is a double integral?",
+      "answers": {
+        "a": "An integral of a function of one variable",
+        "b": "An integral with respect to two variables",
+        "c": "A second-order derivative",
+        "d": "A partial derivative"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What is the purpose of a double integral?",
+      "answers": {
+        "a": "Computing derivatives",
+        "b": "Computing area or volume",
+        "c": "Computing limits",
+        "d": "Computing gradients"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does the region of integration represent?",
+      "answers": {
+        "a": "The set of points over which integration is performed",
+        "b": "The value of the integral",
+        "c": "The derivative of the function",
+        "d": "The limits of the function"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Which coordinate system is often used for double integrals?",
+      "answers": {
+        "a": "Cartesian",
+        "b": "Polar",
+        "c": "Cylindrical",
+        "d": "Spherical"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does a change of variables in an integral enable?",
+      "answers": {
+        "a": "More difficult computation",
+        "b": "Simpler computation of the integral",
+        "c": "Computing derivatives",
+        "d": "Computing gradients"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "What does it mean that a function is differentiable?",
+      "answers": {
+        "a": "It has a maximum",
+        "b": "It has partial derivatives",
+        "c": "It can be locally approximated by a linear function",
+        "d": "It has an integral"
+      },
+      "correct": "c"
+    }
+  ]
+}

@@ -7,48 +7,75 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import sqlite3import from 'sqlite3';
 const sqlite3 = sqlite3import.verbose();
+import walk from "../../utils/walkDirTree.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let db = null;
 function getDb() {
   if (!db) {
-    // connect to SQLite database
-    db = new sqlite3.Database(path.join(__dirname, './db.sqlite'), (err) => {
+    const dbPath = path.join(__dirname, './db.sqlite');
+    const isNewDb = !fs.existsSync(dbPath);
+
+    // connect to SQLite database (file will be created if not exists)
+    db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
         console.error('Could not connect to database: ', err);
         db = null;
       }
     });
+
     // execute everything in serialized mode
     db.serialize();
-    // initialize database schema
-    const schemaPath = path.join(__dirname, './schema.sql');
-    const schemaSQL = fs.readFileSync(schemaPath, 'utf8');
-    db.exec(schemaSQL, (err) => {
-      if (err) {
-        console.error('Could not initialize database schema: ', err);
-      }
-    });
-    // seed placeholder data if questions table is empty
-    db.get('SELECT COUNT(*) as count FROM questions', (err, row) => {
-      if (err) {
-        console.error('Could not check questions table: ', err);
-        return;
-      }
-      if (row.count === 0) {
-        console.log('Questions table is empty, seeding placeholder data...');
-        const placeholdersPath = path.join(__dirname, './placeholders.sql');
-        const placeholdersSQL = fs.readFileSync(placeholdersPath, 'utf8');
-        db.exec(placeholdersSQL, (err) => {
-          if (err) {
-            console.error('Could not seed placeholder data: ', err);
-          } else {
-            console.log('Successfully seeded placeholder data');
-          }
-        });
-      }
-    });
+
+    if (isNewDb) {
+      // database schema
+      const schemaPath = path.join(__dirname, './schema.sql');
+      const schemaSQL = fs.readFileSync(schemaPath, 'utf8');
+
+      // initialize database schema
+      db.exec(schemaSQL, (err) => {
+        if (err) {
+          console.error('Could not initialize database schema: ', err);
+        }
+      });
+
+      // initial questions
+      const questionsDir = path.join(__dirname, '../../../../questionsAI');
+
+      // fill database with initial questions from questionsAI directory
+      walk(questionsDir, (file) => {
+        const questionSetJSON = JSON.parse(fs.readFileSync(file, 'utf8'));
+        const questionSet = new QuestionSets(db);
+        const questions = new Questions(db);
+        questionSet.createQuestionSet(questionSetJSON.title, questionSetJSON.description)
+          .then((questionSetId) => {
+            const questionsPromises = questionSetJSON.questions.map((q) => {
+              const text = q.question;
+              const answers = [q["answers"]["a"], q["answers"]["b"], q["answers"]["c"], q["answers"]["d"]];
+              let correct;
+              switch (q["correct"]) {
+                case "a":
+                  correct = 0;
+                  break;
+                case "b":
+                  correct = 1;
+                  break;
+                case "c":
+                  correct = 2;
+                  break;
+                case "d":
+                  correct = 3;
+                  break;
+                default:
+                  throw new Error(`Invalid correct answer: ${q['correct']}`);
+              }
+              return questions.createQuestion(questionSetId, text, answers, correct);
+            });
+            return Promise.all(questionsPromises);
+          })
+      })
+    }
   }
   return db;
 }

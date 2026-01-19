@@ -1,0 +1,206 @@
+{
+  "title": "Diskretna matematika 1",
+  "description": "Kviz o diskretnoj matematici",
+  "questions": [
+    {
+      "question": "Što je informacijski sustav?",
+      "answers": {
+        "a": "Skup hardverskih komponenti",
+        "b": "Skup podataka bez strukture",
+        "c": "Sustav za prikupljanje, obradu i pohranu informacija",
+        "d": "Operacijski sustav računala"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna uloga operacijskog sustava?",
+      "answers": {
+        "a": "Pisanje aplikacija",
+        "b": "Upravljanje resursima računala",
+        "c": "Pohrana podataka u bazu",
+        "d": "Kompajliranje programa"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je algoritam?",
+      "answers": {
+        "a": "Programski jezik",
+        "b": "Skup nepovezanih naredbi",
+        "c": "Konačan niz koraka za rješavanje problema",
+        "d": "Hardverska komponenta"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna karakteristika dobrog algoritma?",
+      "answers": {
+        "a": "Beskonačnost",
+        "b": "Neodređenost",
+        "c": "Jasnoća i konačnost",
+        "d": "Ovisnost o hardveru"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što predstavlja ulaz algoritma?",
+      "answers": {
+        "a": "Rezultat izvođenja",
+        "b": "Početne podatke algoritma",
+        "c": "Izlazne podatke",
+        "d": "Vrijeme izvođenja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što predstavlja izlaz algoritma?",
+      "answers": {
+        "a": "Ulazne vrijednosti",
+        "b": "Vrijeme izvođenja",
+        "c": "Rezultat obrade ulaznih podataka",
+        "d": "Broj koraka"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja struktura upravljanja omogućuje grananje programa?",
+      "answers": {
+        "a": "Sekvenca",
+        "b": "Petlja",
+        "c": "Uvjetna naredba",
+        "d": "Komentar"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja struktura upravljanja omogućuje ponavljanje naredbi?",
+      "answers": {
+        "a": "Uvjet",
+        "b": "Petlja",
+        "c": "Sekvenca",
+        "d": "Funkcija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je pseudokod?",
+      "answers": {
+        "a": "Strojni kod",
+        "b": "Programski jezik",
+        "c": "Neformalni opis algoritma",
+        "d": "Izvršna datoteka"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je svrha dijagrama toka?",
+      "answers": {
+        "a": "Izvršavanje programa",
+        "b": "Grafički prikaz algoritma",
+        "c": "Pisanje koda",
+        "d": "Testiranje programa"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je varijabla?",
+      "answers": {
+        "a": "Konstantna vrijednost",
+        "b": "Ime za memorijsku lokaciju",
+        "c": "Tip podatka",
+        "d": "Funkcija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što određuje tip podatka varijable?",
+      "answers": {
+        "a": "Naziv varijable",
+        "b": "Vrijednost izlaza",
+        "c": "Skup mogućih vrijednosti",
+        "d": "Broj naredbi"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je razlika između konstante i varijable?",
+      "answers": {
+        "a": "Konstanta nema ime",
+        "b": "Varijabla se ne može mijenjati",
+        "c": "Vrijednost konstante se ne mijenja",
+        "d": "Varijabla ne zauzima memoriju"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je programska pogreška (bug)?",
+      "answers": {
+        "a": "Ispravan dio programa",
+        "b": "Hardverski kvar",
+        "c": "Greška u programu koja uzrokuje neispravno ponašanje",
+        "d": "Optimizacija koda"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je testiranje programa?",
+      "answers": {
+        "a": "Pisanje dokumentacije",
+        "b": "Provjera ispravnosti programa",
+        "c": "Optimizacija algoritma",
+        "d": "Kompajliranje koda"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je programski jezik?",
+      "answers": {
+        "a": "Skup hardverskih naredbi",
+        "b": "Formalni jezik za pisanje programa",
+        "c": "Baza podataka",
+        "d": "Operacijski sustav"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je svrha kompajlera?",
+      "answers": {
+        "a": "Izvršavanje programa",
+        "b": "Prevođenje izvornog koda u strojni kod",
+        "c": "Pisanje algoritma",
+        "d": "Testiranje programa"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je interpretirani jezik?",
+      "answers": {
+        "a": "Jezik koji se prevodi unaprijed",
+        "b": "Jezik koji se izvršava liniju po liniju",
+        "c": "Strojni jezik",
+        "d": "Asemblerski jezik"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je dokumentacija programa?",
+      "answers": {
+        "a": "Izvorni kod",
+        "b": "Opis rada i korištenja programa",
+        "c": "Izvršna datoteka",
+        "d": "Testni podaci"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Zašto je čitljivost koda važna?",
+      "answers": {
+        "a": "Povećava brzinu računala",
+        "b": "Smanjuje veličinu programa",
+        "c": "Olakšava održavanje i razumijevanje programa",
+        "d": "Ubrzava kompajliranje"
+      },
+      "correct": "c"
+    }
+  ]
+}

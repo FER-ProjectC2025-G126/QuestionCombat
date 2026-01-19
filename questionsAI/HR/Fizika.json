@@ -1,0 +1,206 @@
+{
+  "title": "Fizika 1",
+  "description": "Osnovni pojmovi iz fizike",
+  "questions": [
+    {
+      "question": "Što proučava fizika kao prirodna znanost?",
+      "answers": {
+        "a": "Kemijske reakcije",
+        "b": "Biološke procese",
+        "c": "Prirodne pojave i zakone gibanja i energije",
+        "d": "Strukturu društva"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je SI jedinica za duljinu?",
+      "answers": {
+        "a": "Sekunda",
+        "b": "Kilogram",
+        "c": "Metar",
+        "d": "Newton"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je SI jedinica za vrijeme?",
+      "answers": {
+        "a": "Sat",
+        "b": "Minuta",
+        "c": "Sekunda",
+        "d": "Herc"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je SI jedinica za masu?",
+      "answers": {
+        "a": "Gram",
+        "b": "Newton",
+        "c": "Kilogram",
+        "d": "Džul"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što opisuje brzina tijela?",
+      "answers": {
+        "a": "Promjenu položaja po vremenu",
+        "b": "Promjenu mase",
+        "c": "Silu koja djeluje na tijelo",
+        "d": "Energiju tijela"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Koja je razlika između brzine i ubrzanja?",
+      "answers": {
+        "a": "Nema razlike",
+        "b": "Brzina opisuje promjenu brzine",
+        "c": "Ubrzanje opisuje promjenu brzine u vremenu",
+        "d": "Ubrzanje je uvijek konstantno"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je SI jedinica za silu?",
+      "answers": {
+        "a": "Džul",
+        "b": "Watt",
+        "c": "Newton",
+        "d": "Pascal"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koji je izraz za silu prema Newtonovom drugom zakonu?",
+      "answers": {
+        "a": "F = m / a",
+        "b": "F = m · a",
+        "c": "F = a / m",
+        "d": "F = m · v"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što opisuje masa tijela?",
+      "answers": {
+        "a": "Težinu tijela",
+        "b": "Otpornost tijela promjeni gibanja",
+        "c": "Brzinu gibanja",
+        "d": "Položaj tijela"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je razlika između mase i težine?",
+      "answers": {
+        "a": "Masa ovisi o gravitaciji, težina ne",
+        "b": "Težina je vektorska veličina",
+        "c": "Masa i težina su iste veličine",
+        "d": "Masa se mijenja s visinom"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je SI jedinica za energiju?",
+      "answers": {
+        "a": "Newton",
+        "b": "Watt",
+        "c": "Džul",
+        "d": "Pascal"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je kinetička energija?",
+      "answers": {
+        "a": "Energija položaja",
+        "b": "Energija gibanja",
+        "c": "Toplinska energija",
+        "d": "Električna energija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je potencijalna energija?",
+      "answers": {
+        "a": "Energija gibanja",
+        "b": "Energija zbog položaja ili stanja",
+        "c": "Energija topline",
+        "d": "Energija zračenja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je SI jedinica za snagu?",
+      "answers": {
+        "a": "Džul",
+        "b": "Newton",
+        "c": "Watt",
+        "d": "Herc"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što opisuje snaga?",
+      "answers": {
+        "a": "Ukupnu energiju",
+        "b": "Rad po jedinici vremena",
+        "c": "Silu po duljini",
+        "d": "Množinu mase"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna karakteristika topline?",
+      "answers": {
+        "a": "Oblik energije",
+        "b": "Oblik mase",
+        "c": "Oblik sile",
+        "d": "Oblik gibanja"
+      },
+      "correct": "a"
+    },
+    {
+      "question": "Koja se fizikalna veličina mjeri u kelvinima?",
+      "answers": {
+        "a": "Toplina",
+        "b": "Temperatura",
+        "c": "Energija",
+        "d": "Snaga"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je veza između temperature i gibanja čestica?",
+      "answers": {
+        "a": "Nema veze",
+        "b": "Viša temperatura znači sporije gibanje",
+        "c": "Viša temperatura znači brže gibanje čestica",
+        "d": "Temperatura ovisi o masi"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što je tlak?",
+      "answers": {
+        "a": "Sila po volumenu",
+        "b": "Sila po površini",
+        "c": "Energija po vremenu",
+        "d": "Masa po volumenu"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je SI jedinica za tlak?",
+      "answers": {
+        "a": "Newton",
+        "b": "Watt",
+        "c": "Pascal",
+        "d": "Bar"
+      },
+      "correct": "c"
+    }
+  ]
+}

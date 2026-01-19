@@ -1,0 +1,206 @@
+{
+  "title": "Arhitektura računala 1",
+  "description": "Kviz o osnovnoj arhitekturi računala i procesora",
+  "questions": [
+    {
+      "question": "Koja je osnovna funkcija procesora (CPU) u računalnom sustavu?",
+      "answers": {
+        "a": "Trajna pohrana podataka",
+        "b": "Izvršavanje instrukcija programa",
+        "c": "Upravljanje vanjskim uređajima",
+        "d": "Prikaz grafičkog sučelja"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja se jedinica procesora koristi za izvođenje aritmetičkih i logičkih operacija?",
+      "answers": {
+        "a": "Upravljačka jedinica",
+        "b": "Registar instrukcija",
+        "c": "ALU",
+        "d": "Cache memorija"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Čemu služe registri u procesoru?",
+      "answers": {
+        "a": "Pohrani velikih količina podataka",
+        "b": "Privremenoj pohrani operanada i rezultata",
+        "c": "Pohrani programa",
+        "d": "Komunikaciji s diskom"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja memorija ima najkraće vrijeme pristupa?",
+      "answers": {
+        "a": "RAM",
+        "b": "Cache",
+        "c": "Sekundarna memorija",
+        "d": "Virtualna memorija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je uloga upravljačke jedinice procesora?",
+      "answers": {
+        "a": "Izvođenje zbrajanja i množenja",
+        "b": "Dekodiranje instrukcija i upravljanje njihovim izvršavanjem",
+        "c": "Pohrana podataka",
+        "d": "Povećanje takta procesora"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što je instrukcijski ciklus procesora?",
+      "answers": {
+        "a": "Postupak spremanja podataka u memoriju",
+        "b": "Redoslijed dohvaćanja, dekodiranja i izvršavanja instrukcija",
+        "c": "Komunikacija s ulazno-izlaznim uređajima",
+        "d": "Sinkronizacija procesora i memorije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koji registar sadrži adresu sljedeće instrukcije?",
+      "answers": {
+        "a": "IR",
+        "b": "PC",
+        "c": "MAR",
+        "d": "MBR"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna uloga sabirnice podataka?",
+      "answers": {
+        "a": "Prijenos adresa",
+        "b": "Prijenos kontrolnih signala",
+        "c": "Prijenos podataka između komponenti",
+        "d": "Sinkronizacija takta"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što prenosi adresna sabirnica?",
+      "answers": {
+        "a": "Operande",
+        "b": "Rezultate operacija",
+        "c": "Adrese memorijskih lokacija",
+        "d": "Upravljačke signale"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja komponenta određuje redoslijed izvršavanja instrukcija?",
+      "answers": {
+        "a": "ALU",
+        "b": "Upravljačka jedinica",
+        "c": "Cache memorija",
+        "d": "RAM"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja memorija se koristi kao posrednik između CPU-a i RAM-a?",
+      "answers": {
+        "a": "ROM",
+        "b": "Cache",
+        "c": "Sekundarna memorija",
+        "d": "Virtualna memorija"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je osnovna karakteristika RAM memorije?",
+      "answers": {
+        "a": "Trajna pohrana",
+        "b": "Brzina manja od diska",
+        "c": "Volatilnost",
+        "d": "Neovisnost o napajanju"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što znači da je memorija volatilna?",
+      "answers": {
+        "a": "Sporija je od diska",
+        "b": "Podaci se gube isključivanjem napajanja",
+        "c": "Ne može se proširiti",
+        "d": "Sadrži samo instrukcije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja se memorija koristi za pohranu firmware-a?",
+      "answers": {
+        "a": "RAM",
+        "b": "Cache",
+        "c": "ROM",
+        "d": "Virtualna memorija"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Što označava pojam takta procesora?",
+      "answers": {
+        "a": "Broj instrukcija u programu",
+        "b": "Brzinu izmjene signala u procesoru",
+        "c": "Veličinu cache memorije",
+        "d": "Kapacitet RAM-a"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja komponenta pohranjuje trenutno izvršavanu instrukciju?",
+      "answers": {
+        "a": "PC",
+        "b": "IR",
+        "c": "MAR",
+        "d": "SP"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Koja je svrha registra MAR?",
+      "answers": {
+        "a": "Pohrana instrukcije",
+        "b": "Pohrana podataka",
+        "c": "Pohrana adrese memorijske lokacije",
+        "d": "Pohrana rezultata ALU-a"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja sabirnica prenosi signale za upravljanje radom sustava?",
+      "answers": {
+        "a": "Adresna",
+        "b": "Podatkovna",
+        "c": "Upravljačka",
+        "d": "Interna"
+      },
+      "correct": "c"
+    },
+    {
+      "question": "Koja je osnovna svrha cache memorije?",
+      "answers": {
+        "a": "Povećanje kapaciteta memorije",
+        "b": "Smanjenje prosječnog vremena pristupa podacima",
+        "c": "Trajna pohrana instrukcija",
+        "d": "Zamjena RAM memorije"
+      },
+      "correct": "b"
+    },
+    {
+      "question": "Što određuje širina adresne sabirnice?",
+      "answers": {
+        "a": "Brzinu procesora",
+        "b": "Maksimalni broj adresabilnih memorijskih lokacija",
+        "c": "Veličinu registra",
+        "d": "Broj instrukcija"
+      },
+      "correct": "b"
+    }
+  ]
+}
