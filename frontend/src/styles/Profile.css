@@ -57,6 +57,24 @@
   gap: 20px;
 }
 
+.fileInput {
+  font-family: 'Gotham Pro', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 0 transparent;
+}
+
+.fileInput:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
 .profileField {
   display: flex;
   flex-direction: column;
@@ -180,7 +198,7 @@
   border: 2px solid #f44336;
   text-align: center;
   margin-top: 15px;
-} 
+}
 
 /* ProfileIcon styles (for Home.jsx header) */
 .profileIcon {

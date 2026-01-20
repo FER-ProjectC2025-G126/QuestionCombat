@@ -1,9 +1,10 @@
 import useSocket from '../socket/useSocket';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../auth/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import HPHearts from '../../components/HPhearts';
+import api from '../../api/api';
 
 const GameRoom = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const GameRoom = () => {
   const [capacity, setCapacity] = useState(0);
   const [viewingStats, setViewingStats] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [pfps, setPfps] = useState({});
+
 
   useEffect(() => {
     if (!appState) return;
@@ -56,8 +59,29 @@ const GameRoom = () => {
       }
     }
     setIsOnTurn(user.username === appState.turn);
-    console.log(appState);
   }, [appState]);
+
+  const fetchPfps = useCallback(() => {
+  players.forEach((player) => {
+    if (pfps[player.username]) return;
+
+    api
+      .get(`/public/profImg/${player.username}`)
+      .then((response) => {
+        setPfps((prev) => ({
+          ...prev,
+          [player.username]: response.data.profilePicture,
+        }));
+      })
+      .catch((error) => {
+        console.error(error.response?.data?.message);
+      });
+  });
+}, [players, pfps]);
+
+  useEffect(() => {
+    fetchPfps()
+  }, [players, fetchPfps]);
 
   const onLeaveClicked = () => {
     leaveRoom();
@@ -102,7 +126,7 @@ const GameRoom = () => {
       <div className="Players">
         {players.map((player) => (
           <div
-            key={player.id}
+            key={player.username}
             className={`playerCard ${clicked && nextPlayer === player.username ? 'clicked' : ''} ${player.username === user.username ? 'me' : 'others'}`}
             onClick={() => {
               if (turn !== player.username && user.username !== player.username) {
@@ -111,13 +135,17 @@ const GameRoom = () => {
             }}
           >
             <div className="playerName">{player.username}</div>
-            <div className="profilePictureSelection" title="View Profile">
-              {user.profilePicture ? (
-                <img src={user.profilePicture} alt="Profile" className="profileIconImage" />
-              ) : (
-                <FaUserCircle size={40} color="#FF7300" />
-              )}
-            </div>
+            <div className="profilePictureSelection">
+  {pfps[player.username] ? (
+    <img
+      src={pfps[player.username]}
+      alt="Profile"
+      className="profileIconImage"
+    />
+  ) : (
+    <FaUserCircle size={40} color="#FF7300" />
+  )}
+</div>
             {capacity > 1 && (
               <div className="HP">
                 <HPHearts hp={Math.round((player.hp / 100) * 10)} />

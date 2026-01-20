@@ -9,35 +9,55 @@ import Background from "../components/Background";
 const Profile = () => {
   const { user, login } = useAuth();
   const [bio, setBio] = useState('');
-  const [profilePicture, setProfilePicture] = useState('');
+  const [photoUrl, setPhotoUrl] = useState("");
+  const [photoFile, setPhotoFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (user) {
-      setBio(user.bio || '');
-      setProfilePicture(user.profilePicture || '');
-    }
-  }, [user]);
+  if (user) {
+    setBio(user.bio || '');
+    setPhotoUrl(user.profilePicture || '');
+  }
+}, [user]);
 
   const handleSave = async () => {
-    try {
-      await api.put('/auth/profile', {
-        bio,
-        profilePicture: profilePicture || null,
-      });
+  try {
+    const formData = new FormData();
+    formData.append('bio', bio);
 
-      await login();
-      setMessage('Profile updated successfully!');
-      setError('');
-      setIsEditing(false);
-
-      setTimeout(() => setMessage(''), 3000);
-    } catch (err) {
-      setError(err.response?.data?.error || 'Failed to update profile');
-      setMessage('');
+    if (photoFile) {
+      formData.append('profilePicture', photoFile);
     }
+
+    await api.put('/auth/profile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    await login();
+    setMessage('Profile updated successfully!');
+    setError('');
+    setIsEditing(false);
+
+  } catch (err) {
+    setError(err.response?.data?.error || 'Failed to update profile');
+    setMessage('');
+  }
+};
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      return;
+    }
+
+    const previewUrl = URL.createObjectURL(file);
+
+    setPhotoUrl(previewUrl);
+    setPhotoFile(file);
   };
 
   if (!user) {
@@ -52,12 +72,12 @@ const Profile = () => {
 
         <div className="profileContent">
           <div className="profilePictureSection">
-            {profilePicture ? (
-              <img src={profilePicture} alt="Profile" className="profilePictureLarge" />
-            ) : (
-              <FaUserCircle size={150} className="profilePicturePlaceholder" />
-            )}
-          </div>
+  {photoUrl ? (
+    <img src={photoUrl} alt="Profile" className="profilePictureLarge" />
+  ) : (
+    <FaUserCircle size={150} className="profilePicturePlaceholder" />
+  )}
+</div>
 
           <div className="profileDetails">
             <div className="profileField">
@@ -85,21 +105,21 @@ const Profile = () => {
               )}
             </div>
 
-            <div className="profileField">
-              <label className="profileLabel">Profile Picture URL</label>
-              {isEditing ? (
+              {isEditing && (
+                <div className="profileField">
+                <label className='profileLabel' htmlFor="edit_profile_photo">
+                  Profile Picture
+                </label>
                 <input
-                  type="text"
-                  className="profileInput"
-                  value={profilePicture}
-                  onChange={(e) => setProfilePicture(e.target.value)}
-                  placeholder="https://example.com/your-photo.jpg"
-                />
-              ) : (
-                <div className="profileValue">{profilePicture || 'No picture set'}</div>
-              )}
-            </div>
-
+                className='fileInput'
+        type="file"
+        accept="image/*"
+        id="edit_profile_photo"
+        onChange={handleFileChange}
+      />
+                 </div>
+              )
+            }
             {message && <div className="profileSuccess">{message}</div>}
             {error && <div className="profileError">{error}</div>}
 
