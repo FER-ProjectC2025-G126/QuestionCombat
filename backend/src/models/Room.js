@@ -516,6 +516,10 @@ export class Room {
   get questionSets() {
     return this._questionSets;
   }
+
+  get players() {
+    return this._players;
+  }
 }
 
 class MultiplayerQuestionSelector {

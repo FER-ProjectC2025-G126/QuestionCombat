@@ -47,10 +47,10 @@ export default class UserManager {
   sendLobbyUpdate() {
     const availableRooms = [];
     for (const room of this.roomIDToRoom.values()) {
-      if (room.isPrivate === false && room.playerCount < room.capacity) {
+      if (room.isPrivate === false && room.players.length < room.capacity) {
         availableRooms.push({
           name: room.name,
-          playerCount: room.playerCount,
+          playerCount: room.players.length,
           capacity: room.capacity,
           questionSets: room.questionSets,
         });
