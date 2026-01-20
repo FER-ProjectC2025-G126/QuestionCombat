@@ -33,7 +33,7 @@
 
 .coursesBlock {
   background-color: white;
-  height: 75%;
+  height: 70%;
   width: 80%;
   padding: 10px;
   border-radius: 20px;
@@ -93,7 +93,7 @@
   .publicBlock {
     width: 90%;
   }
-  .btn{
+  .btn {
     justify-self: center;
   }
 }

@@ -57,8 +57,8 @@ function SingleplayerLobby() {
       <form className="block2" onSubmit={onSubmitClicked}>
         <Button1 to="/home" text="BACK" className="backBtn" />
         <div className="gameName">SINGLEPLAYER ROOM</div>
-        <div className="block7">
-          <div className="elementOfBlock4">
+        <div className="block4">
+          <div className="elementOfBlock3">
             <h2 className="elmHeader">CHOOSE COURSES</h2>
             <div className="Forms-qSets-expanded">
               {courses && courses.length > 0 ? (

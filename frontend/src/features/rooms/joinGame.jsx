@@ -57,7 +57,8 @@ function JoinGame() {
                     className="gameCard"
                     onClick={() => handleJoinPublicGame(room.name)}
                   >
-                    {room.name}
+                    <div className='name'>{room.name}</div>
+                    <div className='capacity'>{room.playerCount}/{room.capacity}</div>
                   </div>
                 ))
               ) : (
