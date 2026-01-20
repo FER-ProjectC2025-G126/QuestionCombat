@@ -14,8 +14,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let db = null;
 function getDb() {
   if (!db) {
-    const dbPath = path.join(__dirname, './db.sqlite');
+    const dbPath = path.join(__dirname, '../../../../instance/db.sqlite');
     const isNewDb = !fs.existsSync(dbPath);
+
+    // ensure directory exists
+    const dbDir = path.dirname(dbPath);
+    fs.mkdirSync(dbDir, { recursive: true });
 
     // connect to SQLite database (file will be created if not exists)
     db = new sqlite3.Database(dbPath, (err) => {
@@ -48,23 +52,29 @@ function getDb() {
         const questionSetJSON = JSON.parse(fs.readFileSync(file, 'utf8'));
         const questionSet = new QuestionSets(db);
         const questions = new Questions(db);
-        questionSet.createQuestionSet(questionSetJSON.title, questionSetJSON.description)
+        questionSet
+          .createQuestionSet(questionSetJSON.title, questionSetJSON.description)
           .then((questionSetId) => {
             const questionsPromises = questionSetJSON.questions.map((q) => {
               const text = q.question;
-              const answers = [q["answers"]["a"], q["answers"]["b"], q["answers"]["c"], q["answers"]["d"]];
+              const answers = [
+                q['answers']['a'],
+                q['answers']['b'],
+                q['answers']['c'],
+                q['answers']['d'],
+              ];
               let correct;
-              switch (q["correct"]) {
-                case "a":
+              switch (q['correct']) {
+                case 'a':
                   correct = 0;
                   break;
-                case "b":
+                case 'b':
                   correct = 1;
                   break;
-                case "c":
+                case 'c':
                   correct = 2;
                   break;
-                case "d":
+                case 'd':
                   correct = 3;
                   break;
                 default:
@@ -73,8 +83,8 @@ function getDb() {
               return questions.createQuestion(questionSetId, text, answers, correct);
             });
             return Promise.all(questionsPromises);
-          })
-      })
+          });
+      });
     }
   }
   return db;

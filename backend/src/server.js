@@ -68,6 +68,10 @@ app.use('/api', async function (req, res, next) {
 app.use('/api/auth', authRouter);
 app.use('/api/public', publicRouter);
 
+// serve images from instance/images
+const imagesPath = path.join(__dirname, '..', '..', 'instance', 'images');
+app.use('/api/images', express.static(imagesPath));
+
 // api 404 handler
 app.use('/api', function (req, res) {
   return res.status(404).json({ error: 'API endpoint not found!' });

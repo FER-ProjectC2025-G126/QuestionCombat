@@ -2,8 +2,15 @@ import argon2 from 'argon2';
 import Database from '../models/db/Database.js';
 const database = new Database();
 import express from 'express';
+import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import { requireAdmin } from '../middleware/auth.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
+// __dirname replacement for ES modules
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const router = express.Router();
 export const sessionLength = 7; // days
@@ -138,21 +145,41 @@ router.get('/me', async function (req, res) {
   }
 });
 
-router.put('/profile', async function (req, res) {
+// configure multer for file uploads
+const imagesPath = path.join(__dirname, '..', '..', "..", 'instance', 'images');
+fs.mkdirSync(imagesPath, { recursive: true });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, imagesPath);
+  },
+  filename: (req, file, cb) => {
+    cb(null, uuidv4() + path.extname(file.originalname));
+  },
+});
+const upload = multer({ storage });
+router.put('/profile', upload.single('profilePicture'), async function (req, res) {
   if (!req.username) {
+    if (req.file) {
+      fs.unlinkSync(req.file.path);
+    }
     return res.status(401).json({ error: 'User not logged in!' });
   }
 
   const { bio, profilePicture } = req.body;
 
-  if (bio === undefined && profilePicture === undefined) {
+  if (bio === undefined && profilePicture === undefined && !req.file) {
     return res.status(400).json({ error: 'No data to update!' });
   }
 
   try {
     const user = await database.users.getUser(req.username);
     const newBio = bio !== undefined ? bio : user.bio;
-    const newProfilePicture = profilePicture !== undefined ? profilePicture : user.profilePicture;
+    let newProfilePicture = user.profilePicture;
+    if (req.file) {
+      newProfilePicture = "/api/images/" + req.file.filename; // Use the generated filename
+    } else if (profilePicture !== undefined) {
+      newProfilePicture = profilePicture;
+    }
 
     await database.users.updateUserProfile(req.username, newBio, newProfilePicture);
 
