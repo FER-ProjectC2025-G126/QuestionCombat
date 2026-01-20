@@ -9,6 +9,7 @@ export const TICK_RATE = 20; // ticks per second
 const Q_CHOOSE_TIME = 10; // time to choose a question (seconds)
 const Q_ANSWER_TIME = 15; // time to answer a question (seconds)
 const Q_REVIEW_TIME = 3; // time to review question answer (seconds)
+const Q_NOT_PRESENT_TIME = 1; // time to skip turn if player not present (seconds)
 
 const Q_WEIGHT_INCREASE = 0.05; // question weight increase per turn (multiplayer mode, max 1.0)
 
@@ -213,7 +214,7 @@ export class Room {
             // check for game over condition (only one player with hp > 0)
             let playersAlive = 0;
             for (const [, player] of this._players) {
-              if (player.hp > 0 && player.present) {
+              if (player.hp > 0) {
                 playersAlive += 1;
               }
             }
@@ -234,12 +235,27 @@ export class Room {
                 });
               }
               this._lastGameStats.sort((a, b) => b.score - a.score);
+              // remove players who were not present at the end of the game
+              const notPresentPlayers = [];
+              for (const [username, player] of this._players) {
+                if (!player.present) {
+                  notPresentPlayers.push(username);
+                }
+              }
+              for (const username of notPresentPlayers) {
+                this._players.delete(username);
+              }
             } else {
               // this._turn unchanged (the player who answered will choose the next question and player who answers next)
 
               // go to choice state
               this._state = 'choice';
-              this.setTimer(Q_CHOOSE_TIME);
+              if (this._players.get(this._turn).present) {
+                this.setTimer(Q_CHOOSE_TIME);
+              } else {
+                // if the player whose turn it is not present, set very short timer to skip their turn
+                this.setTimer(Q_NOT_PRESENT_TIME);
+              }
             }
             return this.update();
           }
@@ -259,7 +275,12 @@ export class Room {
 
             // go to answer state
             this._state = 'answer';
-            this.setTimer(Q_ANSWER_TIME);
+            if (this._players.get(this._turn).present) {
+              this.setTimer(Q_ANSWER_TIME);
+            } else {
+              // if the player whose turn it is not present, set very short timer to skip their turn
+              this.setTimer(Q_NOT_PRESENT_TIME);
+            }
 
             // update question selector
             this._questionSelector.markQuestionChosen(this._currentQuestionIndex);
@@ -469,7 +490,12 @@ export class Room {
 
       this._turn = attackedUsername;
       this._state = 'answer';
-      this.setTimer(Q_ANSWER_TIME);
+      if (this._players.get(this._turn).present) {
+        this.setTimer(Q_ANSWER_TIME);
+      } else {
+        // if the player whose turn it is not present, set very short timer to skip their turn
+        this.setTimer(Q_NOT_PRESENT_TIME);
+      }
 
       // get next question choices
       this._questionChoices = this._questionSelector.getNext3();
