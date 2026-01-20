@@ -37,6 +37,14 @@
   justify-items: center;
 }
 
+.playerCard:nth-child(odd) {
+  margin-right: 20vw;
+}
+
+.playerCard:nth-child(even) {
+  margin-left: 20vw;
+}
+
 .playerCard {
   border-radius: 12px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
@@ -73,9 +81,9 @@
   width: fit-content;
   min-width: min-content;
   height: 25px;
-  background: #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
+  background: transparent;
 }
 
 .HPhearts {
@@ -111,9 +119,9 @@
 .question-card {
   position: absolute;
   top: 18%;
-  left: 35%;
+  left: 25vw;
   height: 70vh;
-  width: 30vw;
+  width: 50vw;
   background-color: rgb(255, 174, 0);
   min-height: 35vh;
   border-radius: 12px;
@@ -168,7 +176,7 @@
 }
 
 .option span {
-  width: 10vw;
+  flex: 1;
 }
 
 .option input {
@@ -287,8 +295,8 @@
 
   .question-card {
     position: relative;
-    top:20px;
-    left:1px;
+    top: 20px;
+    left: 1px;
     width: auto;
     height: auto;
     min-height: unset;
@@ -308,10 +316,6 @@
     gap: 10px;
   }
 
-  .option span {
-    width: auto;
-  }
-
   .option input {
     width: auto;
     transform: scale(1.4);
@@ -325,7 +329,7 @@
     font-size: 1.6rem;
   }
 
-  .HP{
-    width:fit-content;
+  .HP {
+    width: fit-content;
   }
 }

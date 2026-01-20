@@ -21,15 +21,15 @@
   background-color: white;
   gap: 10px;
   height: 70%;
-  width:85%;
-  min-width:min-content;
+  width: 85%;
+  min-width: min-content;
   display: flex;
   justify-content: space-around;
   padding: 10px;
   margin-bottom: 5vh;
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-} 
+}
 .joinInput {
   background-color: rgb(215, 205, 219);
   border: 0px solid black;
@@ -49,11 +49,16 @@
 }
 
 .gameCard {
+  font-family: sans-serif;
+  font-weight: bold;
   padding: 12px;
   border-radius: 10px;
   background: orange;
   cursor: pointer;
   width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .gameCard:hover {
@@ -81,12 +86,12 @@
   text-align: center;
 }
 
-@media (max-width: 600px){
-  .block8{
-    width:90vw;
+@media (max-width: 600px) {
+  .block8 {
+    width: 90vw;
   }
 
-  .block4{
+  .block4 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -94,12 +99,11 @@
     min-height: fit-content;
   }
 
-  .joinInput{
+  .joinInput {
     width: 50vw;
   }
 
-  .elmCode{
+  .elmCode {
     height: 20vh;
   }
-
 }

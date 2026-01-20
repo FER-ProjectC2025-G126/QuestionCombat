@@ -65,7 +65,7 @@
 
 .Forms-qSets-expanded {
   justify-content: start;
-  max-height: 52vh;
+  flex: 1;
   overflow-y: auto;
 }
 
