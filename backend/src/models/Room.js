@@ -140,6 +140,7 @@ export class Room {
             // time's up, question unanswered (count as incorrect)
             const player = this._players.values().next().value;
             player.incorrectAns += 1;
+            this._chosenAnswer = null;
 
             // proceed to review state
             this._state = 'review';
@@ -195,6 +196,7 @@ export class Room {
             if (player.hp < 0) {
               player.hp = 0;
             }
+            this._chosenAnswer = null;
 
             // proceed to review state
             this._state = 'review';
