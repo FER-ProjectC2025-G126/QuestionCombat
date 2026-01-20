@@ -267,18 +267,19 @@
     height: auto;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    gap: 12px;
+    gap: 0px;
     margin-bottom: 20px;
     order: 3;
   }
 
   .playerCard {
-    width: 95%;
+    width: 70%;
     height: auto;
     padding: 12px;
     font-size: 1.4rem;
     gap: 10px;
     -webkit-text-stroke: 1.5px rgb(109, 5, 141);
+    margin-bottom: 10px;
   }
 
   .profilePictureSmall,
@@ -331,5 +332,13 @@
 
   .HP {
     width: fit-content;
+  }
+
+  .playerCard:nth-child(odd) {
+  margin-right: 0px;
+}
+
+  .playerCard:nth-child(even) {
+    margin-left: 0px;
   }
 }

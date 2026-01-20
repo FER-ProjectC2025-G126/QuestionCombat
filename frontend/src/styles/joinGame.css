@@ -46,6 +46,8 @@
   flex-direction: column;
   gap: 12px;
   padding-right: 6px;
+  color:yellow;
+   -webkit-text-stroke: 0.2px rgba(251, 137, 6, 0.889);
 }
 
 .gameCard {
@@ -55,7 +57,8 @@
   border-radius: 10px;
   background: orange;
   cursor: pointer;
-  width: 20vw;
+  width: 33vw;
+  max-width: 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;

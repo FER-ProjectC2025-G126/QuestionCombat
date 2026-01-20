@@ -123,6 +123,11 @@
 
 .left {
   justify-content: start;
+  max-width: 50%;
+}
+
+.left .courseCard-view{
+  width: 90%;
 }
 
 .right {
@@ -158,5 +163,11 @@
 @media (max-width: 600px){
   .lobby-page{
     min-width: fit-content;
+  }
+  .block5{
+    display:flex;
+    flex:column;
+    justify-content: center;
+    align-items: center;
   }
 }
