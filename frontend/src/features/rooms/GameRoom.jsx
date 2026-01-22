@@ -88,6 +88,9 @@ const GameRoom = () => {
   };
 
   const onChooseQuestion = (questionId, username) => {
+    if(!username) {
+      username = players.find(player => player.username !== user.username)?.username;
+    }
     setNextPlayer('');
     chooseQuestion(questionId, username);
   };
@@ -129,12 +132,12 @@ const GameRoom = () => {
             key={player.username}
             className={`playerCard ${clicked && nextPlayer === player.username ? 'clicked' : ''} ${player.username === user.username ? 'me' : 'others'}`}
             onClick={() => {
-              if (turn !== player.username && user.username !== player.username) {
+              if (turn !== player.username && user.username !== player.username && capacity > 2) {
                 onChooseNextPlayer(player.username);
               }
             }}
           >
-            <div className="playerName">{player.username}</div>
+            <div className="playerName">{player.username} <span className={`present-indicator ${player.present ? "present" : ""}`} ></span></div>
             <div className="profilePictureSelection">
   {pfps[player.username] ? (
     <img
@@ -161,9 +164,8 @@ const GameRoom = () => {
       {state === 'choice' && (
         <div className="question-card">
           {isOnTurn && (<div className="question-text">Choose Question and Player to Attack</div>)}
-          <div className={`options ${!isOnTurn || !nextPlayer || !clicked ? 'disabled' : ''}`}>
+          <div className={`options ${!isOnTurn || (capacity > 2 && (!nextPlayer || !clicked)) ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
-              // we should discuss how many questions we show
               <button
                 key={choice.id}
                 className="option"

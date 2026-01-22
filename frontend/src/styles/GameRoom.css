@@ -62,6 +62,7 @@
   align-items: center;
   flex-direction: column;
   gap: 2vh;
+  position: relative;
 }
 
 .playerCard.clicked {
@@ -97,6 +98,21 @@
   height: 100%;
   background: #05808c;
   transition: width 0.2s linear;
+}
+
+.present-indicator {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.present-indicator.present {
+  background-color: green;
 }
 
 .timer {
@@ -335,8 +351,8 @@
   }
 
   .playerCard:nth-child(odd) {
-  margin-right: 0px;
-}
+    margin-right: 0px;
+  }
 
   .playerCard:nth-child(even) {
     margin-left: 0px;
