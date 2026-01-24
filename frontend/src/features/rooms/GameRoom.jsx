@@ -163,7 +163,7 @@ const GameRoom = () => {
       </div>
       {state === 'choice' && (
         <div className="question-card">
-          {isOnTurn && (<div className="question-text">Choose Question and Player to Attack</div>)}
+          {isOnTurn && (<div className="question-text choice">{capacity === 2 ? "Choose Question" : "Choose Question and Player to Attack"}</div>)}
           <div className={`options ${!isOnTurn || (capacity > 2 && (!nextPlayer || !clicked)) ? 'disabled' : ''}`}>
             {questionChoices.map((choice) => (
               <button

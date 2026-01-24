@@ -158,6 +158,20 @@
   margin-bottom: 20px;
 }
 
+.question-text.choice {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
 .options {
   display: flex;
   flex-direction: column;
@@ -331,6 +345,7 @@
     min-height: 48px;
     font-size: 1rem;
     gap: 10px;
+    transition: none;
   }
 
   .option input {
