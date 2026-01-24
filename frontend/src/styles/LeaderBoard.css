@@ -46,7 +46,6 @@
 }
 
 .playerScore {
-  width: 60px;
   text-align: center;
   font-size: clamp(20px, 3vw, 30px);
   font-family: 'SuperBubbly', sans-serif;
@@ -54,6 +53,24 @@
   -webkit-text-stroke: 1px rgba(83, 14, 118, 0.889);
   text-shadow: 2px 2px 5px black;
   flex-shrink: 0;
+}
+
+.game-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: 'SuperBubbly', sans-serif;
+  justify-self: start;
+  font-size: clamp(20px, 3vw, 30px);
+  color: rgb(217, 184, 238);
+  -webkit-text-stroke: 1px rgba(83, 14, 118, 0.889);
+  text-shadow: 2px 2px 5px black;
+}
+
+.game-stats-message {
+  text-align: center;
 }
 
 @keyframes rowFadeUp {
