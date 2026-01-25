@@ -286,8 +286,9 @@
   }
 
   .leaveBtn.lobby {
-    width: 30vw;
+    width: 10vw;
     height: 45px;
+    font-size: medium;
   }
 
   .gameHeader {
