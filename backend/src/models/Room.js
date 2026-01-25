@@ -10,9 +10,12 @@ const Q_CHOOSE_TIME = 10; // time to choose a question (seconds)
 const Q_ANSWER_TIME = 15; // time to answer a question (seconds)
 const Q_REVIEW_TIME = 3; // time to review question answer (seconds)
 const Q_NOT_PRESENT_TIME = 1; // time to skip turn if player not present (seconds)
+const Q_ANSWER_SPEEDUP_COEFF = 0.075;  // answer time is calculated as Q_ANSWER_TIME - (1 + turnIndex * Q_ANSWER_SPEEDUP_COEFF)
 
+// question selection weights
 const Q_WEIGHT_INCREASE = 0.05; // question weight increase per turn (multiplayer mode, max 1.0)
 
+// health and score constants
 const PLAYER_HP_DECREASE = 10; // health points decrease on incorrect answer (multiplayer mode)
 const PLAYER_MAX_SCORE_INCREASE = 50; // max score increase on correct answer (if player answers instantly)
 
@@ -83,6 +86,7 @@ export class Room {
 
     // whose turn it is (username)
     this._turn = null;
+    this._turnIndex = 0;
 
     // timer variable (used for time-limited actions)
     this._timer = { endTime: 0, originalDuration: 0, active: false };
@@ -276,11 +280,12 @@ export class Room {
             // go to answer state
             this._state = 'answer';
             if (this._players.get(this._turn).present) {
-              this.setTimer(Q_ANSWER_TIME);
+              this.setTimer(Q_ANSWER_TIME / (1 + this._turnIndex * Q_ANSWER_SPEEDUP_COEFF));
             } else {
               // if the player whose turn it is not present, set very short timer to skip their turn
-              this.setTimer(Q_NOT_PRESENT_TIME);
+              this.setTimer(Q_NOT_PRESENT_TIME / (1 + this._turnIndex * Q_ANSWER_SPEEDUP_COEFF));
             }
+            this._turnIndex += 1;
 
             // update question selector
             this._questionSelector.markQuestionChosen(this._currentQuestionIndex);
@@ -416,6 +421,7 @@ export class Room {
 
     // start the game
     this._started = true;
+    this._turnIndex = 0;
 
     // game started successfully
     return true;
@@ -491,11 +497,12 @@ export class Room {
       this._turn = attackedUsername;
       this._state = 'answer';
       if (this._players.get(this._turn).present) {
-        this.setTimer(Q_ANSWER_TIME);
+        this.setTimer(Q_ANSWER_TIME / (1 + this._turnIndex * Q_ANSWER_SPEEDUP_COEFF));
       } else {
         // if the player whose turn it is not present, set very short timer to skip their turn
-        this.setTimer(Q_NOT_PRESENT_TIME);
+        this.setTimer(Q_NOT_PRESENT_TIME / (1 + this._turnIndex * Q_ANSWER_SPEEDUP_COEFF));
       }
+      this._turnIndex += 1;
 
       // get next question choices
       this._questionChoices = this._questionSelector.getNext3();
