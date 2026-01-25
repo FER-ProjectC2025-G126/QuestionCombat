@@ -205,6 +205,9 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profileIcon:hover {

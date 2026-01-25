@@ -10,7 +10,7 @@ const Q_CHOOSE_TIME = 10; // time to choose a question (seconds)
 const Q_ANSWER_TIME = 15; // time to answer a question (seconds)
 const Q_REVIEW_TIME = 3; // time to review question answer (seconds)
 const Q_NOT_PRESENT_TIME = 1; // time to skip turn if player not present (seconds)
-const Q_ANSWER_SPEEDUP_COEFF = 0.075;  // answer time is calculated as Q_ANSWER_TIME - (1 + turnIndex * Q_ANSWER_SPEEDUP_COEFF)
+const Q_ANSWER_SPEEDUP_COEFF = 0.15; // answer time is calculated as Q_ANSWER_TIME - (1 + turnIndex * Q_ANSWER_SPEEDUP_COEFF)
 
 // question selection weights
 const Q_WEIGHT_INCREASE = 0.05; // question weight increase per turn (multiplayer mode, max 1.0)

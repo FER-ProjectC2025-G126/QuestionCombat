@@ -120,7 +120,7 @@ const GameRoom = () => {
 
   return (
     <div className="gameRoom">
-      <button onClick={onLeaveClicked} type="button" className="leaveBtn">
+      <button onClick={onLeaveClicked} type="button" className="leaveBtn game">
         Leave Room
       </button>
       <div className="gameHeader">
