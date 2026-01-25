@@ -111,7 +111,7 @@ a {
 
 a:active {
   color: orange;
-} 
+}
 
 .loginInput {
   background-color: rgb(215, 205, 219);
@@ -159,8 +159,10 @@ a:active {
   text-shadow: none;
   font-size: medium;
   text-align: center;
-  width: 20vw;
-  margin-left: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup {
@@ -215,16 +217,16 @@ a:active {
     padding: 5px 7px;
   }
 
-  .LoginCard{
+  .LoginCard {
     padding-top: 5vh;
   }
 }
 
-@media (max-width: 600px){
-  .LoginBlock{
+@media (max-width: 600px) {
+  .LoginBlock {
     min-width: 80%;
   }
-  .LoginCard{
+  .LoginCard {
     min-width: 80%;
     min-height: fit-content;
   }

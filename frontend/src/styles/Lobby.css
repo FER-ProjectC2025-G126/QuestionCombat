@@ -15,7 +15,7 @@
   min-width: 320px;
   min-height: fit-content;
 }
- 
+
 .players {
   display: flex;
   justify-content: center;
@@ -126,7 +126,7 @@
   max-width: 50%;
 }
 
-.left .courseCard-view{
+.left .courseCard-view {
   width: 90%;
 }
 
@@ -143,30 +143,30 @@
   gap: 10px;
 }
 
-@media (max-width: 700px){
-  .left{
+@media (max-width: 700px) {
+  .left {
     height: auto;
   }
-  .right{
+  .right {
     height: auto;
   }
-  .block5{
+  .block5 {
     height: auto;
     display: flex;
     flex-direction: column;
   }
-  .leaveBtn{
+  .leaveBtn {
     top: 10px;
   }
 }
 
-@media (max-width: 600px){
-  .lobby-page{
+@media (max-width: 600px) {
+  .lobby-page {
     min-width: fit-content;
   }
-  .block5{
-    display:flex;
-    flex:column;
+  .block5 {
+    display: flex;
+    flex: column;
     justify-content: center;
     align-items: center;
   }

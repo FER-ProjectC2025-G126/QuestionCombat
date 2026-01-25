@@ -277,8 +277,17 @@
     top: 10px;
     left: 2vw;
     margin-bottom: 10px;
-    width: 20vw;
     order: -1;
+  }
+
+  .leaveBtn.game {
+    width: 96vw;
+    height: 40px;
+  }
+
+  .leaveBtn.lobby {
+    width: 30vw;
+    height: 45px;
   }
 
   .gameHeader {
@@ -287,6 +296,7 @@
     order: 0;
     position: relative;
     top: 10px;
+    margin-top: 50px;
   }
 
   .turn {
