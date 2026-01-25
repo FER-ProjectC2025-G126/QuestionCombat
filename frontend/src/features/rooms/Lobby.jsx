@@ -50,9 +50,6 @@ const Lobby = () => {
   return (
     <Background>
       <div className="block2">
-        <button onClick={onLeaveClicked} type="button" className="leaveBtn lobby">
-              Leave Room
-            </button>
         <div className="lobby-page">
           <h1 className="Lobbyh1">Lobby</h1>
           <div className="block5">
@@ -90,6 +87,9 @@ const Lobby = () => {
             </div>
           </div>
           <div className='buttons'>
+            <button onClick={onLeaveClicked} type="button" className="leaveBtn lobby">
+              Leave Room
+            </button>
             <button type="button" className="startBtn" onClick={onStartClicked}>
               START!
             </button>

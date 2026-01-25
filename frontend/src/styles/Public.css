@@ -61,7 +61,7 @@
   align-items: center;
   background-color: rgb(255, 115, 0);
   height: 13vh;
-  width: 60vw;
+  width: 40vw;
   font-size: clamp(20px, 3.5vw, 30px);
   color: yellow;
   text-shadow: 2px 2px 3px black;
@@ -96,5 +96,8 @@
   }
   .btn {
     justify-self: center;
+  }
+  .btn2 {
+    width: 60vw;
   }
 }
