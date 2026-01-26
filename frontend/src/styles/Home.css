@@ -4,9 +4,8 @@
   flex-direction: column;
   align-items: center;
   background-color: rgb(112, 29, 190);
-  height: 90vh;
+  height: 95vh;
   width: 60vw;
-  min-height: fit-content;
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
   animation: sizeUp 0.8s;
@@ -65,7 +64,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 115, 0);
-  height: 13vh;
+  height: 12vh;
   width: 40vw;
   font-size: clamp(20px, 3.5vw, 30px);
   color: yellow;
