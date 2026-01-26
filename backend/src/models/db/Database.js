@@ -8,8 +8,15 @@ import fs from 'fs';
 import sqlite3import from 'sqlite3';
 const sqlite3 = sqlite3import.verbose();
 import walk from "../../utils/walkDirTree.js"
+import argon2 from 'argon2';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+
+const DEFAULT_ADMIN_USERNAME = 'admin';
+const DEFAULT_ADMIN_EMAIL = "admin@questioncombat.azurewebsites.net"
+const DEFAULT_ADMIN_PASSWORD = 'adminQC123';
+
 
 let db = null;
 function getDb() {
@@ -84,6 +91,12 @@ function getDb() {
             });
             return Promise.all(questionsPromises);
           });
+      });
+
+      // add a default admin user
+      const users = new Users(db);
+      argon2.hash(DEFAULT_ADMIN_PASSWORD).then((hashedPassword) => {
+        return users.createUser(DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, hashedPassword, true);
       });
     }
   }

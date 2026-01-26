@@ -45,11 +45,11 @@ export default class Users {
     });
   }
 
-  createUser(username, email, passwordHash) {
+  createUser(username, email, passwordHash, isAdmin = false) {
     return new Promise((resolve, reject) => {
       this.db.run(
-        'INSERT INTO users (username, email, password_hash, bio, profile_picture) VALUES (?, ?, ?, ?, ?)',
-        [username, email, passwordHash, '', null],
+        'INSERT INTO users (username, email, password_hash, bio, profile_picture, role) VALUES (?, ?, ?, ?, ?, ?)',
+        [username, email, passwordHash, '', null, isAdmin ? "ADMIN" : "USER"],
         function (err) {
           if (err) {
             reject(err);
