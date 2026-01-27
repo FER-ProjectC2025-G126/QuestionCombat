@@ -61,27 +61,17 @@ const GameRoom = () => {
     setIsOnTurn(user.username === appState.turn);
   }, [appState]);
 
-  const fetchPfps = useCallback(() => {
-  players.forEach((player) => {
-    if (pfps[player.username]) return;
-
-    api
-      .get(`/public/profImg/${player.username}`)
-      .then((response) => {
-        setPfps((prev) => ({
-          ...prev,
-          [player.username]: response.data.profilePicture,
-        }));
-      })
-      .catch((error) => {
-        console.error(error.response?.data?.message);
-      });
-  });
-}, [players, pfps]);
-
   useEffect(() => {
-    fetchPfps()
-  }, [players, fetchPfps]);
+    if (!appState?.players) return;
+
+    appState.players.forEach((player) => {
+      api.get(`/public/profImg/${player.username}`)
+        .then((res) => {
+          setPfps(prev => ({ ...prev, [player.username]: res.data.profilePicture }));
+        })
+        .catch(err => console.error(err.response?.data?.message));
+    });
+  }, []);
 
   const onLeaveClicked = () => {
     leaveRoom();
