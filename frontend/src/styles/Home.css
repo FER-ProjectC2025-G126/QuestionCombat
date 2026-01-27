@@ -52,7 +52,7 @@
 .buttonsHomeGroup {
   flex: 1;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 15px;
