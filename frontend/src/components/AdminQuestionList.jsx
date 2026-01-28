@@ -75,18 +75,30 @@ const AdminQuestionList = () => {
     }
   };
 
-  const handleEdit = (question) => {
-    setEditingQuestion(question);
+  const handleEdit = async (question) => {
+    try {
+      // Fetch full question details including options
+      const response = await api.get(`/admin/questions/${question.question_id}`);
+      setEditingQuestion(response.data);
+    } catch (err) {
+      setError('Failed to load question details');
+      console.error('Error fetching question details:', err);
+    }
   };
 
   const handleSaveEdit = async (updatedQuestion) => {
     setError('');
     setMessage('');
     try {
+      // Transform frontend format to backend format
+      const options = updatedQuestion.answer_options.map((text, index) => ({
+        text,
+        isCorrect: index === updatedQuestion.correct_answer_index,
+      }));
+
       await api.put(`/admin/questions/${updatedQuestion.question_id}`, {
-        question_text: updatedQuestion.question_text,
-        answer_options: updatedQuestion.answer_options,
-        correct_answer_index: updatedQuestion.correct_answer_index,
+        questionText: updatedQuestion.question_text,
+        options: options,
       });
       setMessage('Question updated successfully');
       setEditingQuestion(null);

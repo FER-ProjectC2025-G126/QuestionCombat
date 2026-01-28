@@ -187,15 +187,21 @@ export default class Questions {
         } else {
           // Get question options
           this.db.all(
-            'SELECT * FROM question_options WHERE question_id = ?',
+            'SELECT * FROM question_options WHERE question_id = ? ORDER BY option_id ASC',
             [qId],
             (err, options) => {
               if (err) {
                 reject(err);
               } else {
+                // Transform options for frontend: array of strings with correct_answer_index
+                const answer_options = (options || []).map(opt => opt.option_text);
+                const correct_answer_index = (options || []).findIndex(opt => opt.is_correct === 1);
+                
                 resolve({
                   ...row,
-                  options: options || [],
+                  answer_options: answer_options,
+                  correct_answer_index: correct_answer_index >= 0 ? correct_answer_index : 0,
+                  options: options || [], // Keep original for backward compatibility
                 });
               }
             }
