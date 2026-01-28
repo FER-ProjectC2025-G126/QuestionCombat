@@ -22,11 +22,50 @@
   margin-bottom: 20px;
 }
 
+.adminTabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.adminTabBtn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  margin-bottom: -3px;
+  border-radius: 4px 4px 0 0;
+}
+
+.adminTabBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.adminTabBtn.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom-color: yellow;
+  color: yellow;
+}
+
 .adminContent {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+.questionsSection {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .usersSection {

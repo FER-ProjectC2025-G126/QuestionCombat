@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../features/auth/AuthProvider';
 import api from '../api/api';
 import Button1 from '../components/Button1';
+import AdminQuestionList from '../components/AdminQuestionList';
 import '../styles/AdminPanel.css';
 
 const AdminPanel = () => {
@@ -11,6 +12,7 @@ const AdminPanel = () => {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [updatingUser, setUpdatingUser] = useState(null);
+  const [activeTab, setActiveTab] = useState('users');
 
   // Check if user is admin
   if (!user || user.role !== 'ADMIN') {
@@ -75,8 +77,24 @@ const AdminPanel = () => {
         {error && <div className="adminError">{error}</div>}
         {message && <div className="adminSuccess">{message}</div>}
 
+        <div className="adminTabs">
+          <button
+            className={`adminTabBtn ${activeTab === 'users' ? 'active' : ''}`}
+            onClick={() => setActiveTab('users')}
+          >
+            👥 Users Management
+          </button>
+          <button
+            className={`adminTabBtn ${activeTab === 'questions' ? 'active' : ''}`}
+            onClick={() => setActiveTab('questions')}
+          >
+            ❓ Questions Management
+          </button>
+        </div>
+
         <div className="adminContent">
-          <div className="usersSection">
+          {activeTab === 'users' && (
+            <div className="usersSection">
             <h2 className="usersTitle">Users Management</h2>
  
             {loading ? (
@@ -129,6 +147,13 @@ const AdminPanel = () => {
               </div>
             )}
           </div>
+          )}
+
+          {activeTab === 'questions' && (
+            <div className="questionsSection">
+              <AdminQuestionList />
+            </div>
+          )}
         </div>
       </div>
     </div>
