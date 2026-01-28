@@ -23,7 +23,6 @@ import UserManager from './sockets/UserManager.js';
 // route imports
 import { router as authRouter, sessionLength } from './routes/auth.router.js';
 import { router as publicRouter } from './routes/public.router.js';
-import { router as adminRouter } from './routes/admin.router.js';
 
 // server setup
 const app = express();
@@ -68,7 +67,6 @@ app.use('/api', async function (req, res, next) {
 // api routes
 app.use('/api/auth', authRouter);
 app.use('/api/public', publicRouter);
-app.use('/api/admin', adminRouter);
 
 // serve images from instance/images
 const imagesPath = path.join(__dirname, '..', '..', 'instance', 'images');

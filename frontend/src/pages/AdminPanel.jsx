@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../features/auth/AuthProvider';
 import api from '../api/api';
 import Button1 from '../components/Button1';
-import AdminQuestionList from '../components/AdminQuestionList';
 import '../styles/AdminPanel.css';
 
 const AdminPanel = () => {
@@ -12,7 +11,6 @@ const AdminPanel = () => {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [updatingUser, setUpdatingUser] = useState(null);
-  const [activeTab, setActiveTab] = useState('users');
 
   // Check if user is admin
   if (!user || user.role !== 'ADMIN') {
@@ -77,83 +75,60 @@ const AdminPanel = () => {
         {error && <div className="adminError">{error}</div>}
         {message && <div className="adminSuccess">{message}</div>}
 
-        <div className="adminTabs">
-          <button
-            className={`adminTabBtn ${activeTab === 'users' ? 'active' : ''}`}
-            onClick={() => setActiveTab('users')}
-          >
-            👥 Users Management
-          </button>
-          <button
-            className={`adminTabBtn ${activeTab === 'questions' ? 'active' : ''}`}
-            onClick={() => setActiveTab('questions')}
-          >
-            ❓ Questions Management
-          </button>
-        </div>
-
         <div className="adminContent">
-          {activeTab === 'users' && (
-            <div className="usersSection">
-              <h2 className="usersTitle">Users Management</h2>
-
-              {loading ? (
-                <div className="adminLoading">Loading users...</div>
-              ) : users.length === 0 ? (
-                <div className="noUsers">No users found</div>
-              ) : (
-                <div className="usersTable">
-                  <div className="tableHeader">
-                    <div className="colUsername">Username</div>
-                    <div className="colEmail">Email</div>
-                    <div className="colRole">Role</div>
-                    <div className="colActions">Actions</div>
-                  </div>
-
-                  {users.map((u) => (
-                    <div key={u.username} className="tableRow">
-                      <div className="colUsername">
-                        <span className="username">{u.username}</span>
-                        {u.username === user.username && <span className="youBadge">(You)</span>}
-                      </div>
-                      <div className="colEmail">{u.email}</div>
-                      <div className="colRole">
-                        <span className={`roleBadge role-${u.role.toLowerCase()}`}>{u.role}</span>
-                      </div>
-                      <div className="colActions">
-                        {u.username === user.username ? (
-                          <span className="noActions">Cannot change own role</span>
-                        ) : (
-                          <div className="roleButtons">
-                            <button
-                              className={`roleBtn ${u.role === 'USER' ? 'active' : ''}`}
-                              onClick={() => handleRoleChange(u.username, 'USER')}
-                              disabled={updatingUser === u.username}
-                            >
-                              User
-                            </button>
-                            <button
-                              className={`roleBtn ${u.role === 'ADMIN' ? 'active' : ''}`}
-                              onClick={() => handleRoleChange(u.username, 'ADMIN')}
-                              disabled={updatingUser === u.username}
-                            >
-                              Admin
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+          <div className="usersSection">
+            <h2 className="usersTitle">Users Management</h2>
+ 
+            {loading ? (
+              <div className="adminLoading">Loading users...</div>
+            ) : users.length === 0 ? (
+              <div className="noUsers">No users found</div>
+            ) : (
+              <div className="usersTable">
+                <div className="tableHeader">
+                  <div className="colUsername">Username</div>
+                  <div className="colEmail">Email</div>
+                  <div className="colRole">Role</div>
+                  <div className="colActions">Actions</div>
                 </div>
-              )}
-            </div>
-          )}
 
-          {activeTab === 'questions' && (
-            <div className="questionsSection">
-              <AdminQuestionList />
-            </div>
-          )}
+                {users.map((u) => (
+                  <div key={u.username} className="tableRow">
+                    <div className="colUsername">
+                      <span className="username">{u.username}</span>
+                      {u.username === user.username && <span className="youBadge">(You)</span>}
+                    </div>
+                    <div className="colEmail">{u.email}</div>
+                    <div className="colRole">
+                      <span className={`roleBadge role-${u.role.toLowerCase()}`}>{u.role}</span>
+                    </div>
+                    <div className="colActions">
+                      {u.username === user.username ? (
+                        <span className="noActions">Cannot change own role</span>
+                      ) : (
+                        <div className="roleButtons">
+                          <button
+                            className={`roleBtn ${u.role === 'USER' ? 'active' : ''}`}
+                            onClick={() => handleRoleChange(u.username, 'USER')}
+                            disabled={updatingUser === u.username}
+                          >
+                            User
+                          </button>
+                          <button
+                            className={`roleBtn ${u.role === 'ADMIN' ? 'active' : ''}`}
+                            onClick={() => handleRoleChange(u.username, 'ADMIN')}
+                            disabled={updatingUser === u.username}
+                          >
+                            Admin
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
