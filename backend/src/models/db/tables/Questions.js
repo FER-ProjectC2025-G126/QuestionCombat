@@ -149,17 +149,13 @@ export default class Questions {
   // Get all questions by set (for admins)
   getQuestionsBySet(setId) {
     return new Promise((resolve, reject) => {
-      this.db.all(
-        'SELECT * FROM questions WHERE set_id = ?',
-        [setId],
-        (err, rows) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(rows || []);
-          }
+      this.db.all('SELECT * FROM questions WHERE set_id = ?', [setId], (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows || []);
         }
-      );
+      });
     });
   }
 
@@ -183,33 +179,29 @@ export default class Questions {
   // Get question with full details including metadata
   getQuestionFull(qId) {
     return new Promise((resolve, reject) => {
-      this.db.get(
-        'SELECT * FROM questions WHERE question_id = ?',
-        [qId],
-        (err, row) => {
-          if (err) {
-            reject(err);
-          } else if (!row) {
-            resolve(null);
-          } else {
-            // Get question options
-            this.db.all(
-              'SELECT * FROM question_options WHERE question_id = ?',
-              [qId],
-              (err, options) => {
-                if (err) {
-                  reject(err);
-                } else {
-                  resolve({
-                    ...row,
-                    options: options || [],
-                  });
-                }
+      this.db.get('SELECT * FROM questions WHERE question_id = ?', [qId], (err, row) => {
+        if (err) {
+          reject(err);
+        } else if (!row) {
+          resolve(null);
+        } else {
+          // Get question options
+          this.db.all(
+            'SELECT * FROM question_options WHERE question_id = ?',
+            [qId],
+            (err, options) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve({
+                  ...row,
+                  options: options || [],
+                });
               }
-            );
-          }
+            }
+          );
         }
-      );
+      });
     });
   }
 

@@ -168,7 +168,15 @@ const AdminQuestionList = () => {
             className={`statusTab ${activeStatus === status ? 'active' : ''}`}
             onClick={() => setActiveStatus(status)}
           >
-            {status} ({status === 'PENDING' ? stats?.pending : status === 'APPROVED' ? stats?.approved : status === 'REJECTED' ? stats?.rejected : stats?.total} {status})
+            {status} (
+            {status === 'PENDING'
+              ? stats?.pending
+              : status === 'APPROVED'
+                ? stats?.approved
+                : status === 'REJECTED'
+                  ? stats?.rejected
+                  : stats?.total}{' '}
+            {status})
           </button>
         ))}
       </div>

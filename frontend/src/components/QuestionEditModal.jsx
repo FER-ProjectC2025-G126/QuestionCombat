@@ -60,7 +60,7 @@ const QuestionEditModal = ({ question, onSave, onCancel }) => {
       await onSave({
         ...question,
         question_text: questionText.trim(),
-        answer_options: options.map(opt => opt.trim()),
+        answer_options: options.map((opt) => opt.trim()),
         correct_answer_index: correctIndex,
       });
     } finally {
@@ -73,12 +73,7 @@ const QuestionEditModal = ({ question, onSave, onCancel }) => {
       <div className="modalContent" onClick={(e) => e.stopPropagation()}>
         <div className="modalHeader">
           <h2>Edit Question</h2>
-          <button 
-            type="button"
-            className="modalCloseBtn" 
-            onClick={onCancel}
-            disabled={saving}
-          >
+          <button type="button" className="modalCloseBtn" onClick={onCancel} disabled={saving}>
             ✕
           </button>
         </div>
@@ -148,19 +143,10 @@ const QuestionEditModal = ({ question, onSave, onCancel }) => {
           </div>
 
           <div className="modalFooter">
-            <button
-              type="button"
-              onClick={onCancel}
-              className="btnCancel"
-              disabled={saving}
-            >
+            <button type="button" onClick={onCancel} className="btnCancel" disabled={saving}>
               Cancel
             </button>
-            <button
-              type="submit"
-              className="btnSave"
-              disabled={saving}
-            >
+            <button type="submit" className="btnSave" disabled={saving}>
               {saving ? 'Saving...' : 'Save Changes'}
             </button>
           </div>

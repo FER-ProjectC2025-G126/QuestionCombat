@@ -37,10 +37,14 @@ router.get('/questions', async function (req, res) {
       questions = await Promise.all(
         questions.map(async (q) => {
           const set = await new Promise((resolve, reject) => {
-            database.db.get('SELECT title FROM question_sets WHERE set_id = ?', [q.set_id], (err, row) => {
-              if (err) reject(err);
-              else resolve(row);
-            });
+            database.db.get(
+              'SELECT title FROM question_sets WHERE set_id = ?',
+              [q.set_id],
+              (err, row) => {
+                if (err) reject(err);
+                else resolve(row);
+              }
+            );
           });
           return { ...q, set_title: set?.title };
         })

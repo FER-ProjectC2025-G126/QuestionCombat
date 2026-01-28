@@ -1,7 +1,7 @@
 /**
  * Migration script to add question approval fields
  * Run this script to update existing database with new columns
- * 
+ *
  * Usage: node migrate-question-approval.js
  */
 
@@ -144,17 +144,13 @@ async function migrateQuestions() {
     const hasCreatedBy = await checkColumnExists('questions', 'created_by');
     if (!hasCreatedBy) {
       await new Promise((resolve, reject) => {
-        database.db.run(
-          `ALTER TABLE questions ADD COLUMN created_by TEXT`,
-          [],
-          (err) => {
-            if (err) reject(err);
-            else {
-              console.log('✓ Added created_by column');
-              resolve();
-            }
+        database.db.run(`ALTER TABLE questions ADD COLUMN created_by TEXT`, [], (err) => {
+          if (err) reject(err);
+          else {
+            console.log('✓ Added created_by column');
+            resolve();
           }
-        );
+        });
       });
     } else {
       console.log('✓ created_by column already exists');
@@ -164,17 +160,13 @@ async function migrateQuestions() {
     const hasApprovedAt = await checkColumnExists('questions', 'approved_at');
     if (!hasApprovedAt) {
       await new Promise((resolve, reject) => {
-        database.db.run(
-          `ALTER TABLE questions ADD COLUMN approved_at TEXT`,
-          [],
-          (err) => {
-            if (err) reject(err);
-            else {
-              console.log('✓ Added approved_at column');
-              resolve();
-            }
+        database.db.run(`ALTER TABLE questions ADD COLUMN approved_at TEXT`, [], (err) => {
+          if (err) reject(err);
+          else {
+            console.log('✓ Added approved_at column');
+            resolve();
           }
-        );
+        });
       });
     } else {
       console.log('✓ approved_at column already exists');
@@ -184,17 +176,13 @@ async function migrateQuestions() {
     const hasApprovedBy = await checkColumnExists('questions', 'approved_by');
     if (!hasApprovedBy) {
       await new Promise((resolve, reject) => {
-        database.db.run(
-          `ALTER TABLE questions ADD COLUMN approved_by TEXT`,
-          [],
-          (err) => {
-            if (err) reject(err);
-            else {
-              console.log('✓ Added approved_by column');
-              resolve();
-            }
+        database.db.run(`ALTER TABLE questions ADD COLUMN approved_by TEXT`, [], (err) => {
+          if (err) reject(err);
+          else {
+            console.log('✓ Added approved_by column');
+            resolve();
           }
-        );
+        });
       });
     } else {
       console.log('✓ approved_by column already exists');

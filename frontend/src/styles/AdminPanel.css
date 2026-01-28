@@ -11,7 +11,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   margin: 20px auto;
 }
- 
+
 .adminTitle {
   font-family: 'SuperBubbly', sans-serif;
   color: yellow;
@@ -63,7 +63,7 @@
 
 .questionsSection {
   width: 100%;
-  background: white;
+  background: transparent;
   border-radius: 12px;
   overflow: hidden;
 }
