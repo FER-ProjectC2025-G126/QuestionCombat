@@ -286,15 +286,22 @@
 
 @media (max-width: 600px) {
   .adminBlock {
-    width: 90%;
+    width: 100%;
     padding: 16px;
     border-radius: 0;
     margin: 0;
   }
 
-  .adminTitle {
-    font-size: 2rem;
-    margin-bottom: 15px;
+  .adminTabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .adminTabBtn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 14px;
+    border-radius: 10px;
   }
 
   .usersTable {
@@ -309,10 +316,11 @@
   .tableRow {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 16px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.3);
+    gap: 14px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
   }
 
   .colUsername,
@@ -320,41 +328,74 @@
   .colRole,
   .colActions {
     width: 100%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
 
-  .colUsername {
+  .colUsername::before {
+    content: "Username";
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .colEmail::before {
+    content: "Email";
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .colRole::before {
+    content: "Role";
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .colActions::before {
+    content: "Actions";
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .username {
     font-size: 1rem;
   }
 
   .colEmail {
     font-size: 0.85rem;
-    word-break: break-all;
+    word-break: break-word;
+    text-align: right;
   }
 
   .roleBadge {
-    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 6px 14px;
   }
 
   .roleButtons {
     width: 100%;
-    justify-content: space-between;
+    gap: 10px;
   }
 
   .roleBtn {
     flex: 1;
-    padding: 12px 0;
+    padding: 14px 0;
     font-size: 0.9rem;
+    border-radius: 30px;
   }
 
   .noActions {
-    text-align: center;
     width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
   }
 
   .adminError,
   .adminSuccess {
     font-size: 0.9rem;
-    padding: 12px;
+    padding: 14px;
+    border-radius: 12px;
   }
 }
+
