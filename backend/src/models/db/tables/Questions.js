@@ -34,11 +34,16 @@ export default class Questions {
     });
   }
 
-  createQuestion(setId, qText, qOptions, qCorrectOption) {
+  createQuestion(setId, qText, qOptions, qCorrectOption, source = 'MANUAL', createdBy = null) {
     return new Promise((resolve, reject) => {
+      // AI-generated questions are inactive by default
+      const isActive = source === 'MANUAL' ? 1 : 0;
+      const status = source === 'AI' ? 'PENDING' : 'APPROVED';
+      const isApproved = source === 'MANUAL' ? 1 : 0;
+
       this.db.run(
-        'INSERT INTO questions (set_id, question_text) VALUES (?, ?)',
-        [setId, qText],
+        'INSERT INTO questions (set_id, question_text, source, created_by, status, is_approved, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [setId, qText, source, createdBy, status, isApproved, isActive],
         function (err) {
           if (err) {
             reject(err);

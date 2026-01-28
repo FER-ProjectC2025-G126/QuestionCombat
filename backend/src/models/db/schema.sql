@@ -21,7 +21,17 @@ CREATE TABLE IF NOT EXISTS questions (
     question_id INTEGER PRIMARY KEY AUTOINCREMENT,
     set_id INTEGER NOT NULL,
     question_text TEXT NOT NULL,
-    FOREIGN KEY(set_id) REFERENCES question_sets(set_id) ON DELETE CASCADE
+    status TEXT DEFAULT 'PENDING',
+    is_approved BOOLEAN DEFAULT 0,
+    is_active BOOLEAN DEFAULT 1,
+    source TEXT DEFAULT 'MANUAL',
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    created_by TEXT,
+    approved_at TEXT,
+    approved_by TEXT,
+    FOREIGN KEY(set_id) REFERENCES question_sets(set_id) ON DELETE CASCADE,
+    FOREIGN KEY(created_by) REFERENCES users(username),
+    FOREIGN KEY(approved_by) REFERENCES users(username)
 );
 CREATE TABLE IF NOT EXISTS question_options (
     option_id INTEGER PRIMARY KEY AUTOINCREMENT,
